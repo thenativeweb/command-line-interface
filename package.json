@@ -1,0 +1,30 @@
+{
+  "name": "command-line-interface",
+  "version": "0.0.0",
+  "description": "command-line-interface is a foundation for CLI applications.",
+  "contributors": [
+    {
+      "name": "Golo Roden",
+      "email": "golo.roden@thenativeweb.io"
+    },
+    {
+      "name": "Hannes Leutloff",
+      "email": "hannes.leutloff@thenativeweb.io"
+    }
+  ],
+  "main": "build/lib/Cli.js",
+  "types": "build/lib/Cli.d.ts",
+  "dependencies": {},
+  "devDependencies": {
+    "roboter": "10.0.5",
+    "semantic-release-configuration": "1.0.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/thenativeweb/command-line-interface.git"
+  },
+  "keywords": [
+    "cli"
+  ],
+  "license": "MIT"
+}
