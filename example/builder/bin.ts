@@ -1,10 +1,11 @@
-import { builder } from './';
-import { runCli } from '../../lib/';
+import { builder } from '.';
+import { runCli } from '../../lib';
 
-(async () => {
+(async (): Promise<void> => {
+  console.log({ argv: process.argv });
   try {
     await runCli(builder, process.argv);
   } catch (ex) {
     console.log({ ex });
   }
-})();
+})().catch(console.error);

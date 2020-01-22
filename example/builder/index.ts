@@ -20,6 +20,6 @@ export const builder: Command<BuilderOptions> = {
   },
   handle ({ options }): void {
     console.log('builder command');
-    console.log({ options });
+    console.log(JSON.stringify(options));
   }
 };

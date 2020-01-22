@@ -1,11 +1,12 @@
+import { CommandPath } from './CommandPath';
 import { OptionDefinition } from './OptionDefinition';
-import { ShowUsageFn } from './ShowUsageFn';
+import { ShowUsageFn } from './usage/ShowUsageFn';
 
 export interface CommandHandleOptions<TOptions extends {}> {
   options: TOptions;
   showUsage: ShowUsageFn;
   level: number;
-  ancestors: string[];
+  ancestors: CommandPath;
 }
 
 export type CommandHandle<TOptions extends {}> = (params: CommandHandleOptions<TOptions>) => void | Promise<void>;

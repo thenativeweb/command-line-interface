@@ -18,6 +18,6 @@ export const remote: Command<RemoteOptions> = {
   },
   handle ({ options }: { options: RemoteOptions }): void {
     console.log('builder.remote command');
-    console.log({ options });
+    console.log(JSON.stringify(options));
   }
 };

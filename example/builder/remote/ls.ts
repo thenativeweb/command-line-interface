@@ -15,6 +15,6 @@ export const ls: Command<LsOptions> = {
   ],
   handle ({ options }: { options: LsOptions }): void {
     console.log('builder.remote.ls command');
-    console.log({ options });
+    console.log(JSON.stringify(options));
   }
 };

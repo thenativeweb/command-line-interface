@@ -20,8 +20,8 @@ export const build: Command<BuildOptions> = {
       defaultValue: false
     }
   ],
-  handle ({ options }: { options: BuildOptions }): void {
+  handle ({ options }): void {
     console.log('builder.build command');
-    console.log({ options });
+    console.log(JSON.stringify(options));
   }
 };
