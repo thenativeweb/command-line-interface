@@ -1,0 +1,20 @@
+import { Command } from '../../../lib';
+import { LsOptions } from './LsOptions';
+
+export const ls: Command<LsOptions> = {
+  name: 'ls',
+  description: 'Ls your application versions on remote.',
+  optionDefinitions: [
+    {
+      name: 'all',
+      type: 'boolean',
+      description: 'Include inactive versions in list',
+      alias: 'a',
+      defaultValue: false
+    }
+  ],
+  handle ({ options }: { options: LsOptions }): void {
+    console.log('builder.remote.ls command');
+    console.log({ options });
+  }
+};

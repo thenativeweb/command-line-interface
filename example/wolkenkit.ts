@@ -1,27 +1,27 @@
-interface DebugParams extends Params {
+interface DebugOptions extends Options {
   debug: boolean;
 }
 
-const getGlobalParamDefinitions = (): Record<string, ParamDefinition> => ({
+const getGlobalOptionDefinitions = (): Record<string, OptionDefinition> => ({
   debug: {
     type: 'boolean',
     description: 'Enables the debug mode.'
   }
 });
 
-interface HelpCommandParams extends Params, DebugParams {
+interface HelpCommandOptions extends Options, DebugOptions {
   verbose: boolean;
 }
 
-const getHelp = ({ parentParamDefinitions }: {
-  parentParamDefinitions: Record<string, ParamDefinition>;
-}): Command<HelpCommandParams> => {
+const getHelp = ({ parentOptionDefinitions }: {
+  parentOptionDefinitions: Record<string, OptionDefinition>;
+}): Command<HelpCommandOptions> => {
   return {
     name: 'help',
     description: 'Shows the help.',
 
-    paramDefinitions: {
-      ...parentParamDefinitions,
+    OptionDefinitions: {
+      ...parentOptionDefinitions,
       verbose: { type: 'boolean', description: '...' }
     },
 
@@ -31,11 +31,11 @@ const getHelp = ({ parentParamDefinitions }: {
   };
 };
 
-interface BuildCommandParams extends Params, DebugParams {
+interface BuildCommandOptions extends Options, DebugOptions {
   mode: 'production' | 'development'
 }
 
-const build: Command<BuildCommandParams> = {
+const build: Command<BuildCommandOptions> = {
   name: 'build',
   description: 'Builds a wolkenkit application.',
 
@@ -47,7 +47,7 @@ const build: Command<BuildCommandParams> = {
 const cli = new Cli({
   name: 'wolkenkit',
   commands: {
-    help: getHelp({ parentParamDefinitions: getGlobalParamDefinitions() }),
+    help: getHelp({ parentOptionDefinitions: getGlobalOptionDefinitions() }),
     build
   },
   defaultCommand: 'help'
