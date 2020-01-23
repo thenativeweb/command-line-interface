@@ -4,7 +4,7 @@ import { runCli } from '../../../../lib';
 (async (): Promise<void> => {
   console.log({ argv: process.argv });
   try {
-    await runCli(builder, process.argv);
+    await runCli({ rootCommand: builder, argv: process.argv });
   } catch (ex) {
     console.log({ ex });
   }

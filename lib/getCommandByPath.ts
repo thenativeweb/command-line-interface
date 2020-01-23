@@ -8,7 +8,7 @@ const getCommandByPath = function ({ rootCommand, commandPath }: {
   let command = rootCommand;
 
   if (commandPath[0] !== rootCommand.name) {
-    throw new Error(`Can't find usage for root command '${commandPath[0]}', root actually is named '${rootCommand.name}'.`);
+    throw new Error(`Can't find root command '${commandPath[0]}', root actually is named '${rootCommand.name}'.`);
   }
 
   for (const pathElem of commandPath.slice(1)) {
