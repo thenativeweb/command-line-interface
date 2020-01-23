@@ -32,6 +32,8 @@ If you use TypeScript, use the following code instead:
 import { runCli, Command } from 'command-line-interface';
 ```
 
+Tbd.
+
 ## Running the build
 
 To build this module use [roboter](https://www.npmjs.com/package/roboter).
