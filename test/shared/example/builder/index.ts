@@ -1,6 +1,6 @@
 import { build } from './build';
 import { BuilderOptions } from './BuilderOptions';
-import { Command } from '../../lib';
+import { Command } from '../../../../lib';
 import { remote } from './remote';
 
 export const builder: Command<BuilderOptions> = {

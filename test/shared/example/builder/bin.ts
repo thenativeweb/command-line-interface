@@ -1,5 +1,5 @@
-import { builder } from '.';
-import { runCli } from '../../lib';
+import { builder } from '../builder';
+import { runCli } from '../../../../lib';
 
 (async (): Promise<void> => {
   console.log({ argv: process.argv });

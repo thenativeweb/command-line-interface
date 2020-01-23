@@ -14,8 +14,7 @@ export const helpCommand: Command<HelpOptions> = {
     }
   ],
   ignoreUnknownOptions: true,
-  handle ({ options, showUsage, level, ancestors }): void {
-    console.log(`${ancestors.join('.')}.help command`);
+  handle ({ options, showUsage, ancestors }): void {
     if (options.command) {
       console.log(showUsage({ commandPath: [ ...ancestors, ...options.command ]}));
 

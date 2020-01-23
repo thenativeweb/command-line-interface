@@ -1,25 +1,60 @@
 import { Command } from '../Command';
+import { convertOptionDefinition } from '../convertOptionDefinition';
+import { getCommandsByPath } from '../getCommandsByPath';
+import { getCommandSynopsis } from './getCommandSynopsis';
 import { ShowUsageFn } from './ShowUsageFn';
+import commandLineUsage, { Section } from 'command-line-usage';
 
-const getShowUsage = function (rootCommand: Command<any>): ShowUsageFn {
+const getShowUsage = function ({ rootCommand }: {
+  rootCommand: Command<any>;
+}): ShowUsageFn {
   return ({ commandPath }): string => {
-    let command = rootCommand;
+    const commandsInPath = getCommandsByPath({ rootCommand, commandPath });
+    const command = commandsInPath[commandsInPath.length - 1];
 
-    if (commandPath[0] !== rootCommand.name) {
-      throw new Error(`Can't find usage for root command '${commandPath[0]}', root actually is named '${rootCommand.name}'.`);
+    const synopsis = commandsInPath.map((currentCommand): string => getCommandSynopsis({ command: currentCommand })).join(' ');
+
+    const usage: Section[] = [
+      {
+        header: rootCommand.name,
+        content: [
+          `> ${synopsis}`,
+          '',
+          command.description
+        ]
+      }
+    ];
+
+    if (command.optionDefinitions.length > 0) {
+      usage.push(
+        {
+          header: 'Options',
+          optionList: command.optionDefinitions.map((optionDefinition): commandLineUsage.OptionDefinition => {
+            const convertedOptionDefinition = convertOptionDefinition({ optionDefinition });
+
+            return {
+              ...convertedOptionDefinition,
+              description: optionDefinition.description,
+              typeLabel: `{underline ${optionDefinition.parameterName ?? optionDefinition.type}}`
+            };
+          })
+        }
+      );
     }
 
-    for (const pathElem of commandPath.slice(1)) {
-      if (command.subcommands === undefined) {
-        throw new Error(`Command '${command.name}' has no subcommands.`);
-      }
-      command = command.subcommands[pathElem];
-      if (command === undefined) {
-        throw new Error(`Could not find subcommand '${pathElem}'.`);
-      }
+    if (command.subcommands && Object.keys(command.subcommands).length > 0) {
+      usage.push(
+        {
+          header: 'Commands',
+          content: Object.entries(command.subcommands).map(([ name, subcommand ]): any => ({
+            desc: name,
+            example: subcommand.description
+          }))
+        }
+      );
     }
 
-    return `Showing usage for command ${commandPath.join('.')}`;
+    return commandLineUsage(usage);
   };
 };
 

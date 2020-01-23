@@ -1,4 +1,4 @@
-import { Command } from '../../lib';
+import { Command } from '../../../../lib';
 import { ls } from './remote/ls';
 import { RemoteOptions } from './RemoteOptions';
 

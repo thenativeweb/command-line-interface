@@ -6,4 +6,5 @@ export interface OptionDefinition {
   multiple?: 'off' | 'on' | 'lazy';
   defaultOption?: boolean;
   defaultValue?: any;
+  parameterName?: string;
 }

@@ -1,7 +1,9 @@
 import { Command } from './Command';
 import { helpCommand } from './commands/help';
 
-export const addHelpCommandToCli = function <TOptions extends {}> (rootCommand: Command<TOptions>): Command<TOptions> {
+export const addHelpCommandToCli = function <TOptions extends {}> ({ rootCommand }: {
+  rootCommand: Command<TOptions>;
+}): Command<TOptions> {
   return {
     name: rootCommand.name,
     description: rootCommand.description,

@@ -1,7 +1,9 @@
 import { OptionDefinition as CLAOptionDefinition } from 'command-line-args';
 import { OptionDefinition } from './OptionDefinition';
 
-export const convertOptionDefinition = function (optionDefinition: OptionDefinition): CLAOptionDefinition {
+export const convertOptionDefinition = function ({ optionDefinition }: {
+  optionDefinition: OptionDefinition;
+}): CLAOptionDefinition {
   let type: (value: string) => any;
 
   switch (optionDefinition.type) {

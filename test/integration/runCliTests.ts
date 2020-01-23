@@ -1,20 +1,20 @@
 import { addHelpCommandToCli } from '../../lib/addHelpCommandToCli';
 import { assert } from 'assertthat';
-import { builder } from '../../example/builder';
+import { builder } from '../shared/example/builder';
 import { getShowUsage } from 'lib/usage/getShowUsage';
 import { record } from 'record-stdstreams';
 import { runCli } from '../../lib/runCli';
 
 suite('Cli', (): void => {
   suite(`sample application 'builder'`, (): void => {
-    const extendedBuilderCli = addHelpCommandToCli(builder);
+    const extendedBuilderCli = addHelpCommandToCli({ rootCommand: builder });
 
     suite('builder command', (): void => {
       test('runs the top level command.', async (): Promise<void> => {
         const stop = record(false);
         const command: string[] = [];
 
-        await runCli(builder, command);
+        await runCli({ rootCommand: builder, argv: command });
 
         const { stderr, stdout } = stop();
 
@@ -33,7 +33,7 @@ suite('Cli', (): void => {
         const stop = record(false);
         const command: string[] = [ '-v' ];
 
-        await runCli(builder, command);
+        await runCli({ rootCommand: builder, argv: command });
 
         const { stderr, stdout } = stop();
 
@@ -52,24 +52,24 @@ suite('Cli', (): void => {
         const stop = record(false);
         const command: string[] = [ '--help' ];
 
-        await runCli(builder, command);
+        await runCli({ rootCommand: builder, argv: command });
 
         const { stderr, stdout } = stop();
 
         assert.that(stderr).is.equalTo('');
-        assert.that(stdout).is.equalTo(`${getShowUsage(extendedBuilderCli)({ commandPath: [ 'builder' ]})}\n`);
+        assert.that(stdout).is.equalTo(`${getShowUsage({ rootCommand: extendedBuilderCli })({ commandPath: [ 'builder' ]})}\n`);
       });
 
       test('displays the top level help with --help flag, even if a subcommand is given.', async (): Promise<void> => {
         const stop = record(false);
         const command: string[] = [ '--help', 'build' ];
 
-        await runCli(builder, command);
+        await runCli({ rootCommand: builder, argv: command });
 
         const { stderr, stdout } = stop();
 
         assert.that(stderr).is.equalTo('');
-        assert.that(stdout).is.equalTo(`${getShowUsage(extendedBuilderCli)({ commandPath: [ 'builder' ]})}\n`);
+        assert.that(stdout).is.equalTo(`${getShowUsage({ rootCommand: extendedBuilderCli })({ commandPath: [ 'builder' ]})}\n`);
       });
 
       // TODO: add tests for error messag if an option is unexpected
@@ -82,7 +82,7 @@ suite('Cli', (): void => {
         const stop = record(false);
         const command: string[] = [ '-v', 'build' ];
 
-        await runCli(builder, command);
+        await runCli({ rootCommand: builder, argv: command });
 
         const { stderr, stdout } = stop();
 
@@ -103,7 +103,7 @@ suite('Cli', (): void => {
         const stop = record(false);
         const command: string[] = [ '-v', 'build', '-m', '--uglify' ];
 
-        await runCli(builder, command);
+        await runCli({ rootCommand: builder, argv: command });
 
         const { stderr, stdout } = stop();
 
@@ -126,7 +126,7 @@ suite('Cli', (): void => {
         const stop = record(false);
         const command: string[] = [ '-v', 'remote', '-r', 'foo' ];
 
-        await runCli(builder, command);
+        await runCli({ rootCommand: builder, argv: command });
 
         const { stderr, stdout } = stop();
 
@@ -147,7 +147,7 @@ suite('Cli', (): void => {
           const stop = record(false);
           const command: string[] = [ '-v', 'remote', '-r', 'foo', 'ls', '-a' ];
 
-          await runCli(builder, command);
+          await runCli({ rootCommand: builder, argv: command });
 
           const { stderr, stdout } = stop();
 
@@ -171,44 +171,36 @@ suite('Cli', (): void => {
         const stop = record(false);
         const command: string[] = [ 'help' ];
 
-        await runCli(builder, command);
+        await runCli({ rootCommand: builder, argv: command });
 
         const { stderr, stdout } = stop();
 
         assert.that(stderr).is.equalTo('');
-
-        const lines = stdout.split('\n');
-
-        assert.that(lines[0]).is.equalTo('builder.help command');
-        assert.that(lines.slice(1).join('\n')).is.equalTo(`${getShowUsage(extendedBuilderCli)({ commandPath: [ 'builder' ]})}\n`);
+        assert.that(stdout).is.equalTo(`${getShowUsage({ rootCommand: extendedBuilderCli })({ commandPath: [ 'builder' ]})}\n`);
       });
 
       test('displays the help of the given command.', async (): Promise<void> => {
         const stop = record(false);
         const command: string[] = [ 'help', 'build' ];
 
-        await runCli(builder, command);
+        await runCli({ rootCommand: builder, argv: command });
 
         const { stderr, stdout } = stop();
 
         assert.that(stderr).is.equalTo('');
-
-        const lines = stdout.split('\n');
-
-        assert.that(lines[0]).is.equalTo('builder.help command');
-        assert.that(lines.slice(1).join('\n')).is.equalTo(`${getShowUsage(extendedBuilderCli)({ commandPath: [ 'builder', 'build' ]})}\n`);
+        assert.that(stdout).is.equalTo(`${getShowUsage({ rootCommand: extendedBuilderCli })({ commandPath: [ 'builder', 'build' ]})}\n`);
       });
 
       test('displays the help for the help command if the help flag is set.', async (): Promise<void> => {
         const stop = record(false);
         const command: string[] = [ 'help', '--help' ];
 
-        await runCli(builder, command);
+        await runCli({ rootCommand: builder, argv: command });
 
         const { stderr, stdout } = stop();
 
         assert.that(stderr).is.equalTo('');
-        assert.that(stdout).is.equalTo(`${getShowUsage(extendedBuilderCli)({ commandPath: [ 'builder', 'help' ]})}\n`);
+        assert.that(stdout).is.equalTo(`${getShowUsage({ rootCommand: extendedBuilderCli })({ commandPath: [ 'builder', 'help' ]})}\n`);
       });
 
       // TODO: add tests for error message on unknown command

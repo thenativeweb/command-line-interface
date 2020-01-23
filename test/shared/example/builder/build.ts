@@ -1,5 +1,5 @@
 import { BuildOptions } from './BuildOptions';
-import { Command } from '../../lib';
+import { Command } from '../../../../lib';
 
 export const build: Command<BuildOptions> = {
   name: 'build',

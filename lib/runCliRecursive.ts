@@ -13,16 +13,23 @@ const helpOption = {
   defaultValue: false
 };
 
-export const runCliRecursive = async function (
-  command: Command<any>,
-  argv: string[],
-  showUsage: ShowUsageFn,
-  level: number,
-  additionalOptions: Record<string, any>,
-  ancestors: CommandPath
-): Promise<void> {
+export const runCliRecursive = async function ({
+  command,
+  argv,
+  showUsage,
+  level,
+  additionalOptions,
+  ancestors
+}: {
+  command: Command<any>;
+  argv: string[];
+  showUsage: ShowUsageFn;
+  level: number;
+  additionalOptions: Record<string, any>;
+  ancestors: CommandPath;
+}): Promise<void> {
   const optionDefinitions = command.optionDefinitions.
-    map((x): CLAOptionDefinition => convertOptionDefinition(x));
+    map((optionDefinition): CLAOptionDefinition => convertOptionDefinition({ optionDefinition }));
 
   const optionDefinitionsWithHelp = [
     ...optionDefinitions,
@@ -49,7 +56,10 @@ export const runCliRecursive = async function (
       throw new Error('Unknown option encountered.');
     }
 
-    const { command: subCommandName, argv: subArgv } = selectSubCommand(_unknown, [ null, ...Object.keys(command.subcommands) ]);
+    const { command: subCommandName, argv: subArgv } = selectSubCommand({
+      argv: _unknown,
+      commands: [ null, ...Object.keys(command.subcommands) ]
+    });
 
     if (subCommandName === null) {
       throw new Error('Sub command not found or unknown option given.');
@@ -57,14 +67,14 @@ export const runCliRecursive = async function (
 
     const subCommand = command.subcommands[subCommandName];
 
-    await runCliRecursive(
-      subCommand,
-      subArgv,
+    await runCliRecursive({
+      command: subCommand,
+      argv: subArgv,
       showUsage,
-      level + 1,
-      mergedOptions,
-      [ ...ancestors, command.name ]
-    );
+      level: level + 1,
+      additionalOptions: mergedOptions,
+      ancestors: [ ...ancestors, command.name ]
+    });
 
     return;
   }

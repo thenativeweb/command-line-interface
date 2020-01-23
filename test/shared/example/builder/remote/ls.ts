@@ -1,4 +1,4 @@
-import { Command } from '../../../lib';
+import { Command } from '../../../../../lib';
 import { LsOptions } from './LsOptions';
 
 export const ls: Command<LsOptions> = {
