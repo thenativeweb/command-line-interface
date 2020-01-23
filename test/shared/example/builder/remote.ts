@@ -1,4 +1,5 @@
 import { Command } from '../../../../lib';
+import { fail } from './remote/fail';
 import { ls } from './remote/ls';
 import { RemoteOptions } from './RemoteOptions';
 
@@ -15,6 +16,7 @@ export const remote: Command<RemoteOptions> = {
     }
   ],
   subcommands: {
+    fail,
     ls
   },
   handle ({ options }: { options: RemoteOptions }): void {

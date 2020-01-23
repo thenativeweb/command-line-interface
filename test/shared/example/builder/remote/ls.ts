@@ -11,6 +11,11 @@ export const ls: Command<LsOptions> = {
       description: 'Include inactive versions in list',
       alias: 'a',
       defaultValue: false
+    },
+    {
+      name: 'a-very-long-option-name',
+      type: 'number',
+      description: 'short desc'
     }
   ],
   handle ({ options }: { options: LsOptions }): void {

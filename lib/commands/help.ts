@@ -15,11 +15,13 @@ export const helpCommand: Command<HelpOptions> = {
   ],
   ignoreUnknownOptions: true,
   handle ({ options, showUsage, ancestors }): void {
+    /* eslint-disable no-console */
     if (options.command) {
       console.log(showUsage({ commandPath: [ ...ancestors, ...options.command ]}));
 
       return;
     }
     console.log(showUsage({ commandPath: ancestors }));
+    /* eslint-enable no-console */
   }
 };

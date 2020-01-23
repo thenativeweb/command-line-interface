@@ -4,16 +4,19 @@ import { builder } from '../shared/example/builder';
 import { getShowUsage } from 'lib/usage/getShowUsage';
 import { record } from 'record-stdstreams';
 import { runCli } from '../../lib/runCli';
+import sinon, { SinonStub } from 'sinon';
 
 suite('Cli', (): void => {
   let stop: () => { stderr: string; stdout: string };
 
   setup(async (): Promise<void> => {
     stop = record(false);
+    sinon.stub(process, 'exit');
   });
 
   teardown(async (): Promise<void> => {
     stop();
+    (process.exit as unknown as SinonStub).restore();
   });
 
   suite(`sample application 'builder'`, (): void => {
@@ -78,7 +81,7 @@ suite('Cli', (): void => {
         assert.that(stdout).is.equalTo(`${getShowUsage({ rootCommand: extendedBuilderCli })({ commandPath: [ 'builder' ]})}\n`);
       });
 
-      test('suggests alternatives if subcommands exist and the given command is not recognized.', async (): Promise<void> => {
+      test('suggests alternatives and returns status code 1 if subcommands exist and the given command is not recognized.', async (): Promise<void> => {
         const command: string[] = [ 'bliud' ];
 
         await runCli({ rootCommand: builder, argv: command });
@@ -87,6 +90,7 @@ suite('Cli', (): void => {
 
         assert.that(stderr).is.equalTo('');
         assert.that(stdout).is.equalTo(`Unknown command 'bliud'. Did you mean 'build'?\n`);
+        assert.that((process.exit as unknown as SinonStub).calledWith(1)).is.true();
       });
 
       suite('builder.build command', (): void => {
@@ -130,7 +134,7 @@ suite('Cli', (): void => {
           });
         });
 
-        test('displays an error and the current level help if an option is not recognized.', async (): Promise<void> => {
+        test('displays an error and returns status code 1 if an option is not recognized.', async (): Promise<void> => {
           const command: string[] = [ 'build', '--foo' ];
 
           await runCli({ rootCommand: builder, argv: command });
@@ -139,6 +143,7 @@ suite('Cli', (): void => {
 
           assert.that(stderr).is.equalTo('');
           assert.that(stdout).is.equalTo(`Unknown option '--foo'.\n`);
+          assert.that((process.exit as unknown as SinonStub).calledWith(1)).is.true();
         });
       });
 
@@ -183,6 +188,30 @@ suite('Cli', (): void => {
             });
           });
         });
+
+        suite('builder.remote.fail command', (): void => {
+          test('logs the exception and returns status code 1 if the handler crashes.', async (): Promise<void> => {
+            const command: string[] = [ '-v', 'remote', '-r', 'foo', 'fail' ];
+
+            await runCli({ rootCommand: builder, argv: command });
+
+            const { stderr, stdout } = stop();
+
+            assert.that(stderr).is.equalTo('');
+
+            const lines = stdout.split('\n');
+
+            assert.that(lines[0]).is.equalTo('builder.remote.fail command');
+            assert.that(JSON.parse(lines[1])).is.equalTo({
+              verbose: true,
+              help: false,
+              remote: 'foo'
+            });
+
+            // Can't test the exception in detail. Just check that more output exists.
+            assert.that(lines.length).is.greaterThan(2);
+          });
+        });
       });
 
       suite('builder.help command', (): void => {
@@ -218,8 +247,6 @@ suite('Cli', (): void => {
           assert.that(stderr).is.equalTo('');
           assert.that(stdout).is.equalTo(`${getShowUsage({ rootCommand: extendedBuilderCli })({ commandPath: [ 'builder', 'help' ]})}\n`);
         });
-
-        // TODO: add tests for error message on unknown command
       });
     });
   });

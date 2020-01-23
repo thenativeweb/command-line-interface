@@ -2,18 +2,12 @@ import { Command } from './Command';
 import commandLineCommands from 'command-line-commands';
 import { CommandPath } from './CommandPath';
 import { convertOptionDefinition } from './convertOptionDefinition';
+import { helpOption } from './commands/helpOption';
 import { RecommendCommandFn } from './recommend/RecommendCommandFn';
 import { ShowUsageFn } from './usage/ShowUsageFn';
 import commandLineArgs, { OptionDefinition as CLAOptionDefinition } from 'command-line-args';
 
-const helpOption = {
-  name: 'help',
-  type: Boolean,
-  description: 'Show this help text.',
-  alias: 'h',
-  defaultValue: false
-};
-
+/* eslint-disable unicorn/no-process-exit, no-console */
 export const runCliRecursive = async function ({
   command,
   argv,
@@ -56,14 +50,18 @@ export const runCliRecursive = async function ({
   };
 
   if (_unknown === undefined || command.ignoreUnknownOptions) {
-    await command.handle({
-      options: mergedOptions,
-      showUsage,
-      level,
-      ancestors: ancestorNames
-    });
+    try {
+      return await command.handle({
+        options: mergedOptions,
+        showUsage,
+        level,
+        ancestors: ancestorNames
+      });
+    } catch (ex) {
+      console.log(ex);
 
-    return;
+      return process.exit(1);
+    }
   }
 
   if (command.subcommands === undefined) {
@@ -71,19 +69,20 @@ export const runCliRecursive = async function ({
 
     console.log(`Unknown option '${unknowOption}'.`);
 
-    return;
+    return process.exit(1);
   }
 
   try {
     const { command: subCommandName, argv: subArgv } = commandLineCommands(
       Object.keys(command.subcommands),
+
       // Pass copy, since commandLineCommands modifies the parameter.
       [ ..._unknown ]
     ) as { command: string; argv: string[] };
 
     const subCommand = command.subcommands[subCommandName];
 
-    await runCliRecursive({
+    return await runCliRecursive({
       command: subCommand,
       argv: subArgv,
       showUsage,
@@ -92,12 +91,13 @@ export const runCliRecursive = async function ({
       ancestorOptions: mergedOptions,
       ancestorNames: commandPath
     });
-
-    return;
   } catch {
     const unknownCommand = _unknown[0];
     const recommendedCommand = recommendCommand({ commandPath: [ ...commandPath, unknownCommand ]});
 
     console.log(`Unknown command '${unknownCommand}'. Did you mean '${recommendedCommand}'?`);
+
+    return process.exit(1);
   }
 };
+/* eslint-enable unicorn/no-process-exit, no-console */
