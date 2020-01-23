@@ -1,9 +1,8 @@
 import { Command } from './Command';
+import commandLineCommands from 'command-line-commands';
 import { CommandPath } from './CommandPath';
 import { convertOptionDefinition } from './convertOptionDefinition';
-import { errors } from './errors';
 import { RecommendCommandFn } from './recommend/RecommendCommandFn';
-import { selectSubCommand } from './selectSubCommand';
 import { ShowUsageFn } from './usage/ShowUsageFn';
 import commandLineArgs, { OptionDefinition as CLAOptionDefinition } from 'command-line-args';
 
@@ -21,18 +20,18 @@ export const runCliRecursive = async function ({
   showUsage,
   recommendCommand,
   level,
-  additionalOptions,
-  ancestors
+  ancestorOptions,
+  ancestorNames
 }: {
   command: Command<any>;
   argv: string[];
   showUsage: ShowUsageFn;
   recommendCommand: RecommendCommandFn;
   level: number;
-  additionalOptions: Record<string, any>;
-  ancestors: CommandPath;
+  ancestorOptions: Record<string, any>;
+  ancestorNames: CommandPath;
 }): Promise<void> {
-  const commandPath = [ ...ancestors, command.name ];
+  const commandPath = [ ...ancestorNames, command.name ];
   const optionDefinitions = command.optionDefinitions.
     map((optionDefinition): CLAOptionDefinition => convertOptionDefinition({ optionDefinition }));
 
@@ -52,59 +51,53 @@ export const runCliRecursive = async function ({
   }
 
   const mergedOptions = {
-    ...additionalOptions,
+    ...ancestorOptions,
     ...options
   };
 
-  if (_unknown !== undefined && !command.ignoreUnknownOptions) {
-    if (command.subcommands === undefined) {
-      const unknowOption = _unknown[0];
+  if (_unknown === undefined || command.ignoreUnknownOptions) {
+    await command.handle({
+      options: mergedOptions,
+      showUsage,
+      level,
+      ancestors: ancestorNames
+    });
 
-      console.log(`Unknown option '${unknowOption}'.`);
-      console.log(showUsage({
-        commandPath
-      }));
-
-      return;
-    }
-
-    try {
-      const { command: subCommandName, argv: subArgv } = selectSubCommand({
-        // Pass copy of unknown since selectSubCommand modifies it.
-        argv: [ ..._unknown ],
-        commands: [ ...Object.keys(command.subcommands) ]
-      }) as { command: string; argv: string[] };
-
-      const subCommand = command.subcommands[subCommandName];
-
-      await runCliRecursive({
-        command: subCommand,
-        argv: subArgv,
-        showUsage,
-        recommendCommand,
-        level: level + 1,
-        additionalOptions: mergedOptions,
-        ancestors: commandPath
-      });
-
-      return;
-    } catch {
-      const unknownCommand = _unknown[0];
-      const recommendedCommand = recommendCommand({ commandPath: [ ...commandPath, unknownCommand ]});
-
-      console.log(`Unknown command '${unknownCommand}'. Did you mean '${recommendedCommand}'?`);
-      console.log(showUsage({
-        commandPath
-      }));
-
-      return;
-    }
+    return;
   }
 
-  await command.handle({
-    options: mergedOptions,
-    showUsage,
-    level,
-    ancestors
-  });
+  if (command.subcommands === undefined) {
+    const unknowOption = _unknown[0];
+
+    console.log(`Unknown option '${unknowOption}'.`);
+
+    return;
+  }
+
+  try {
+    const { command: subCommandName, argv: subArgv } = commandLineCommands(
+      Object.keys(command.subcommands),
+      // Pass copy, since commandLineCommands modifies the parameter.
+      [ ..._unknown ]
+    ) as { command: string; argv: string[] };
+
+    const subCommand = command.subcommands[subCommandName];
+
+    await runCliRecursive({
+      command: subCommand,
+      argv: subArgv,
+      showUsage,
+      recommendCommand,
+      level: level + 1,
+      ancestorOptions: mergedOptions,
+      ancestorNames: commandPath
+    });
+
+    return;
+  } catch {
+    const unknownCommand = _unknown[0];
+    const recommendedCommand = recommendCommand({ commandPath: [ ...commandPath, unknownCommand ]});
+
+    console.log(`Unknown command '${unknownCommand}'. Did you mean '${recommendedCommand}'?`);
+  }
 };

@@ -10,7 +10,8 @@ export const remote: Command<RemoteOptions> = {
       name: 'remote',
       type: 'string',
       description: 'Remote url.',
-      alias: 'r'
+      alias: 'r',
+      parameterName: 'url'
     }
   ],
   subcommands: {

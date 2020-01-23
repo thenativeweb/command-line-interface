@@ -86,11 +86,7 @@ suite('Cli', (): void => {
         const { stderr, stdout } = stop();
 
         assert.that(stderr).is.equalTo('');
-
-        const lines = stdout.split('\n');
-
-        assert.that(lines[0]).is.equalTo(`Unknown command 'bliud'. Did you mean 'build'?`);
-        assert.that(lines.slice(1).join('\n')).is.equalTo(`${getShowUsage({ rootCommand: extendedBuilderCli })({ commandPath: [ 'builder' ]})}\n`);
+        assert.that(stdout).is.equalTo(`Unknown command 'bliud'. Did you mean 'build'?\n`);
       });
 
       suite('builder.build command', (): void => {
@@ -142,11 +138,7 @@ suite('Cli', (): void => {
           const { stderr, stdout } = stop();
 
           assert.that(stderr).is.equalTo('');
-
-          const lines = stdout.split('\n');
-
-          assert.that(lines[0]).is.equalTo(`Unknown option '--foo'.`);
-          assert.that(lines.slice(1).join('\n')).is.equalTo(`${getShowUsage({ rootCommand: extendedBuilderCli })({ commandPath: [ 'builder', 'build' ]})}\n`);
+          assert.that(stdout).is.equalTo(`Unknown option '--foo'.\n`);
         });
       });
 

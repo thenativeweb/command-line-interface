@@ -9,6 +9,7 @@ export const runCli = async function ({ rootCommand, argv }: {
   argv: string[];
 }): Promise<void> {
   const extendedRootCommand = addHelpCommandToCli({ rootCommand });
+
   const recommendCommand = getRecommendCommand({ rootCommand: extendedRootCommand });
   const showUsage = getShowUsage({ rootCommand: extendedRootCommand });
 
@@ -18,7 +19,7 @@ export const runCli = async function ({ rootCommand, argv }: {
     showUsage,
     recommendCommand,
     level: 0,
-    additionalOptions: {},
-    ancestors: []
+    ancestorOptions: {},
+    ancestorNames: []
   });
 };
