@@ -1,7 +1,7 @@
 import { Command } from '../elements/Command';
 import commandLineUsage from 'command-line-usage';
 import { getCommandLineUsageConfiguration } from './getCommandLineUsageConfiguration';
-import { ShowUsageFn } from './ShowUsageFn';
+import { ShowUsageFn } from '../elements/ShowUsageFn';
 
 const getShowUsage = function ({ rootCommand }: {
   rootCommand: Command<any>;

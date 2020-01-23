@@ -1,6 +1,6 @@
 import { Command } from '../elements/Command';
 import { recommendCommand } from './recommendCommand';
-import { RecommendCommandFn } from './RecommendCommandFn';
+import { RecommendCommandFn } from '../elements/RecommendCommandFn';
 
 const getRecommendCommand = function ({ rootCommand }: {
   rootCommand: Command<any>;

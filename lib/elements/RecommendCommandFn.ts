@@ -1,4 +1,4 @@
-import { CommandPath } from '../elements/CommandPath';
+import { CommandPath } from './CommandPath';
 
 export type RecommendCommandFn = (params: {
   commandPath: CommandPath;

@@ -3,8 +3,8 @@ import commandLineCommands from 'command-line-commands';
 import { CommandPath } from './elements/CommandPath';
 import { convertOptionDefinition } from './convertOptionDefinition';
 import { helpOption } from './commands/helpOption';
-import { RecommendCommandFn } from './recommend/RecommendCommandFn';
-import { ShowUsageFn } from './usage/ShowUsageFn';
+import { RecommendCommandFn } from './elements/RecommendCommandFn';
+import { ShowUsageFn } from './elements/ShowUsageFn';
 import commandLineArgs, { OptionDefinition as CLAOptionDefinition } from 'command-line-args';
 
 /* eslint-disable unicorn/no-process-exit, no-console */
