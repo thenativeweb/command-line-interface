@@ -26,11 +26,7 @@ const getCommandSynopsis = function ({ command }: {
   }
 
   if (defaultOption) {
-    if (defaultOption.multiple === 'off' || defaultOption.multiple === undefined) {
-      synopsis += ` {underline ${defaultOption.parameterName ?? defaultOption.name}}`;
-    } else {
-      synopsis += ` {underline ${defaultOption.parameterName ?? defaultOption.name}[]}`;
-    }
+    synopsis += ` ${optionToString({ option: defaultOption })}`;
   }
 
   return synopsis;

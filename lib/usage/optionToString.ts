@@ -3,17 +3,13 @@ import { OptionDefinition } from '../OptionDefinition';
 const optionToString = ({ option }: {
   option: OptionDefinition;
 }): string => {
-  let optionString = `--${option.name}`;
+  const prefix = option.defaultOption ? '' : '--';
 
-  if (option.type !== 'boolean') {
-    if (option.multiple === 'off' || option.multiple === undefined) {
-      optionString += ` {underline ${option.type}}`;
-    } else {
-      optionString += ` {underline ${option.type}[]}`;
-    }
-  }
+  const parameterName = option.parameterName ?? option.type;
+  const multiplier = option.multiple === undefined || option.multiple === 'off' ? '' : '[]';
+  const parameterDescription = option.type === 'boolean' ? '' : ` {underline ${parameterName}${multiplier}}`;
 
-  return optionString;
+  return `${prefix}${option.name}${parameterDescription}`;
 };
 
 export {

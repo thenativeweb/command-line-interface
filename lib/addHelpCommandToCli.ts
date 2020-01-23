@@ -11,12 +11,10 @@ export const addHelpCommandToCli = function <TOptions extends {}> ({ rootCommand
       ...rootCommand.optionDefinitions
     ],
     ignoreUnknownOptions: rootCommand.ignoreUnknownOptions,
-    subcommands: rootCommand.subcommands ?
-      {
-        ...rootCommand.subcommands,
-        help: helpCommand
-      } :
-      { help: helpCommand },
+    subcommands: {
+      ...rootCommand.subcommands ?? {},
+      help: helpCommand
+    },
     handle: rootCommand.handle
   };
 };
