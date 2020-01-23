@@ -121,6 +121,51 @@ suite('Cli', (): void => {
       });
     });
 
+    suite('builder.remote command', (): void => {
+      test('runs the second level remote command and parses all options.', async (): Promise<void> => {
+        const stop = record(false);
+        const command: string[] = [ '-v', 'remote', '-r', 'foo' ];
+
+        await runCli(builder, command);
+
+        const { stderr, stdout } = stop();
+
+        assert.that(stderr).is.equalTo('');
+
+        const lines = stdout.split('\n');
+
+        assert.that(lines[0]).is.equalTo('builder.remote command');
+        assert.that(JSON.parse(lines[1])).is.equalTo({
+          verbose: true,
+          help: false,
+          remote: 'foo'
+        });
+      });
+
+      suite('builder.remote.ls command', (): void => {
+        test('runs the third level ls command and parses all options.', async (): Promise<void> => {
+          const stop = record(false);
+          const command: string[] = [ '-v', 'remote', '-r', 'foo', 'ls', '-a' ];
+
+          await runCli(builder, command);
+
+          const { stderr, stdout } = stop();
+
+          assert.that(stderr).is.equalTo('');
+
+          const lines = stdout.split('\n');
+
+          assert.that(lines[0]).is.equalTo('builder.remote.ls command');
+          assert.that(JSON.parse(lines[1])).is.equalTo({
+            verbose: true,
+            help: false,
+            remote: 'foo',
+            all: true
+          });
+        });
+      });
+    });
+
     suite('builder.help command', (): void => {
       test('displays the top level help if no command is given.', async (): Promise<void> => {
         const stop = record(false);
