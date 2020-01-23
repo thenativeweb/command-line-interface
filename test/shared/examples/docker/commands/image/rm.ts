@@ -1,7 +1,7 @@
 import { Command } from '../../../../../../lib';
 import { RmOptions } from './RmOptions';
 
-export const rm: Command<RmOptions> = {
+const rm: Command<RmOptions> = {
   name: 'rm',
   description: 'List images.',
   optionDefinitions: [
@@ -33,3 +33,5 @@ export const rm: Command<RmOptions> = {
     /* eslint-enable no-console */
   }
 };
+
+export { rm };

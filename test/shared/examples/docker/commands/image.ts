@@ -3,7 +3,7 @@ import { ImageOptions } from './ImageOptions';
 import { ls } from './image/ls';
 import { rm } from './image/rm';
 
-export const image: Command<ImageOptions> = {
+const image: Command<ImageOptions> = {
   name: 'image',
   description: 'Manage images.',
   optionDefinitions: [],
@@ -18,3 +18,5 @@ export const image: Command<ImageOptions> = {
     /* eslint-enable no-console */
   }
 };
+
+export { image };

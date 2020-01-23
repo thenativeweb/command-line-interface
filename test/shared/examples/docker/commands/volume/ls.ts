@@ -1,7 +1,7 @@
 import { Command } from '../../../../../../lib';
 import { LsOptions } from './LsOptions';
 
-export const ls: Command<LsOptions> = {
+const ls: Command<LsOptions> = {
   name: 'ls',
   description: 'List volumes.',
   optionDefinitions: [
@@ -33,3 +33,5 @@ export const ls: Command<LsOptions> = {
     /* eslint-enable no-console */
   }
 };
+
+export { ls };

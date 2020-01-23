@@ -1,7 +1,7 @@
 const helpOption = {
   name: 'help',
   type: Boolean,
-  description: 'Show this help message.',
+  description: 'Show help.',
   alias: 'h',
   defaultValue: false
 };

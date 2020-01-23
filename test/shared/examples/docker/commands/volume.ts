@@ -4,7 +4,7 @@ import { inspect } from './volume/inspect';
 import { ls } from './volume/ls';
 import { VolumeOptions } from './VolumeOptions.ts';
 
-export const volume: Command<VolumeOptions> = {
+const volume: Command<VolumeOptions> = {
   name: 'volume',
   description: 'Manage volumes.',
   optionDefinitions: [],
@@ -20,3 +20,5 @@ export const volume: Command<VolumeOptions> = {
     /* eslint-enable no-console */
   }
 };
+
+export { volume };

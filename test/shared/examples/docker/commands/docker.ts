@@ -3,7 +3,7 @@ import { DockerOptions } from './DockerOptions';
 import { image } from './image';
 import { volume } from './volume';
 
-export const docker: Command<DockerOptions> = {
+const docker: Command<DockerOptions> = {
   name: 'docker',
   description: 'A self-sufficient runtime for containers.',
   optionDefinitions: [
@@ -46,3 +46,5 @@ export const docker: Command<DockerOptions> = {
     /* eslint-enable no-console */
   }
 };
+
+export { docker };

@@ -1,7 +1,7 @@
 import { Command } from '../../../../../../lib';
 import { CreateOptions } from './CreateOptions';
 
-export const create: Command<CreateOptions> = {
+const create: Command<CreateOptions> = {
   name: 'create',
   description: 'Create a volume.',
   optionDefinitions: [
@@ -41,3 +41,5 @@ export const create: Command<CreateOptions> = {
     /* eslint-enable no-console */
   }
 };
+
+export { create };

@@ -3,7 +3,7 @@ import { HelpOptions } from './HelpOptions';
 
 const helpCommand: Command<HelpOptions> = {
   name: 'help',
-  description: 'Show this help message.',
+  description: 'Show help.',
   optionDefinitions: [
     {
       name: 'command',

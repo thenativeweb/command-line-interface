@@ -1,7 +1,7 @@
 import { Command } from '../../../../../../lib';
 import { InspectOptions } from './InspectOptions';
 
-export const inspect: Command<InspectOptions> = {
+const inspect: Command<InspectOptions> = {
   name: 'inspect',
   description: 'Display detailed information on one or more volumes.',
   optionDefinitions: [
@@ -28,3 +28,5 @@ export const inspect: Command<InspectOptions> = {
     /* eslint-enable no-console */
   }
 };
+
+export { inspect };
