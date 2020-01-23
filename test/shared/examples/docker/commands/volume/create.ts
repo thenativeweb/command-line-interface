@@ -1,4 +1,4 @@
-import { Command } from '../../../../../lib';
+import { Command } from '../../../../../../lib';
 import { CreateOptions } from './CreateOptions';
 
 export const create: Command<CreateOptions> = {

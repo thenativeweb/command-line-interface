@@ -1,4 +1,4 @@
-import { Command } from '../../../../lib';
+import { Command } from '../../../../../lib';
 import { create } from './volume/create';
 import { inspect } from './volume/inspect';
 import { ls } from './volume/ls';

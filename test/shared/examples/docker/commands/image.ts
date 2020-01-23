@@ -1,4 +1,4 @@
-import { Command } from '../../../../lib';
+import { Command } from '../../../../../lib';
 import { ImageOptions } from './ImageOptions';
 import { ls } from './image/ls';
 import { rm } from './image/rm';

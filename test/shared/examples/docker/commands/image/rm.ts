@@ -1,4 +1,4 @@
-import { Command } from '../../../../../lib';
+import { Command } from '../../../../../../lib';
 import { RmOptions } from './RmOptions';
 
 export const rm: Command<RmOptions> = {

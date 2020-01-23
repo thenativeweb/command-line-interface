@@ -1,4 +1,4 @@
-import { Command } from '../../../../../lib';
+import { Command } from '../../../../../../lib';
 import { InspectOptions } from './InspectOptions';
 
 export const inspect: Command<InspectOptions> = {

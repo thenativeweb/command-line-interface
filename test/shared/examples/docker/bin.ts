@@ -1,4 +1,4 @@
-import { docker } from './docker';
+import { docker } from './commands/docker';
 import { runCli } from '../../../../lib';
 
 /* eslint-disable @typescript-eslint/no-floating-promises */

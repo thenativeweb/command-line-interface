@@ -1,6 +1,6 @@
 import { addHelpCommandToCli } from '../../lib/addHelpCommandToCli';
 import { assert } from 'assertthat';
-import { docker } from '../shared/example/docker/docker';
+import { docker } from '../shared/examples/docker/commands/docker';
 import { getShowUsage } from '../../lib/usage/getShowUsage';
 import { record } from 'record-stdstreams';
 import { runCli } from '../../lib/runCli';
