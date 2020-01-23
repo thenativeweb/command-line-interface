@@ -1,7 +1,7 @@
 import { Command } from './elements/Command';
 import { helpCommand } from './commands/help';
 
-export const addHelpCommandToCli = function <TOptions extends {}> ({ rootCommand }: {
+const addHelpCommandToCli = function <TOptions extends {}> ({ rootCommand }: {
   rootCommand: Command<TOptions>;
 }): Command<TOptions> {
   return {
@@ -18,3 +18,5 @@ export const addHelpCommandToCli = function <TOptions extends {}> ({ rootCommand
     handle: rootCommand.handle
   };
 };
+
+export { addHelpCommandToCli };

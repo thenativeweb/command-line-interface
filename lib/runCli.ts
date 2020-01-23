@@ -4,7 +4,7 @@ import { getRecommendCommand } from './recommend/getRecommendCommand';
 import { getShowUsage } from './usage/getShowUsage';
 import { runCliRecursive } from './runCliRecursive';
 
-export const runCli = async function ({ rootCommand, argv }: {
+const runCli = async function ({ rootCommand, argv }: {
   rootCommand: Command<any>;
   argv: string[];
 }): Promise<void> {
@@ -23,3 +23,5 @@ export const runCli = async function ({ rootCommand, argv }: {
     ancestorNames: []
   });
 };
+
+export { runCli };

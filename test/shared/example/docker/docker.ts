@@ -29,7 +29,7 @@ export const docker: Command<DockerOptions> = {
     },
     {
       name: 'log-level',
-      description: 'Set the logging level ("debug"|"info"|"warn"|"error"|"fatal")',
+      description: 'Set the log level ("debug"|"info"|"warn"|"error"|"fatal")',
       type: 'string',
       alias: 'l',
       defaultValue: 'info'

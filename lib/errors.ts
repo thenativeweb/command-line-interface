@@ -6,6 +6,4 @@ const errors = defekt({
   NoSuggestionAvailable: {}
 });
 
-export {
-  errors
-};
+export { errors };

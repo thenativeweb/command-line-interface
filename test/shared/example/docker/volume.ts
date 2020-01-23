@@ -6,7 +6,7 @@ import { VolumeOptions } from './VolumeOptions.ts';
 
 export const volume: Command<VolumeOptions> = {
   name: 'volume',
-  description: 'Manage volumes',
+  description: 'Manage volumes.',
   optionDefinitions: [],
   subcommands: {
     create,

@@ -1,7 +1,8 @@
 import { OptionDefinition as CLAOptionDefinition } from 'command-line-args';
+import { errors } from './errors';
 import { OptionDefinition } from './elements/OptionDefinition';
 
-export const convertOptionDefinition = function ({ optionDefinition }: {
+const convertOptionDefinition = function ({ optionDefinition }: {
   optionDefinition: OptionDefinition;
 }): CLAOptionDefinition {
   let type: (value: string) => any;
@@ -17,7 +18,7 @@ export const convertOptionDefinition = function ({ optionDefinition }: {
       type = Number;
       break;
     default:
-      throw new Error('Invalid Operation.');
+      throw new errors.InvalidOperation();
   }
 
   return {
@@ -30,3 +31,5 @@ export const convertOptionDefinition = function ({ optionDefinition }: {
     type
   };
 };
+
+export { convertOptionDefinition };

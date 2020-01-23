@@ -20,9 +20,9 @@ suite('getCommandLineUsageConfiguration', (): void => {
       {
         header: 'test',
         content: [
-          `> ${getCommandSynopsis({ command })}`,
+          'Test description.',
           '',
-          'Test description.'
+          `$ ${getCommandSynopsis({ command })}`
         ]
       }
     ]);
@@ -52,9 +52,9 @@ suite('getCommandLineUsageConfiguration', (): void => {
       {
         header: 'test',
         content: [
-          `> ${getCommandSynopsis({ command })}`,
+          'Test description.',
           '',
-          'Test description.'
+          `$ ${getCommandSynopsis({ command })}`
         ]
       },
       {
@@ -108,9 +108,9 @@ suite('getCommandLineUsageConfiguration', (): void => {
       {
         header: 'test',
         content: [
-          `> ${getCommandSynopsis({ command })}`,
+          'Test description.',
           '',
-          'Test description.'
+          `$ ${getCommandSynopsis({ command })}`
         ]
       },
       {

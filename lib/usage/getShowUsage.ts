@@ -13,6 +13,4 @@ const getShowUsage = function ({ rootCommand }: {
   };
 };
 
-export {
-  getShowUsage
-};
+export { getShowUsage };

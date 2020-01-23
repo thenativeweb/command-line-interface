@@ -5,7 +5,7 @@ import { rm } from './image/rm';
 
 export const image: Command<ImageOptions> = {
   name: 'image',
-  description: 'Manage images',
+  description: 'Manage images.',
   optionDefinitions: [],
   subcommands: {
     ls,

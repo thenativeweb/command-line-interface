@@ -7,39 +7,39 @@ export const ls: Command<LsOptions> = {
   optionDefinitions: [
     {
       name: 'all',
-      description: 'Show all images (default hides intermediate images)',
+      description: 'Show all images (default hides intermediate images).',
       type: 'boolean',
       alias: 'a',
       defaultValue: false
     },
     {
       name: 'digests',
-      description: 'Show digests',
+      description: 'Show digests.',
       type: 'boolean',
       defaultValue: false
     },
     {
       name: 'filter',
-      description: 'Filter output based on conditions provided',
+      description: 'Filter output based on conditions provided.',
       type: 'string',
       alias: 'f',
       defaultValue: ''
     },
     {
       name: 'format',
-      description: 'Pretty-print images using a Go template',
+      description: 'Pretty-print images using a Go template.',
       type: 'string',
       defaultValue: ''
     },
     {
       name: 'no-trunc',
-      description: `Don't truncate output`,
+      description: `Don't truncate output.`,
       type: 'boolean',
       defaultValue: false
     },
     {
       name: 'quiet',
-      description: 'Only show numeric IDs',
+      description: 'Only show numeric IDs.',
       type: 'boolean',
       alias: 'q',
       defaultValue: false

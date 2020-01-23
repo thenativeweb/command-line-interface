@@ -12,6 +12,4 @@ const optionToString = ({ option }: {
   return `${prefix}${option.name}${parameterDescription}`;
 };
 
-export {
-  optionToString
-};
+export { optionToString };

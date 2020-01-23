@@ -32,6 +32,4 @@ const getCommandSynopsis = function ({ command }: {
   return synopsis;
 };
 
-export {
-  getCommandSynopsis
-};
+export { getCommandSynopsis };

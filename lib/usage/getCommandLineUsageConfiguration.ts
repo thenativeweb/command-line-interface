@@ -18,9 +18,9 @@ const getCommandLineUsageConfiguration = function ({ rootCommand, commandPath }:
     {
       header: rootCommand.name,
       content: [
-        `> ${synopsis}`,
+        command.description,
         '',
-        command.description
+        `$ ${synopsis}`
       ]
     }
   ];
@@ -57,6 +57,4 @@ const getCommandLineUsageConfiguration = function ({ rootCommand, commandPath }:
   return usage;
 };
 
-export {
-  getCommandLineUsageConfiguration
-};
+export { getCommandLineUsageConfiguration };

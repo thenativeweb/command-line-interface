@@ -20,7 +20,7 @@ $ npm install command-line-interface
 
 ## Quick Start
 
-First you need to add a reference to command-line-interface to your application.
+First you need to add a reference to command-line-interface to your application:
 
 ```javascript
 const { runCli, Command } = require('command-line-interface');
@@ -32,7 +32,7 @@ If you use TypeScript, use the following code instead:
 import { runCli, Command } from 'command-line-interface';
 ```
 
-Tbd.
+
 
 ## Running the build
 

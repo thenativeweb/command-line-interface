@@ -3,24 +3,24 @@ import { LsOptions } from './LsOptions';
 
 export const ls: Command<LsOptions> = {
   name: 'ls',
-  description: 'List volumes',
+  description: 'List volumes.',
   optionDefinitions: [
     {
       name: 'filter',
-      description: `Provide filter values (e.g. 'dangling=true')`,
+      description: `Provide filter values (e.g. 'dangling=true').`,
       type: 'string',
       alias: 'f',
       defaultValue: ''
     },
     {
       name: 'format',
-      description: 'Pretty-print volumes using a Go template',
+      description: 'Pretty-print volumes using a Go template.',
       type: 'string',
       defaultValue: ''
     },
     {
       name: 'quiet',
-      description: 'Only display volume names',
+      description: 'Only display volume names.',
       type: 'boolean',
       alias: 'q',
       defaultValue: false

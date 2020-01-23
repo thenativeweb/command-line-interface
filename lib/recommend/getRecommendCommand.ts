@@ -8,6 +8,4 @@ const getRecommendCommand = function ({ rootCommand }: {
   return ({ commandPath }): string => recommendCommand({ rootCommand, commandPath });
 };
 
-export {
-  getRecommendCommand
-};
+export { getRecommendCommand };

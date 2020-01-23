@@ -20,10 +20,9 @@ const recommendCommand = function ({ rootCommand, commandPath }: {
   const availableCommands = Object.keys(goodCommand.subcommands);
 
   const suggestion = stringSimilarity.findBestMatch(unrecognizedCommand, availableCommands);
+  const recommendedCommand = suggestion.bestMatch.target;
 
-  return suggestion.bestMatch.target;
+  return recommendedCommand;
 };
 
-export {
-  recommendCommand
-};
+export { recommendCommand };

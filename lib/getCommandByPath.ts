@@ -9,7 +9,7 @@ const getCommandByPath = function ({ rootCommand, commandPath }: {
   let command = rootCommand;
 
   if (commandPath[0] !== rootCommand.name) {
-    throw new errors.InvalidOperation(`Can't find root command '${commandPath[0]}', root actually is named '${rootCommand.name}'.`);
+    throw new errors.InvalidOperation(`Can't find root command '${commandPath[0]}', root is actually named '${rootCommand.name}'.`);
   }
 
   for (const pathElem of commandPath.slice(1)) {
@@ -25,6 +25,4 @@ const getCommandByPath = function ({ rootCommand, commandPath }: {
   return command;
 };
 
-export {
-  getCommandByPath
-};
+export { getCommandByPath };

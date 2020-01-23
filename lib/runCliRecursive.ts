@@ -7,8 +7,7 @@ import { RecommendCommandFn } from './elements/RecommendCommandFn';
 import { ShowUsageFn } from './elements/ShowUsageFn';
 import commandLineArgs, { OptionDefinition as CLAOptionDefinition } from 'command-line-args';
 
-/* eslint-disable unicorn/no-process-exit, no-console */
-export const runCliRecursive = async function ({
+const runCliRecursive = async function ({
   command,
   argv,
   showUsage,
@@ -37,9 +36,9 @@ export const runCliRecursive = async function ({
   const { _unknown, ...options } = commandLineArgs(optionDefinitionsWithHelp, { argv, stopAtFirstUnknown: true });
 
   if (options.help) {
-    console.log(showUsage({
-      commandPath
-    }));
+    /* eslint-disable no-console */
+    console.log(showUsage({ commandPath }));
+    /* eslint-enable no-console */
 
     return;
   }
@@ -58,25 +57,35 @@ export const runCliRecursive = async function ({
         ancestors: ancestorNames
       });
     } catch (ex) {
+      /* eslint-disable no-console */
       console.log(ex);
+      /* eslint-enable no-console */
 
+      /* eslint-disable unicorn/no-process-exit */
       return process.exit(1);
+      /* eslint-enable unicorn/no-process-exit */
     }
   }
 
   if (command.subcommands === undefined || Object.keys(command.subcommands).length === 0) {
     const unknowOption = _unknown[0];
 
+    /* eslint-disable no-console */
     console.log(`Unknown option '${unknowOption}'.`);
+    /* eslint-enable no-console */
 
+    /* eslint-disable unicorn/no-process-exit */
     return process.exit(1);
+    /* eslint-enable unicorn/no-process-exit */
   }
 
   try {
     const { command: subCommandName, argv: subArgv } = commandLineCommands(
       Object.keys(command.subcommands),
 
-      // Pass copy, since commandLineCommands modifies the parameter.
+      // Pass a copy of the _unknown array, since the commandLineCommands
+      // function mutates the parameter in-place. To avoid this, spread it and
+      // wrap the values within a new array.
       [ ..._unknown ]
     ) as { command: string; argv: string[] };
 
@@ -95,9 +104,14 @@ export const runCliRecursive = async function ({
     const unknownCommand = _unknown[0];
     const recommendedCommand = recommendCommand({ commandPath: [ ...commandPath, unknownCommand ]});
 
+    /* eslint-disable no-console */
     console.log(`Unknown command '${unknownCommand}'. Did you mean '${recommendedCommand}'?`);
+    /* eslint-enable no-console */
 
-    return process.exit(1);
+    /* eslint-disable unicorn/no-process-exit */
+    process.exit(1);
+    /* eslint-enable unicorn/no-process-exit */
   }
 };
-/* eslint-enable unicorn/no-process-exit, no-console */
+
+export { runCliRecursive };

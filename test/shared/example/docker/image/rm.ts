@@ -3,18 +3,18 @@ import { RmOptions } from './RmOptions';
 
 export const rm: Command<RmOptions> = {
   name: 'rm',
-  description: 'List images',
+  description: 'List images.',
   optionDefinitions: [
     {
       name: 'force',
-      description: 'Force removal of the image',
+      description: 'Force removal of the image.',
       type: 'boolean',
       alias: 'f',
       defaultValue: false
     },
     {
       name: 'no-prune',
-      description: 'Show digests',
+      description: 'Show digests.',
       type: 'boolean',
       defaultValue: false
     },

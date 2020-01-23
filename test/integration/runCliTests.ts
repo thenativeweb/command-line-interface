@@ -44,7 +44,7 @@ suite('Cli', (): void => {
         });
       });
 
-      test('runs the top level command and parse debug flag.', async (): Promise<void> => {
+      test('runs the top level command and parses the debug flag.', async (): Promise<void> => {
         const command: string[] = [ '-D' ];
 
         await runCli({ rootCommand: docker, argv: command });
