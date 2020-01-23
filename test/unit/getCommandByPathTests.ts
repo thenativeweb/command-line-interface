@@ -92,18 +92,27 @@ suite('getCommandByPath', (): void => {
   test(`throws an error if the root command's name doesn't match.`, async (): Promise<void> => {
     const commandPath = [ 'foo' ];
 
-    assert.that((): any => getCommandByPath({ rootCommand, commandPath })).is.throwing((ex): boolean => (ex as CustomError).code === 'EINVALIDOPERATION');
+    assert.that((): any => getCommandByPath({ rootCommand, commandPath })).
+      is.throwing(
+        (ex): boolean => (ex as CustomError).code === 'EINVALIDOPERATION'
+      );
   });
 
   test(`throws an error if a command doesn't have any sub-commands.`, async (): Promise<void> => {
     const commandPath = [ 'level-zero', 'level-one-a', 'level-two-a-a' ];
 
-    assert.that((): any => getCommandByPath({ rootCommand, commandPath })).is.throwing((ex): boolean => (ex as CustomError).code === 'ECOMMANDNOTFOUND');
+    assert.that((): any => getCommandByPath({ rootCommand, commandPath })).
+      is.throwing(
+        (ex): boolean => (ex as CustomError).code === 'ECOMMANDNOTFOUND'
+      );
   });
 
   test(`throws an error if a command doesn't have a matching sub-command.`, async (): Promise<void> => {
     const commandPath = [ 'level-zero', 'level-one-b', 'level-two-b-c' ];
 
-    assert.that((): any => getCommandByPath({ rootCommand, commandPath })).is.throwing((ex): boolean => (ex as CustomError).code === 'ECOMMANDNOTFOUND');
+    assert.that((): any => getCommandByPath({ rootCommand, commandPath })).
+      is.throwing(
+        (ex): boolean => (ex as CustomError).code === 'ECOMMANDNOTFOUND'
+      );
   });
 });

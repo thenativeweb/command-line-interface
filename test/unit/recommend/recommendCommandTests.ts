@@ -43,7 +43,8 @@ suite('recommendCommand', (): void => {
     const commandPath = [ 'level-zero', 'wxyz', 'foo' ];
 
     assert.that((): any => recommendCommand({ rootCommand, commandPath })).
-      is.throwing((ex): boolean =>
-        (ex as CustomError).code === 'ENOSUGGESTIONAVAILABLE');
+      is.throwing(
+        (ex): boolean => (ex as CustomError).code === 'ENOSUGGESTIONAVAILABLE'
+      );
   });
 });
