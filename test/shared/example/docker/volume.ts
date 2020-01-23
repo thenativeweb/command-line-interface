@@ -14,7 +14,9 @@ export const volume: Command<VolumeOptions> = {
     ls
   },
   handle ({ options }): void {
+    /* eslint-disable no-console */
     console.log('docker.volume command');
     console.log(JSON.stringify(options));
+    /* eslint-enable no-console */
   }
 };

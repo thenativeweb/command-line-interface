@@ -35,7 +35,9 @@ export const create: Command<CreateOptions> = {
   subcommands: {
   },
   handle ({ options }): void {
+    /* eslint-disable no-console */
     console.log('docker.volume.create command');
     console.log(JSON.stringify(options));
+    /* eslint-enable no-console */
   }
 };

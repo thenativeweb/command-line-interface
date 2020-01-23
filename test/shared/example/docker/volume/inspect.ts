@@ -22,7 +22,9 @@ export const inspect: Command<InspectOptions> = {
     }
   ],
   handle ({ options }): void {
+    /* eslint-disable no-console */
     console.log('docker.volume.inspect command');
     console.log(JSON.stringify(options));
+    /* eslint-enable no-console */
   }
 };

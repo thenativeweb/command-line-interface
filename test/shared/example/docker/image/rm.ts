@@ -27,7 +27,9 @@ export const rm: Command<RmOptions> = {
     }
   ],
   handle ({ options }): void {
+    /* eslint-disable no-console */
     console.log('docker.image.rm command');
     console.log(JSON.stringify(options));
+    /* eslint-enable no-console */
   }
 };

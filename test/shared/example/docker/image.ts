@@ -12,7 +12,9 @@ export const image: Command<ImageOptions> = {
     rm
   },
   handle ({ options }): void {
+    /* eslint-disable no-console */
     console.log('docker.image command');
     console.log(JSON.stringify(options));
+    /* eslint-enable no-console */
   }
 };

@@ -40,7 +40,9 @@ export const docker: Command<DockerOptions> = {
     volume
   },
   handle ({ options }): void {
+    /* eslint-disable no-console */
     console.log('docker command');
     console.log(JSON.stringify(options));
+    /* eslint-enable no-console */
   }
 };
