@@ -158,10 +158,10 @@ const hello = {
     console.log(`Hello ${options.name}!`);
   },
 
-  subcommands: [
+  subcommands: {
     anotherCommand,
     anotherOtherCommand
-  ]
+  }
 };
 ```
 
