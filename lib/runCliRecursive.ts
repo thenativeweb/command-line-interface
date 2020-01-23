@@ -64,7 +64,7 @@ export const runCliRecursive = async function ({
     }
   }
 
-  if (command.subcommands === undefined) {
+  if (command.subcommands === undefined || Object.keys(command.subcommands).length === 0) {
     const unknowOption = _unknown[0];
 
     console.log(`Unknown option '${unknowOption}'.`);

@@ -6,7 +6,7 @@ const optionToString = ({ option }: {
   let optionString = `--${option.name}`;
 
   if (option.type !== 'boolean') {
-    if (option.multiple === 'off') {
+    if (option.multiple === 'off' || option.multiple === undefined) {
       optionString += ` {underline ${option.type}}`;
     } else {
       optionString += ` {underline ${option.type}[]}`;
