@@ -1,7 +1,7 @@
 import { assert } from 'assertthat';
-import { Command } from '../../../lib/Command';
+import { Command } from '../../../lib/elements/Command';
 import { CustomError } from 'defekt';
-import { recommendCommand } from 'lib/recommend/recommendCommand';
+import { recommendCommand } from '../../../lib/recommend/recommendCommand';
 
 suite('recommendCommand', (): void => {
   const rootCommand: Command<any> = {

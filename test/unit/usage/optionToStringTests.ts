@@ -1,6 +1,6 @@
 import { assert } from 'assertthat';
-import { OptionDefinition } from '../../../lib/OptionDefinition';
-import { optionToString } from 'lib/usage/optionToString';
+import { OptionDefinition } from '../../../lib/elements/OptionDefinition';
+import { optionToString } from '../../../lib/usage/optionToString';
 
 suite('optionToString', (): void => {
   test('not default, without parameter name, without multiplier, boolean.', async (): Promise<void> => {

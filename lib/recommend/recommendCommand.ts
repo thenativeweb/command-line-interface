@@ -1,6 +1,6 @@
-import { Command } from '../Command';
-import { CommandPath } from '../CommandPath';
-import { errors } from 'lib/errors';
+import { Command } from '../elements/Command';
+import { CommandPath } from '../elements/CommandPath';
+import { errors } from '../errors';
 import { getCommandByPath } from '../getCommandByPath';
 import stringSimilarity from 'string-similarity';
 

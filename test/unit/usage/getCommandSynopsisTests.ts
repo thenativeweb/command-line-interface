@@ -1,6 +1,6 @@
 import { assert } from 'assertthat';
-import { Command } from '../../../lib/Command';
-import { getCommandSynopsis } from 'lib/usage/getCommandSynopsis';
+import { Command } from '../../../lib/elements/Command';
+import { getCommandSynopsis } from '../../../lib/usage/getCommandSynopsis';
 
 suite('getCommandSynopsis', (): void => {
   test('a minimal command synopsis.', async (): Promise<void> => {

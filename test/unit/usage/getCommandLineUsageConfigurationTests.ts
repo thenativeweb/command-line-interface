@@ -1,7 +1,7 @@
 import { assert } from 'assertthat';
-import { Command } from '../../../lib/Command';
-import { getCommandLineUsageConfiguration } from 'lib/usage/getCommandLineUsageConfiguration';
-import { getCommandSynopsis } from 'lib/usage/getCommandSynopsis';
+import { Command } from '../../../lib/elements/Command';
+import { getCommandLineUsageConfiguration } from '../../../lib/usage/getCommandLineUsageConfiguration';
+import { getCommandSynopsis } from '../../../lib/usage/getCommandSynopsis';
 
 suite('getCommandLineUsageConfiguration', (): void => {
   test('top level command without options or sub-commands.', async (): Promise<void> => {

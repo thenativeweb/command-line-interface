@@ -1,4 +1,4 @@
-import { Command } from './Command';
+import { Command } from './elements/Command';
 import { helpCommand } from './commands/help';
 
 export const addHelpCommandToCli = function <TOptions extends {}> ({ rootCommand }: {

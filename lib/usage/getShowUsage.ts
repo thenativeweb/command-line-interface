@@ -1,4 +1,4 @@
-import { Command } from '../Command';
+import { Command } from '../elements/Command';
 import commandLineUsage from 'command-line-usage';
 import { getCommandLineUsageConfiguration } from './getCommandLineUsageConfiguration';
 import { ShowUsageFn } from './ShowUsageFn';

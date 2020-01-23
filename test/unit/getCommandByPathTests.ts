@@ -1,7 +1,7 @@
 import { assert } from 'assertthat';
-import { Command } from '../../lib/Command';
+import { Command } from '../../lib/elements/Command';
 import { CustomError } from 'defekt';
-import { getCommandByPath } from 'lib/getCommandByPath';
+import { getCommandByPath } from '../../lib/getCommandByPath';
 
 suite('getCommandByPath', (): void => {
   const rootCommand: Command<any> = {

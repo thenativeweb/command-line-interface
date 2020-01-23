@@ -1,4 +1,4 @@
-import { Command } from '../Command';
+import { Command } from '../elements/Command';
 import { optionToString } from './optionToString';
 
 const getCommandSynopsis = function ({ command }: {

@@ -1,4 +1,4 @@
-import { OptionDefinition } from '../OptionDefinition';
+import { OptionDefinition } from '../elements/OptionDefinition';
 
 const optionToString = ({ option }: {
   option: OptionDefinition;

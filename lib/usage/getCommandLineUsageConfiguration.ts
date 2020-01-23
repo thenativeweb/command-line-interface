@@ -1,5 +1,5 @@
-import { Command } from '../Command';
-import { CommandPath } from '../CommandPath';
+import { Command } from '../elements/Command';
+import { CommandPath } from '../elements/CommandPath';
 import { convertOptionDefinition } from '../convertOptionDefinition';
 import { getCommandsByPath } from '../getCommandsByPath';
 import { getCommandSynopsis } from './getCommandSynopsis';

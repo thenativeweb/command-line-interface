@@ -1,5 +1,5 @@
 import { OptionDefinition as CLAOptionDefinition } from 'command-line-args';
-import { OptionDefinition } from './OptionDefinition';
+import { OptionDefinition } from './elements/OptionDefinition';
 
 export const convertOptionDefinition = function ({ optionDefinition }: {
   optionDefinition: OptionDefinition;

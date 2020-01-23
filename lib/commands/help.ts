@@ -1,4 +1,4 @@
-import { Command } from '../Command';
+import { Command } from '../elements/Command';
 import { HelpOptions } from './HelpOptions';
 
 export const helpCommand: Command<HelpOptions> = {

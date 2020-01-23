@@ -1,6 +1,6 @@
-import { Command } from './Command';
+import { Command } from './elements/Command';
 import commandLineCommands from 'command-line-commands';
-import { CommandPath } from './CommandPath';
+import { CommandPath } from './elements/CommandPath';
 import { convertOptionDefinition } from './convertOptionDefinition';
 import { helpOption } from './commands/helpOption';
 import { RecommendCommandFn } from './recommend/RecommendCommandFn';

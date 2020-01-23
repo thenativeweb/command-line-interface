@@ -1,7 +1,7 @@
 import { addHelpCommandToCli } from '../../lib/addHelpCommandToCli';
 import { assert } from 'assertthat';
 import { docker } from '../shared/example/docker/docker';
-import { getShowUsage } from 'lib/usage/getShowUsage';
+import { getShowUsage } from '../../lib/usage/getShowUsage';
 import { record } from 'record-stdstreams';
 import { runCli } from '../../lib/runCli';
 import sinon, { SinonStub } from 'sinon';
