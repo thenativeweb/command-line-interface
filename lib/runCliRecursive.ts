@@ -1,6 +1,7 @@
 import { Command } from './Command';
 import { CommandPath } from './CommandPath';
 import { convertOptionDefinition } from './convertOptionDefinition';
+import { errors } from './errors';
 import { RecommendCommandFn } from './recommend/RecommendCommandFn';
 import { selectSubCommand } from './selectSubCommand';
 import { ShowUsageFn } from './usage/ShowUsageFn';
@@ -89,7 +90,7 @@ export const runCliRecursive = async function ({
       return;
     } catch {
       const unknownCommand = _unknown[0];
-      const recommendedCommand = recommendCommand({ commandPath: [ ...ancestors, command.name, unknownCommand ]});
+      const recommendedCommand = recommendCommand({ commandPath: [ ...commandPath, unknownCommand ]});
 
       console.log(`Unknown command '${unknownCommand}'. Did you mean '${recommendedCommand}'?`);
       console.log(showUsage({

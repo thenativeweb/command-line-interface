@@ -1,5 +1,6 @@
 import { Command } from './Command';
 import { CommandPath } from './CommandPath';
+import { errors } from './errors';
 
 const getCommandByPath = function ({ rootCommand, commandPath }: {
   rootCommand: Command<any>;
@@ -8,16 +9,16 @@ const getCommandByPath = function ({ rootCommand, commandPath }: {
   let command = rootCommand;
 
   if (commandPath[0] !== rootCommand.name) {
-    throw new Error(`Can't find root command '${commandPath[0]}', root actually is named '${rootCommand.name}'.`);
+    throw new errors.InvalidOperation(`Can't find root command '${commandPath[0]}', root actually is named '${rootCommand.name}'.`);
   }
 
   for (const pathElem of commandPath.slice(1)) {
     if (command.subcommands === undefined) {
-      throw new Error(`Command '${command.name}' has no subcommands.`);
+      throw new errors.CommandNotFound();
     }
     command = command.subcommands[pathElem];
     if (command === undefined) {
-      throw new Error(`Could not find subcommand '${pathElem}'.`);
+      throw new errors.CommandNotFound();
     }
   }
 
