@@ -2,9 +2,9 @@ import { Command } from './elements/Command';
 import commandLineCommands from 'command-line-commands';
 import { CommandPath } from './elements/CommandPath';
 import { convertOptionDefinition } from './convertOptionDefinition';
+import { GetUsageFn } from './elements/GetUsageFn';
 import { helpOption } from './commands/helpOption';
 import { RecommendCommandFn } from './elements/RecommendCommandFn';
-import { GetUsageFn } from './elements/GetUsageFn';
 import commandLineArgs, { OptionDefinition as CLAOptionDefinition } from 'command-line-args';
 
 const runCliRecursive = async function ({

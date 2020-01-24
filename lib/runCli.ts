@@ -1,7 +1,7 @@
 import { addHelpCommandToCli } from './addHelpCommandToCli';
 import { Command } from './elements/Command';
-import { getRecommendCommand } from './recommend/getRecommendCommand';
 import { getGetUsage } from './usage/getGetUsage';
+import { getRecommendCommand } from './recommend/getRecommendCommand';
 import { runCliRecursive } from './runCliRecursive';
 
 const runCli = async function ({ rootCommand, argv }: {
