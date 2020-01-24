@@ -4,13 +4,13 @@ import { CommandPath } from './elements/CommandPath';
 import { convertOptionDefinition } from './convertOptionDefinition';
 import { helpOption } from './commands/helpOption';
 import { RecommendCommandFn } from './elements/RecommendCommandFn';
-import { ShowUsageFn } from './elements/ShowUsageFn';
+import { GetUsageFn } from './elements/GetUsageFn';
 import commandLineArgs, { OptionDefinition as CLAOptionDefinition } from 'command-line-args';
 
 const runCliRecursive = async function ({
   command,
   argv,
-  showUsage,
+  getUsage,
   recommendCommand,
   level,
   ancestorOptions,
@@ -18,7 +18,7 @@ const runCliRecursive = async function ({
 }: {
   command: Command<any>;
   argv: string[];
-  showUsage: ShowUsageFn;
+  getUsage: GetUsageFn;
   recommendCommand: RecommendCommandFn;
   level: number;
   ancestorOptions: Record<string, any>;
@@ -37,7 +37,7 @@ const runCliRecursive = async function ({
 
   if (options.help) {
     /* eslint-disable no-console */
-    console.log(showUsage({ commandPath }));
+    console.log(getUsage({ commandPath }));
     /* eslint-enable no-console */
 
     return;
@@ -52,7 +52,7 @@ const runCliRecursive = async function ({
     try {
       return await command.handle({
         options: mergedOptions,
-        showUsage,
+        getUsage,
         level,
         ancestors: ancestorNames
       });
@@ -94,7 +94,7 @@ const runCliRecursive = async function ({
     return await runCliRecursive({
       command: subCommand,
       argv: subArgv,
-      showUsage,
+      getUsage,
       recommendCommand,
       level: level + 1,
       ancestorOptions: mergedOptions,

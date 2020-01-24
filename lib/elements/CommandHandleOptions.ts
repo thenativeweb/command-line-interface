@@ -1,9 +1,9 @@
 import { CommandPath } from './CommandPath';
-import { ShowUsageFn } from './ShowUsageFn';
+import { GetUsageFn } from './GetUsageFn';
 
 export interface CommandHandleOptions<TOptions extends {}> {
   options: TOptions;
-  showUsage: ShowUsageFn;
+  getUsage: GetUsageFn;
   level: number;
   ancestors: CommandPath;
 }

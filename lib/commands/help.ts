@@ -14,17 +14,17 @@ const helpCommand: Command<HelpOptions> = {
     }
   ],
   ignoreUnknownOptions: true,
-  handle ({ options, showUsage, ancestors }): void {
+  handle ({ options, getUsage, ancestors }): void {
     if (options.command) {
       /* eslint-disable no-console */
-      console.log(showUsage({ commandPath: [ ...ancestors, ...options.command ]}));
+      console.log(getUsage({ commandPath: [ ...ancestors, ...options.command ]}));
       /* eslint-enable no-console */
 
       return;
     }
 
     /* eslint-disable no-console */
-    console.log(showUsage({ commandPath: ancestors }));
+    console.log(getUsage({ commandPath: ancestors }));
     /* eslint-enable no-console */
   }
 };

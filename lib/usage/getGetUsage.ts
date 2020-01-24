@@ -1,11 +1,11 @@
 import { Command } from '../elements/Command';
 import commandLineUsage from 'command-line-usage';
 import { getCommandLineUsageConfiguration } from './getCommandLineUsageConfiguration';
-import { ShowUsageFn } from '../elements/ShowUsageFn';
+import { GetUsageFn } from '../elements/GetUsageFn';
 
-const getShowUsage = function ({ rootCommand }: {
+const getGetUsage = function ({ rootCommand }: {
   rootCommand: Command<any>;
-}): ShowUsageFn {
+}): GetUsageFn {
   return ({ commandPath }): string => {
     const commandLineUsageConfiguration = getCommandLineUsageConfiguration({ rootCommand, commandPath });
 
@@ -13,4 +13,4 @@ const getShowUsage = function ({ rootCommand }: {
   };
 };
 
-export { getShowUsage };
+export { getGetUsage };

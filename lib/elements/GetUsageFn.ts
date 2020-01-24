@@ -1,5 +1,5 @@
 import { CommandPath } from './CommandPath';
 
-export type ShowUsageFn = (params: {
+export type GetUsageFn = (params: {
   commandPath: CommandPath;
 }) => string;
