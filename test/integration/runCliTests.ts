@@ -1,7 +1,7 @@
 import { addHelpCommandToCli } from '../../lib/addHelpCommandToCli';
 import { assert } from 'assertthat';
 import { docker } from '../shared/examples/docker/commands/docker';
-import { getShowUsage } from '../../lib/usage/getShowUsage';
+import { getGetUsage } from '../../lib/usage/getGetUsage';
 import { record } from 'record-stdstreams';
 import { runCli } from '../../lib/runCli';
 import sinon, { SinonStub } from 'sinon';
@@ -73,7 +73,7 @@ suite('Cli', (): void => {
         const { stderr, stdout } = stop();
 
         assert.that(stderr).is.equalTo('');
-        assert.that(stdout).is.equalTo(`${getShowUsage({ rootCommand: extendedBuilderCli })({ commandPath: [ 'docker' ]})}\n`);
+        assert.that(stdout).is.equalTo(`${getGetUsage({ rootCommand: extendedBuilderCli })({ commandPath: [ 'docker' ]})}\n`);
       });
 
       test('displays the top level help with --help flag, even if a subcommand is given.', async (): Promise<void> => {
@@ -84,7 +84,7 @@ suite('Cli', (): void => {
         const { stderr, stdout } = stop();
 
         assert.that(stderr).is.equalTo('');
-        assert.that(stdout).is.equalTo(`${getShowUsage({ rootCommand: extendedBuilderCli })({ commandPath: [ 'docker' ]})}\n`);
+        assert.that(stdout).is.equalTo(`${getGetUsage({ rootCommand: extendedBuilderCli })({ commandPath: [ 'docker' ]})}\n`);
       });
 
       test('suggests alternatives and returns status code 1 if subcommands exist and the given command is not recognized.', async (): Promise<void> => {
@@ -259,7 +259,7 @@ suite('Cli', (): void => {
           const { stderr, stdout } = stop();
 
           assert.that(stderr).is.equalTo('');
-          assert.that(stdout).is.equalTo(`${getShowUsage({ rootCommand: extendedBuilderCli })({ commandPath: [ 'docker' ]})}\n`);
+          assert.that(stdout).is.equalTo(`${getGetUsage({ rootCommand: extendedBuilderCli })({ commandPath: [ 'docker' ]})}\n`);
         });
 
         test('displays the help of the given command.', async (): Promise<void> => {
@@ -270,7 +270,7 @@ suite('Cli', (): void => {
           const { stderr, stdout } = stop();
 
           assert.that(stderr).is.equalTo('');
-          assert.that(stdout).is.equalTo(`${getShowUsage({ rootCommand: extendedBuilderCli })({ commandPath: [ 'docker', 'image' ]})}\n`);
+          assert.that(stdout).is.equalTo(`${getGetUsage({ rootCommand: extendedBuilderCli })({ commandPath: [ 'docker', 'image' ]})}\n`);
         });
 
         test('displays the help of the given multi-level command.', async (): Promise<void> => {
@@ -281,7 +281,7 @@ suite('Cli', (): void => {
           const { stderr, stdout } = stop();
 
           assert.that(stderr).is.equalTo('');
-          assert.that(stdout).is.equalTo(`${getShowUsage({ rootCommand: extendedBuilderCli })({ commandPath: [ 'docker', 'image', 'ls' ]})}\n`);
+          assert.that(stdout).is.equalTo(`${getGetUsage({ rootCommand: extendedBuilderCli })({ commandPath: [ 'docker', 'image', 'ls' ]})}\n`);
         });
 
         test('displays the help for the help command if the help flag is set.', async (): Promise<void> => {
@@ -292,7 +292,7 @@ suite('Cli', (): void => {
           const { stderr, stdout } = stop();
 
           assert.that(stderr).is.equalTo('');
-          assert.that(stdout).is.equalTo(`${getShowUsage({ rootCommand: extendedBuilderCli })({ commandPath: [ 'docker', 'help' ]})}\n`);
+          assert.that(stdout).is.equalTo(`${getGetUsage({ rootCommand: extendedBuilderCli })({ commandPath: [ 'docker', 'help' ]})}\n`);
         });
       });
     });
