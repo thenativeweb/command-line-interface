@@ -1,5 +1,6 @@
 import { Command } from '../../../../../lib';
 import { DockerOptions } from './DockerOptions';
+import { fail } from './fail';
 import { image } from './image';
 import { volume } from './volume';
 
@@ -37,7 +38,8 @@ const docker: Command<DockerOptions> = {
   ],
   subcommands: {
     image,
-    volume
+    volume,
+    fail
   },
   handle ({ options }): void {
     /* eslint-disable no-console */

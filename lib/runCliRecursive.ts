@@ -58,7 +58,7 @@ const runCliRecursive = async function ({
       });
     } catch (ex) {
       /* eslint-disable no-console */
-      console.log(ex);
+      console.error(ex);
       /* eslint-enable no-console */
 
       /* eslint-disable unicorn/no-process-exit */
@@ -71,7 +71,7 @@ const runCliRecursive = async function ({
     const unknowOption = _unknown[0];
 
     /* eslint-disable no-console */
-    console.log(`Unknown option '${unknowOption}'.`);
+    console.error(`Unknown option '${unknowOption}'.`);
     /* eslint-enable no-console */
 
     /* eslint-disable unicorn/no-process-exit */
@@ -105,7 +105,7 @@ const runCliRecursive = async function ({
     const recommendedCommand = recommendCommand({ commandPath: [ ...commandPath, unknownCommand ]});
 
     /* eslint-disable no-console */
-    console.log(`Unknown command '${unknownCommand}'. Did you mean '${recommendedCommand}'?`);
+    console.error(`Unknown command '${unknownCommand}'. Did you mean '${recommendedCommand}'?`);
     /* eslint-enable no-console */
 
     /* eslint-disable unicorn/no-process-exit */

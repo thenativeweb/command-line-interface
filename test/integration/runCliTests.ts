@@ -94,8 +94,8 @@ suite('Cli', (): void => {
 
         const { stderr, stdout } = stop();
 
-        assert.that(stderr).is.equalTo('');
-        assert.that(stdout).is.equalTo(`Unknown command 'imgea'. Did you mean 'image'?\n`);
+        assert.that(stdout).is.equalTo('');
+        assert.that(stderr).is.containing(`Unknown command 'imgea'. Did you mean 'image'?`);
         assert.that((process.exit as unknown as SinonStub).calledWith(1)).is.true();
       });
 
@@ -156,8 +156,8 @@ suite('Cli', (): void => {
 
             const { stderr, stdout } = stop();
 
-            assert.that(stderr).is.equalTo('');
-            assert.that(stdout).is.equalTo(`Unknown option '--foo'.\n`);
+            assert.that(stdout).is.equalTo('');
+            assert.that(stderr).is.containing(`Unknown option '--foo'.`);
             assert.that((process.exit as unknown as SinonStub).calledWith(1)).is.true();
           });
         });
@@ -243,10 +243,24 @@ suite('Cli', (): void => {
 
             const { stderr, stdout } = stop();
 
-            assert.that(stderr).is.equalTo('');
-            assert.that(stdout).is.equalTo(`Unknown option '--foo'.\n`);
+            assert.that(stdout).is.equalTo('');
+            assert.that(stderr).is.containing(`Unknown option '--foo'.`);
             assert.that((process.exit as unknown as SinonStub).calledWith(1)).is.true();
           });
+        });
+      });
+
+      suite('docker.fail command', (): void => {
+        test('the error thrown in the handler is printed to stderr and the process exists with status code 1.', async (): Promise<void> => {
+          const command: string[] = [ 'fail' ];
+
+          await runCli({ rootCommand: docker, argv: command });
+
+          const { stderr, stdout } = stop();
+
+          assert.that(stderr).is.containing('This command fails intentionally.');
+          assert.that(stdout).is.equalTo('');
+          assert.that((process.exit as unknown as SinonStub).calledWith(1)).is.true();
         });
       });
 
