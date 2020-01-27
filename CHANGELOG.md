@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/thenativeweb/command-line-interface/compare/2.0.0...3.0.0) (2020-01-27)
+
+
+### Features
+
+* Log errors to stderr; Add test. ([#7](https://github.com/thenativeweb/command-line-interface/issues/7)) ([f6375ba](https://github.com/thenativeweb/command-line-interface/commit/f6375ba6becd764b841aa0f8764818b93044245d))
+
+
+### BREAKING CHANGES
+
+* Now outputs errors and suggestions via stderr instead of the previous stdout.
+
 # [2.0.0](https://github.com/thenativeweb/command-line-interface/compare/1.0.1...2.0.0) (2020-01-27)
 
 
