@@ -9,14 +9,12 @@ const ls: Command<LsOptions> = {
       name: 'filter',
       description: `Provide filter values (e.g. 'dangling=true').`,
       type: 'string',
-      alias: 'f',
-      defaultValue: ''
+      alias: 'f'
     },
     {
       name: 'format',
       description: 'Pretty-print volumes using a Go template.',
-      type: 'string',
-      defaultValue: ''
+      type: 'string'
     },
     {
       name: 'quiet',

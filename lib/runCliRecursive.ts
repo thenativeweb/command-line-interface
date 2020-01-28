@@ -5,6 +5,7 @@ import { convertOptionDefinition } from './convertOptionDefinition';
 import { GetUsageFn } from './elements/GetUsageFn';
 import { helpOption } from './commands/helpOption';
 import { RecommendCommandFn } from './elements/RecommendCommandFn';
+import { validateOptions } from './validateOptions';
 import commandLineArgs, { OptionDefinition as CLAOptionDefinition } from 'command-line-args';
 
 const runCliRecursive = async function ({
@@ -41,6 +42,26 @@ const runCliRecursive = async function ({
     /* eslint-enable no-console */
 
     return;
+  }
+
+  try {
+    validateOptions({ options, optionDefinitions: command.optionDefinitions });
+  } catch (ex) {
+    switch (ex.code) {
+      case 'EOPTIONMISSING':
+      case 'EOPTIONINVALID': {
+        /* eslint-disable no-console */
+        console.error(ex.message);
+        /* eslint-enable no-console */
+
+        /* eslint-disable unicorn/no-process-exit */
+        return process.exit(1);
+        /* eslint-enable unicorn/no-process-exit */
+      }
+      default: {
+        throw ex;
+      }
+    }
   }
 
   const mergedOptions = {

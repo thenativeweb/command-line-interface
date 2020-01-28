@@ -18,8 +18,7 @@ const docker: Command<DockerOptions> = {
       name: 'context',
       description: 'Name of the context to use to connect to the daemon (overrides DOCKER_HOST env var and default context set with "docker context use").',
       type: 'string',
-      alias: 'c',
-      defaultValue: ''
+      alias: 'c'
     },
     {
       name: 'debug',

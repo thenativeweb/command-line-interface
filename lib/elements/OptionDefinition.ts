@@ -7,4 +7,5 @@ export interface OptionDefinition {
   defaultOption?: boolean;
   defaultValue?: any;
   parameterName?: string;
+  isRequired?: boolean;
 }

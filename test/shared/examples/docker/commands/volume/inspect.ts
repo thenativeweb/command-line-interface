@@ -9,15 +9,14 @@ const inspect: Command<InspectOptions> = {
       name: 'format',
       description: 'Format the output using the given Go template.',
       type: 'string',
-      alias: 'f',
-      defaultValue: ''
+      alias: 'f'
     },
     {
       name: 'volume',
       type: 'string',
       multiple: 'on',
       defaultOption: true,
-      defaultValue: [],
+      isRequired: true,
       parameterName: 'VOLUME'
     }
   ],
