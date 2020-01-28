@@ -31,7 +31,7 @@ const validateOptions = function ({ options, optionDefinitions }: {
         break;
       }
       default: {
-        throw new errors.OperationInvalid();
+        throw new errors.InvalidOperation();
       }
     }
   }

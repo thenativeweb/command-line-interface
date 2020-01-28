@@ -94,7 +94,7 @@ suite('getCommandByPath', (): void => {
 
     assert.that((): any => getCommandByPath({ rootCommand, commandPath })).
       is.throwing(
-        (ex): boolean => (ex as CustomError).code === 'EOPERATIONINVALID'
+        (ex): boolean => (ex as CustomError).code === 'EINVALIDOPERATION'
       );
   });
 
