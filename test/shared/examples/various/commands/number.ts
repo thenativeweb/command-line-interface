@@ -3,12 +3,13 @@ import { NumberOptions } from './NumberOptions';
 
 const number: Command<NumberOptions> = {
   name: 'number',
-  description: 'Fails.',
+  description: 'Number.',
   optionDefinitions: [
     {
       name: 'number',
       type: 'number',
-      alias: 'n'
+      alias: 'n',
+      required: true
     }
   ],
   handle ({ options }): void {

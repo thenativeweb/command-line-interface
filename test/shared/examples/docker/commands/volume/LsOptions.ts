@@ -1,7 +1,7 @@
-import { VolumeOptions } from '../VolumeOptions.ts';
+import { VolumeOptions } from '../VolumeOptions';
 
 export interface LsOptions extends VolumeOptions {
-  filter: string;
-  format: string;
+  filter?: string;
+  format?: string;
   quiet: boolean;
 }

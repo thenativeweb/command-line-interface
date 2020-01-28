@@ -38,7 +38,6 @@ suite('Cli', (): void => {
         assert.that(lines[0]).is.equalTo('docker command');
         assert.that(JSON.parse(lines[1])).is.equalTo({
           config: '~/.docker',
-          context: '',
           debug: false,
           'log-level': 'info',
           help: false
@@ -59,7 +58,6 @@ suite('Cli', (): void => {
         assert.that(lines[0]).is.equalTo('docker command');
         assert.that(JSON.parse(lines[1])).is.equalTo({
           config: '~/.docker',
-          context: '',
           debug: true,
           'log-level': 'info',
           help: false
@@ -115,7 +113,6 @@ suite('Cli', (): void => {
           assert.that(lines[0]).is.equalTo('docker.image command');
           assert.that(JSON.parse(lines[1])).is.equalTo({
             config: '~/.docker',
-            context: '',
             debug: true,
             'log-level': 'info',
             help: false
@@ -124,7 +121,7 @@ suite('Cli', (): void => {
 
         suite('docker.image.ls command', (): void => {
           test('runs the third level ls command and parses all options.', async (): Promise<void> => {
-            const command: string[] = [ '-D', 'image', 'ls', '-a', '--filter', 'some-filter' ];
+            const command: string[] = [ '-D', 'image', 'ls', '-a', '--filter', 'some-filter', 'image-name' ];
 
             await runCli({ rootCommand: docker, argv: command });
 
@@ -137,21 +134,20 @@ suite('Cli', (): void => {
             assert.that(lines[0]).is.equalTo('docker.image.ls command');
             assert.that(JSON.parse(lines[1])).is.equalTo({
               config: '~/.docker',
-              context: '',
               debug: true,
               'log-level': 'info',
               help: false,
               all: true,
               digests: false,
               filter: 'some-filter',
-              format: '',
               'no-trunc': false,
-              quiet: false
+              quiet: false,
+              image: [ 'image-name' ]
             });
           });
 
           test('displays an error and returns status code 1 if an option is not recognized.', async (): Promise<void> => {
-            const command: string[] = [ 'image', 'ls', '--foo' ];
+            const command: string[] = [ 'image', 'ls', 'image-name', '--foo' ];
 
             await runCli({ rootCommand: docker, argv: command });
 
@@ -178,7 +174,6 @@ suite('Cli', (): void => {
             assert.that(lines[0]).is.equalTo('docker.image.rm command');
             assert.that(JSON.parse(lines[1])).is.equalTo({
               config: '~/.docker',
-              context: '',
               debug: false,
               'log-level': 'info',
               help: false,
@@ -205,7 +200,6 @@ suite('Cli', (): void => {
           assert.that(lines[0]).is.equalTo('docker.volume command');
           assert.that(JSON.parse(lines[1])).is.equalTo({
             config: '~/.docker',
-            context: '',
             debug: true,
             'log-level': 'info',
             help: false
@@ -227,12 +221,10 @@ suite('Cli', (): void => {
             assert.that(lines[0]).is.equalTo('docker.volume.ls command');
             assert.that(JSON.parse(lines[1])).is.equalTo({
               config: '~/.docker',
-              context: '',
               debug: true,
               'log-level': 'info',
               help: false,
               filter: 'some-filter',
-              format: '',
               quiet: false
             });
           });
@@ -318,7 +310,7 @@ suite('Cli', (): void => {
 
     suite('various command', (): void => {
       suite('various.number command', (): void => {
-        test('displays an error and returns status code 1 if the number parameter is not a number.', async (): Promise<void> => {
+        test('displays an error and returns status code 1 if the number option is not a number.', async (): Promise<void> => {
           const command: string[] = [ 'number', '--number', 'foo' ];
 
           await runCli({ rootCommand: extendedVariousCli, argv: command });
@@ -327,6 +319,20 @@ suite('Cli', (): void => {
 
           assert.that(stdout).is.equalTo('');
           assert.that(stderr).is.containing(`Option 'number' must be a number.`);
+          assert.that((process.exit as unknown as SinonStub).calledWith(1)).is.true();
+        });
+      });
+
+      suite('various.required command', (): void => {
+        test('displays an error and returns status code 1 if a required option is missing.', async (): Promise<void> => {
+          const command: string[] = [ 'required' ];
+
+          await runCli({ rootCommand: extendedVariousCli, argv: command });
+
+          const { stderr, stdout } = stop();
+
+          assert.that(stdout).is.equalTo('');
+          assert.that(stderr).is.containing(`Option 'required' is missing.`);
           assert.that((process.exit as unknown as SinonStub).calledWith(1)).is.true();
         });
       });

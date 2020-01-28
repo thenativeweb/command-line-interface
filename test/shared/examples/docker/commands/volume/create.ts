@@ -28,8 +28,7 @@ const create: Command<CreateOptions> = {
     {
       name: 'volume',
       type: 'string',
-      defaultOption: true,
-      defaultValue: ''
+      defaultOption: true
     }
   ],
   subcommands: {

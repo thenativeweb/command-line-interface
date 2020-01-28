@@ -48,6 +48,7 @@ const runCliRecursive = async function ({
     validateOptions({ options, optionDefinitions: command.optionDefinitions });
   } catch (ex) {
     switch (ex.code) {
+      case 'EOPTIONMISSING':
       case 'EOPTIONINVALID': {
         /* eslint-disable no-console */
         console.error(ex.message);

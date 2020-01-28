@@ -10,7 +10,8 @@ const helpCommand: Command<HelpOptions> = {
       type: 'string',
       description: 'The name of the command you need help for.',
       defaultOption: true,
-      multiple: 'on'
+      multiple: 'on',
+      required: false
     }
   ],
   ignoreUnknownOptions: true,

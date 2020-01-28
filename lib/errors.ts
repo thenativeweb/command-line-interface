@@ -4,7 +4,8 @@ const errors = defekt({
   CommandNotFound: {},
   OperationInvalid: {},
   NoSuggestionAvailable: {},
-  OptionInvalid: {}
+  OptionInvalid: {},
+  OptionMissing: {}
 });
 
 export { errors };

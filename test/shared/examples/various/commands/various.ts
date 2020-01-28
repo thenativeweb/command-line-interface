@@ -1,6 +1,6 @@
-import { boolean } from './boolean';
 import { Command } from '../../../../../lib';
 import { number } from './number';
+import { required } from './required';
 import { VariousOptions } from './VariousOptions';
 
 const various: Command<VariousOptions> = {
@@ -8,8 +8,8 @@ const various: Command<VariousOptions> = {
   description: 'A tool for various tests.',
   optionDefinitions: [],
   subcommands: {
-    boolean,
-    number
+    number,
+    required
   },
   handle ({ options }): void {
     /* eslint-disable no-console */

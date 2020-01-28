@@ -22,14 +22,12 @@ const ls: Command<LsOptions> = {
       name: 'filter',
       description: 'Filter output based on conditions provided.',
       type: 'string',
-      alias: 'f',
-      defaultValue: ''
+      alias: 'f'
     },
     {
       name: 'format',
       description: 'Pretty-print images using a Go template.',
-      type: 'string',
-      defaultValue: ''
+      type: 'string'
     },
     {
       name: 'no-trunc',
@@ -50,6 +48,7 @@ const ls: Command<LsOptions> = {
       type: 'string',
       multiple: 'on',
       defaultOption: true,
+      required: true,
       parameterName: 'IMAGE'
     }
   ],

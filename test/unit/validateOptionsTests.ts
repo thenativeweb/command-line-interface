@@ -1,8 +1,30 @@
 import { assert } from 'assertthat';
+import { CustomError } from 'defekt';
 import { OptionDefinition } from '../../lib/elements/OptionDefinition';
 import { validateOptions } from 'lib/validateOptions';
 
 suite('validateOptions', (): void => {
+  suite('required', (): void => {
+    test('fails if a required option is undefined.', async (): Promise<void> => {
+      const options = {
+        option: undefined
+      };
+      const optionDefinitions: OptionDefinition[] = [
+        {
+          name: 'option',
+          type: 'string',
+          required: true
+        }
+      ];
+
+      assert.that(
+        (): void => validateOptions({ options, optionDefinitions })
+      ).is.throwing(
+        (ex): boolean => ex.message === `Option 'option' is missing.` && (ex as CustomError).code === 'EOPTIONMISSING'
+      );
+    });
+  });
+
   suite('string', (): void => {
     test('accepts a valid string option.', async (): Promise<void> => {
       const options = {
@@ -69,7 +91,9 @@ suite('validateOptions', (): void => {
 
       assert.that(
         (): void => validateOptions({ options, optionDefinitions })
-      ).is.throwing(`Option 'option' must be a number.`);
+      ).is.throwing(
+        (ex): boolean => ex.message === `Option 'option' must be a number.` && (ex as CustomError).code === 'EOPTIONINVALID'
+      );
     });
   });
 });
