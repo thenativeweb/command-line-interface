@@ -1,5 +1,5 @@
 import { assert } from 'assertthat';
-import { OptionDefinition } from '../../build/lib/elements/OptionDefinition';
+import { OptionDefinition } from '../../lib/elements/OptionDefinition';
 import { validateOptions } from 'lib/validateOptions';
 
 suite('validateOptions', (): void => {
