@@ -16,7 +16,7 @@ const inspect: Command<InspectOptions> = {
       type: 'string',
       multiple: 'on',
       defaultOption: true,
-      required: true,
+      isRequired: true,
       parameterName: 'VOLUME'
     }
   ],

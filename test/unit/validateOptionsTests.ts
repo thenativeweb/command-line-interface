@@ -13,7 +13,7 @@ suite('validateOptions', (): void => {
         {
           name: 'option',
           type: 'string',
-          required: true
+          isRequired: true
         }
       ];
 

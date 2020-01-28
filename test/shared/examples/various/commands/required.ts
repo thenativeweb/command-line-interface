@@ -9,7 +9,7 @@ const required: Command<RequiredOptions> = {
       name: 'required',
       type: 'string',
       alias: 'r',
-      required: true
+      isRequired: true
     },
     {
       name: 'optional',

@@ -9,7 +9,7 @@ const number: Command<NumberOptions> = {
       name: 'number',
       type: 'number',
       alias: 'n',
-      required: true
+      isRequired: true
     }
   ],
   handle ({ options }): void {

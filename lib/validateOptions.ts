@@ -11,7 +11,7 @@ const validateOptions = function ({ options, optionDefinitions }: {
 }): void {
   for (const optionDefinition of optionDefinitions) {
     const value = options[optionDefinition.name];
-    const optionRequired = optionDefinition.required ?? false;
+    const optionRequired = optionDefinition.isRequired ?? false;
 
     if (optionRequired && value === undefined) {
       throw new errors.OptionMissing(`Option '${optionDefinition.name}' is missing.`);

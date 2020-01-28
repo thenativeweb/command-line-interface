@@ -11,7 +11,7 @@ const helpCommand: Command<HelpOptions> = {
       description: 'The name of the command you need help for.',
       defaultOption: true,
       multiple: 'on',
-      required: false
+      isRequired: false
     }
   ],
   ignoreUnknownOptions: true,
