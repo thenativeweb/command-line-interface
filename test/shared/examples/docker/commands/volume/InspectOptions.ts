@@ -1,6 +1,6 @@
-import { VolumeOptions } from '../VolumeOptions.ts';
+import { VolumeOptions } from '../VolumeOptions';
 
 export interface InspectOptions extends VolumeOptions {
-  format: string;
+  format?: string;
   volume: string[];
 }

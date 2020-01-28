@@ -2,7 +2,7 @@ import { Command } from '../../../../../lib';
 import { create } from './volume/create';
 import { inspect } from './volume/inspect';
 import { ls } from './volume/ls';
-import { VolumeOptions } from './VolumeOptions.ts';
+import { VolumeOptions } from './VolumeOptions';
 
 const volume: Command<VolumeOptions> = {
   name: 'volume',
