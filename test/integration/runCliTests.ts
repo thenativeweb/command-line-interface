@@ -4,6 +4,7 @@ import { docker } from '../shared/examples/docker/commands/docker';
 import { getGetUsage } from '../../lib/usage/getGetUsage';
 import { record } from 'record-stdstreams';
 import { runCli } from '../../lib/runCli';
+import { various } from '../shared/examples/various/commands/various';
 import sinon, { SinonStub } from 'sinon';
 
 suite('Cli', (): void => {
@@ -20,7 +21,7 @@ suite('Cli', (): void => {
   });
 
   suite(`sample application 'docker'`, (): void => {
-    const extendedBuilderCli = addHelpCommandToCli({ rootCommand: docker });
+    const extendedDockerCli = addHelpCommandToCli({ rootCommand: docker });
 
     suite('docker command', (): void => {
       test('runs the top level command.', async (): Promise<void> => {
@@ -73,7 +74,7 @@ suite('Cli', (): void => {
         const { stderr, stdout } = stop();
 
         assert.that(stderr).is.equalTo('');
-        assert.that(stdout).is.equalTo(`${getGetUsage({ rootCommand: extendedBuilderCli })({ commandPath: [ 'docker' ]})}\n`);
+        assert.that(stdout).is.equalTo(`${getGetUsage({ rootCommand: extendedDockerCli })({ commandPath: [ 'docker' ]})}\n`);
       });
 
       test('displays the top level help with --help flag, even if a subcommand is given.', async (): Promise<void> => {
@@ -84,7 +85,7 @@ suite('Cli', (): void => {
         const { stderr, stdout } = stop();
 
         assert.that(stderr).is.equalTo('');
-        assert.that(stdout).is.equalTo(`${getGetUsage({ rootCommand: extendedBuilderCli })({ commandPath: [ 'docker' ]})}\n`);
+        assert.that(stdout).is.equalTo(`${getGetUsage({ rootCommand: extendedDockerCli })({ commandPath: [ 'docker' ]})}\n`);
       });
 
       test('suggests alternatives and returns status code 1 if subcommands exist and the given command is not recognized.', async (): Promise<void> => {
@@ -273,7 +274,7 @@ suite('Cli', (): void => {
           const { stderr, stdout } = stop();
 
           assert.that(stderr).is.equalTo('');
-          assert.that(stdout).is.equalTo(`${getGetUsage({ rootCommand: extendedBuilderCli })({ commandPath: [ 'docker' ]})}\n`);
+          assert.that(stdout).is.equalTo(`${getGetUsage({ rootCommand: extendedDockerCli })({ commandPath: [ 'docker' ]})}\n`);
         });
 
         test('displays the help of the given command.', async (): Promise<void> => {
@@ -284,7 +285,7 @@ suite('Cli', (): void => {
           const { stderr, stdout } = stop();
 
           assert.that(stderr).is.equalTo('');
-          assert.that(stdout).is.equalTo(`${getGetUsage({ rootCommand: extendedBuilderCli })({ commandPath: [ 'docker', 'image' ]})}\n`);
+          assert.that(stdout).is.equalTo(`${getGetUsage({ rootCommand: extendedDockerCli })({ commandPath: [ 'docker', 'image' ]})}\n`);
         });
 
         test('displays the help of the given multi-level command.', async (): Promise<void> => {
@@ -295,7 +296,7 @@ suite('Cli', (): void => {
           const { stderr, stdout } = stop();
 
           assert.that(stderr).is.equalTo('');
-          assert.that(stdout).is.equalTo(`${getGetUsage({ rootCommand: extendedBuilderCli })({ commandPath: [ 'docker', 'image', 'ls' ]})}\n`);
+          assert.that(stdout).is.equalTo(`${getGetUsage({ rootCommand: extendedDockerCli })({ commandPath: [ 'docker', 'image', 'ls' ]})}\n`);
         });
 
         test('displays the help for the help command if the help flag is set.', async (): Promise<void> => {
@@ -306,7 +307,27 @@ suite('Cli', (): void => {
           const { stderr, stdout } = stop();
 
           assert.that(stderr).is.equalTo('');
-          assert.that(stdout).is.equalTo(`${getGetUsage({ rootCommand: extendedBuilderCli })({ commandPath: [ 'docker', 'help' ]})}\n`);
+          assert.that(stdout).is.equalTo(`${getGetUsage({ rootCommand: extendedDockerCli })({ commandPath: [ 'docker', 'help' ]})}\n`);
+        });
+      });
+    });
+  });
+
+  suite(`sample application 'various'`, (): void => {
+    const extendedVariousCli = addHelpCommandToCli({ rootCommand: various });
+
+    suite('various command', (): void => {
+      suite('various.number command', (): void => {
+        test('displays an error and returns status code 1 if the number parameter is not a number.', async (): Promise<void> => {
+          const command: string[] = [ 'number', '--number', 'foo' ];
+
+          await runCli({ rootCommand: extendedVariousCli, argv: command });
+
+          const { stderr, stdout } = stop();
+
+          assert.that(stdout).is.equalTo('');
+          assert.that(stderr).is.containing(`Option 'number' must be a number.`);
+          assert.that((process.exit as unknown as SinonStub).calledWith(1)).is.true();
         });
       });
     });

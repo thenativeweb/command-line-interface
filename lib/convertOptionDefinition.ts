@@ -18,7 +18,7 @@ const convertOptionDefinition = function ({ optionDefinition }: {
       type = Number;
       break;
     default:
-      throw new errors.InvalidOperation();
+      throw new errors.OperationInvalid();
   }
 
   return {

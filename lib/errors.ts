@@ -2,8 +2,9 @@ import { defekt } from 'defekt';
 
 const errors = defekt({
   CommandNotFound: {},
-  InvalidOperation: {},
-  NoSuggestionAvailable: {}
+  OperationInvalid: {},
+  NoSuggestionAvailable: {},
+  OptionInvalid: {}
 });
 
 export { errors };
