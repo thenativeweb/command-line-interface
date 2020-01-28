@@ -1,10 +1,9 @@
 import { errors } from './errors';
 import { OptionDefinition } from './elements/OptionDefinition';
 
-// Throws an error if any option does not match its defined type or is
-// undefined. Since command-line-args handles default values, a check for
-// undefined-ness here results in a check for required options and ignores optional
-// options.
+// Throws an error if any option does not match its defined type or is undefined.
+// Since command-line-args handles default values, a check for undefined-ness here
+// results in a check for required options and ignores optional options.
 const validateOptions = function ({ options, optionDefinitions }: {
   options: any;
   optionDefinitions: OptionDefinition[];
