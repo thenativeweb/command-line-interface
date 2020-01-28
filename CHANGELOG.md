@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/thenativeweb/command-line-interface/compare/3.0.0...3.1.0) (2020-01-28)
+
+
+### Features
+
+* Implement validation and requiredness check for options. ([#13](https://github.com/thenativeweb/command-line-interface/issues/13)) ([c9a1b5e](https://github.com/thenativeweb/command-line-interface/commit/c9a1b5e97a5e6124e4978bbdc56358192d1eca99))
+
 # [3.0.0](https://github.com/thenativeweb/command-line-interface/compare/2.0.0...3.0.0) (2020-01-27)
 
 
