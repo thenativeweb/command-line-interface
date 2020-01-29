@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/thenativeweb/command-line-interface/compare/3.1.0...3.1.1) (2020-01-29)
+
+
+### Bug Fixes
+
+* Display required/optional parameters right in synopsis. ([#17](https://github.com/thenativeweb/command-line-interface/issues/17)) ([af836b4](https://github.com/thenativeweb/command-line-interface/commit/af836b4965b50fd21e43abb0cc15e93a16b77ec2))
+
 # [3.1.0](https://github.com/thenativeweb/command-line-interface/compare/3.0.0...3.1.0) (2020-01-28)
 
 
