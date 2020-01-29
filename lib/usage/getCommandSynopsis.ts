@@ -4,8 +4,16 @@ import { optionToString } from './optionToString';
 const getCommandSynopsis = function ({ command }: {
   command: Command<any>;
 }): any {
-  const requiredOptions = command.optionDefinitions.filter((optionDefinition): boolean => optionDefinition.defaultValue === undefined && !optionDefinition.defaultOption);
-  const optionalOptions = command.optionDefinitions.filter((optionDefinition): boolean => optionDefinition.defaultValue !== undefined && !optionDefinition.defaultOption);
+  const requiredOptions = command.optionDefinitions.filter(
+    (optionDefinition): boolean =>
+      (optionDefinition.defaultOption === undefined || !optionDefinition.defaultOption) &&
+      (optionDefinition.isRequired !== undefined && optionDefinition.isRequired)
+  );
+  const optionalOptions = command.optionDefinitions.filter(
+    (optionDefinition): boolean =>
+      (optionDefinition.defaultOption === undefined || !optionDefinition.defaultOption) &&
+      (optionDefinition.isRequired === undefined || !optionDefinition.isRequired)
+  );
   const defaultOption = command.optionDefinitions.find((optionDefinition): boolean => optionDefinition.defaultOption === true);
 
   const requiredOptionsString = requiredOptions.

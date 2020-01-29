@@ -26,7 +26,8 @@ suite('getCommandSynopsis', (): void => {
         optionDefinitions: [
           {
             name: 'debug',
-            type: 'boolean'
+            type: 'boolean',
+            isRequired: true
           }
         ],
         handle (): void {
@@ -46,8 +47,7 @@ suite('getCommandSynopsis', (): void => {
         optionDefinitions: [
           {
             name: 'debug',
-            type: 'boolean',
-            defaultValue: false
+            type: 'boolean'
           }
         ],
         handle (): void {
@@ -69,7 +69,8 @@ suite('getCommandSynopsis', (): void => {
         optionDefinitions: [
           {
             name: 'format',
-            type: 'string'
+            type: 'string',
+            isRequired: true
           }
         ],
         handle (): void {
@@ -89,8 +90,7 @@ suite('getCommandSynopsis', (): void => {
         optionDefinitions: [
           {
             name: 'format',
-            type: 'string',
-            defaultValue: false
+            type: 'string'
           }
         ],
         handle (): void {
@@ -111,7 +111,8 @@ suite('getCommandSynopsis', (): void => {
           {
             name: 'format',
             type: 'string',
-            multiple: 'on'
+            multiple: 'on',
+            isRequired: true
           }
         ],
         handle (): void {
@@ -132,7 +133,8 @@ suite('getCommandSynopsis', (): void => {
           {
             name: 'format',
             type: 'string',
-            parameterName: 'foo'
+            parameterName: 'foo',
+            isRequired: true
           }
         ],
         handle (): void {
@@ -154,7 +156,8 @@ suite('getCommandSynopsis', (): void => {
         optionDefinitions: [
           {
             name: 'format',
-            type: 'number'
+            type: 'number',
+            isRequired: true
           }
         ],
         handle (): void {
@@ -174,8 +177,7 @@ suite('getCommandSynopsis', (): void => {
         optionDefinitions: [
           {
             name: 'format',
-            type: 'number',
-            defaultValue: false
+            type: 'number'
           }
         ],
         handle (): void {
@@ -196,7 +198,8 @@ suite('getCommandSynopsis', (): void => {
           {
             name: 'format',
             type: 'number',
-            multiple: 'on'
+            multiple: 'on',
+            isRequired: true
           }
         ],
         handle (): void {
@@ -217,7 +220,8 @@ suite('getCommandSynopsis', (): void => {
           {
             name: 'format',
             type: 'number',
-            parameterName: 'foo'
+            parameterName: 'foo',
+            isRequired: true
           }
         ],
         handle (): void {
@@ -240,7 +244,8 @@ suite('getCommandSynopsis', (): void => {
           {
             name: 'size',
             type: 'number',
-            parameterName: 'kilobytes'
+            parameterName: 'kilobytes',
+            isRequired: true
           },
           {
             name: 'verbose',
@@ -250,6 +255,11 @@ suite('getCommandSynopsis', (): void => {
             name: 'format',
             type: 'string',
             defaultValue: ''
+          },
+          {
+            name: 'foo',
+            type: 'string',
+            defaultOption: true
           }
         ],
         handle (): void {
@@ -259,7 +269,7 @@ suite('getCommandSynopsis', (): void => {
 
       const synopsis = getCommandSynopsis({ command });
 
-      assert.that(synopsis).is.equalTo('test --size {underline kilobytes} --verbose [--format {underline string}]');
+      assert.that(synopsis).is.equalTo('test --size {underline kilobytes} [--verbose --format {underline string}] foo {underline string}');
     });
   });
 });
