@@ -107,7 +107,7 @@ Everything else stays the same, but now you will have type support.
 
 ### Defining options
 
-As you have already seen, you can define options for commands. An option needs to have at least a `name` and a `type`, with the following types being supported:
+As you have already seen, you can define options for commands. An option needs to have at least a `name` and a `type`, with the following types being supported and verified:
 
 - `boolean`
 - `number`
@@ -127,7 +127,7 @@ If instead you want to provide multiple values, but with an individual flag each
 $ node.js app.js --name Jane --name Jenny
 ```
 
-Some options can make use of a default value. For that, use the `defaultValue` property and set it to the desired value. This can be seen in the example above as well.
+If an option is mandatory, set the `isRequired` property to `true`. For optional options, it usually makes sense to specify a default value. For that, use the `defaultValue` property and set it to the desired value. This can be seen in the example above as well.
 
 If you want to give a dedicated name to the value, you can set it using the `parameterName` property. This sometimes makes sense, to e.g. show off that a parameter is not just a `string`, but a `url` or another domain-specific concept.
 
