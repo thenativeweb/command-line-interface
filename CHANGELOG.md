@@ -1,3 +1,10 @@
+## [3.1.2](https://github.com/thenativeweb/command-line-interface/compare/3.1.1...3.1.2) (2020-01-31)
+
+
+### Bug Fixes
+
+* Update documentation. ([0e8cd28](https://github.com/thenativeweb/command-line-interface/commit/0e8cd28d5895c21a4ba0227e9f889517d7edc768))
+
 ## [3.1.1](https://github.com/thenativeweb/command-line-interface/compare/3.1.0...3.1.1) (2020-01-29)
 
 
