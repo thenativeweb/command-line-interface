@@ -17,11 +17,11 @@ const getCommandLineUsageConfiguration = function ({ rootCommand, commandPath }:
   const usage: Section[] = [
     {
       header: rootCommand.name,
-      content: [
-        command.description,
-        '',
-        `$ ${synopsis}`
-      ]
+      content: [ command.description ]
+    },
+    {
+      header: 'Synopsis',
+      content: [ synopsis ]
     }
   ];
 

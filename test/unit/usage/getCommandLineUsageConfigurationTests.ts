@@ -19,11 +19,10 @@ suite('getCommandLineUsageConfiguration', (): void => {
     assert.that(configuration).is.equalTo([
       {
         header: 'test',
-        content: [
-          'Test description.',
-          '',
-          `$ ${getCommandSynopsis({ command })}`
-        ]
+        content: [ 'Test description.' ]
+      }, {
+        header: 'Synopsis',
+        content: [ getCommandSynopsis({ command }) ]
       }
     ]);
   });
@@ -51,11 +50,11 @@ suite('getCommandLineUsageConfiguration', (): void => {
     assert.that(configuration).is.atLeast([
       {
         header: 'test',
-        content: [
-          'Test description.',
-          '',
-          `$ ${getCommandSynopsis({ command })}`
-        ]
+        content: [ 'Test description.' ]
+      },
+      {
+        header: 'Synopsis',
+        content: [ getCommandSynopsis({ command }) ]
       },
       {
         header: 'Options',
@@ -107,11 +106,11 @@ suite('getCommandLineUsageConfiguration', (): void => {
     assert.that(configuration).is.atLeast([
       {
         header: 'test',
-        content: [
-          'Test description.',
-          '',
-          `$ ${getCommandSynopsis({ command })}`
-        ]
+        content: [ 'Test description.' ]
+      },
+      {
+        header: 'Synopsis',
+        content: [ getCommandSynopsis({ command }) ]
       },
       {
         header: 'Options',
