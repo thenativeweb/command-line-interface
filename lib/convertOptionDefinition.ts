@@ -7,6 +7,10 @@ const convertOptionDefinition = function ({ optionDefinition }: {
 }): CLAOptionDefinition {
   let type: (value: string) => any;
 
+  if (optionDefinition.type === 'boolean' && optionDefinition.defaultOption) {
+    throw new errors.OptionInvalid(`Option '${optionDefinition.name}' must not be a default option, because it is boolean.`);
+  }
+
   switch (optionDefinition.type) {
     case 'boolean':
       type = Boolean;
