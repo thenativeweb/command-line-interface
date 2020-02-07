@@ -236,7 +236,7 @@ suite('getCommandSynopsis', (): void => {
   });
 
   suite('mix', (): void => {
-    test('a mix of options.', async (): Promise<void> => {
+    test('a mix of options, with an optional default option.', async (): Promise<void> => {
       const command: Command<any> = {
         name: 'test',
         description: '',
@@ -269,7 +269,44 @@ suite('getCommandSynopsis', (): void => {
 
       const synopsis = getCommandSynopsis({ command });
 
-      assert.that(synopsis).is.equalTo('test --size {underline kilobytes} [--verbose --format {underline string}] --foo {underline string}');
+      assert.that(synopsis).is.equalTo('test --size {underline kilobytes} [--verbose --format {underline string}] [{underline string}]');
+    });
+
+    test('a mix of options, with a mandatory default option.', async (): Promise<void> => {
+      const command: Command<any> = {
+        name: 'test',
+        description: '',
+        optionDefinitions: [
+          {
+            name: 'size',
+            type: 'number',
+            parameterName: 'kilobytes',
+            isRequired: true
+          },
+          {
+            name: 'verbose',
+            type: 'boolean'
+          },
+          {
+            name: 'format',
+            type: 'string',
+            defaultValue: ''
+          },
+          {
+            name: 'foo',
+            type: 'string',
+            defaultOption: true,
+            isRequired: true
+          }
+        ],
+        handle (): void {
+          // Intentionally left empty.
+        }
+      };
+
+      const synopsis = getCommandSynopsis({ command });
+
+      assert.that(synopsis).is.equalTo('test --size {underline kilobytes} [--verbose --format {underline string}] {underline string}');
     });
   });
 });
