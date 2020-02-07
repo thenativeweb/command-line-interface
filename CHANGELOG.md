@@ -1,3 +1,10 @@
+## [3.2.1](https://github.com/thenativeweb/command-line-interface/compare/3.2.0...3.2.1) (2020-02-07)
+
+
+### Bug Fixes
+
+* Fix display of default option name. ([#28](https://github.com/thenativeweb/command-line-interface/issues/28)) ([7e2605e](https://github.com/thenativeweb/command-line-interface/commit/7e2605e8552d6d63dbabec8f0feec875235e616c))
+
 # [3.2.0](https://github.com/thenativeweb/command-line-interface/compare/3.1.3...3.2.0) (2020-02-07)
 
 
