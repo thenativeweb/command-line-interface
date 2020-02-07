@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/thenativeweb/command-line-interface/compare/3.1.3...3.2.0) (2020-02-07)
+
+
+### Features
+
+* Move synopsis to its own section. ([#27](https://github.com/thenativeweb/command-line-interface/issues/27)) ([7af0917](https://github.com/thenativeweb/command-line-interface/commit/7af09174adb7f6ae39278280f12a36f4ec7559c5))
+
 ## [3.1.3](https://github.com/thenativeweb/command-line-interface/compare/3.1.2...3.1.3) (2020-02-03)
 
 
