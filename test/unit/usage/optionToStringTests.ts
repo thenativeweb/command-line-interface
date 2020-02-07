@@ -182,7 +182,7 @@ suite('optionToString', (): void => {
 
     const optionString = optionToString({ option });
 
-    assert.that(optionString).is.equalTo('{underline string}');
+    assert.that(optionString).is.equalTo('[--test] {underline string}');
   });
 
   test('default, without parameter name, without multiplier, number.', async (): Promise<void> => {
@@ -196,7 +196,7 @@ suite('optionToString', (): void => {
 
     const optionString = optionToString({ option });
 
-    assert.that(optionString).is.equalTo('{underline number}');
+    assert.that(optionString).is.equalTo('[--test] {underline number}');
   });
 
   test('default, without parameter name, with multiplier, string.', async (): Promise<void> => {
@@ -210,7 +210,7 @@ suite('optionToString', (): void => {
 
     const optionString = optionToString({ option });
 
-    assert.that(optionString).is.equalTo('{underline string[]}');
+    assert.that(optionString).is.equalTo('[--test] {underline string[]}');
   });
 
   test('default, without parameter name, with multiplier, number.', async (): Promise<void> => {
@@ -224,7 +224,7 @@ suite('optionToString', (): void => {
 
     const optionString = optionToString({ option });
 
-    assert.that(optionString).is.equalTo('{underline number[]}');
+    assert.that(optionString).is.equalTo('[--test] {underline number[]}');
   });
 
   test('default, with parameter name, without multiplier, string.', async (): Promise<void> => {
@@ -238,7 +238,7 @@ suite('optionToString', (): void => {
 
     const optionString = optionToString({ option });
 
-    assert.that(optionString).is.equalTo('{underline param}');
+    assert.that(optionString).is.equalTo('[--test] {underline param}');
   });
 
   test('default, with parameter name, without multiplier, number.', async (): Promise<void> => {
@@ -252,7 +252,7 @@ suite('optionToString', (): void => {
 
     const optionString = optionToString({ option });
 
-    assert.that(optionString).is.equalTo('{underline param}');
+    assert.that(optionString).is.equalTo('[--test] {underline param}');
   });
 
   test('default, with parameter name, with multiplier, string.', async (): Promise<void> => {
@@ -266,7 +266,7 @@ suite('optionToString', (): void => {
 
     const optionString = optionToString({ option });
 
-    assert.that(optionString).is.equalTo('{underline param[]}');
+    assert.that(optionString).is.equalTo('[--test] {underline param[]}');
   });
 
   test('default, with parameter name, with multiplier, number.', async (): Promise<void> => {
@@ -280,6 +280,6 @@ suite('optionToString', (): void => {
 
     const optionString = optionToString({ option });
 
-    assert.that(optionString).is.equalTo('{underline param[]}');
+    assert.that(optionString).is.equalTo('[--test] {underline param[]}');
   });
 });

@@ -269,7 +269,7 @@ suite('getCommandSynopsis', (): void => {
 
       const synopsis = getCommandSynopsis({ command });
 
-      assert.that(synopsis).is.equalTo('test --size {underline kilobytes} [--verbose --format {underline string}] [{underline string}]');
+      assert.that(synopsis).is.equalTo('test --size {underline kilobytes} [--verbose --format {underline string}] [[--foo] {underline string}]');
     });
 
     test('a mix of options, with a mandatory default option.', async (): Promise<void> => {
@@ -306,7 +306,7 @@ suite('getCommandSynopsis', (): void => {
 
       const synopsis = getCommandSynopsis({ command });
 
-      assert.that(synopsis).is.equalTo('test --size {underline kilobytes} [--verbose --format {underline string}] {underline string}');
+      assert.that(synopsis).is.equalTo('test --size {underline kilobytes} [--verbose --format {underline string}] [--foo] {underline string}');
     });
   });
 });

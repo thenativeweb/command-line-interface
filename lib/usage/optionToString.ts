@@ -8,7 +8,7 @@ const optionToString = ({ option }: {
   const parameterDescription = option.type === 'boolean' ? '' : `{underline ${parameterName}${multiplier}}`;
 
   if (option.defaultOption) {
-    return parameterDescription;
+    return `[--${option.name}] ${parameterDescription}`;
   }
 
   return `--${option.name}${parameterDescription ? ' ' : ''}${parameterDescription}`;
