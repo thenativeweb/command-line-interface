@@ -1,3 +1,10 @@
+## [3.2.2](https://github.com/thenativeweb/command-line-interface/compare/3.2.1...3.2.2) (2020-02-07)
+
+
+### Bug Fixes
+
+* Show flag name as optional for default options. ([#29](https://github.com/thenativeweb/command-line-interface/issues/29)) ([9c2e75e](https://github.com/thenativeweb/command-line-interface/commit/9c2e75eb4d221e25390bb9ed8591dd6f0a6233f1))
+
 ## [3.2.1](https://github.com/thenativeweb/command-line-interface/compare/3.2.0...3.2.1) (2020-02-07)
 
 
