@@ -269,7 +269,7 @@ suite('getCommandSynopsis', (): void => {
 
       const synopsis = getCommandSynopsis({ command });
 
-      assert.that(synopsis).is.equalTo('test --size {underline kilobytes} [--verbose --format {underline string}] foo {underline string}');
+      assert.that(synopsis).is.equalTo('test --size {underline kilobytes} [--verbose --format {underline string}] --foo {underline string}');
     });
   });
 });

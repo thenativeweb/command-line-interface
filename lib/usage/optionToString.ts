@@ -3,7 +3,7 @@ import { OptionDefinition } from '../elements/OptionDefinition';
 const optionToString = ({ option }: {
   option: OptionDefinition;
 }): string => {
-  const prefix = option.defaultOption ? '' : '--';
+  const prefix = '--';
 
   const parameterName = option.parameterName ?? option.type;
   const multiplier = option.multiple === undefined || option.multiple === 'off' ? '' : '[]';
