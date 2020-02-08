@@ -98,6 +98,27 @@ suite('Cli', (): void => {
         assert.that((process.exit as unknown as SinonStub).calledWith(1)).is.true();
       });
 
+      test('runs a custom error handler if subcommands exist and the given command is not recognized.', async (): Promise<void> => {
+        const command: string[] = [ 'imgea' ];
+
+        await runCli({
+          rootCommand: docker,
+          argv: command,
+          handlers: {
+            commandUnknown ({ unknownCommandName, recommendedCommandName }): void {
+              // eslint-disable-next-line no-console
+              console.error(`Unbekannter Befehl '${unknownCommandName}'. Meinten Sie '${recommendedCommandName}'?`);
+            }
+          }
+        });
+
+        const { stderr, stdout } = stop();
+
+        assert.that(stdout).is.equalTo('');
+        assert.that(stderr).is.containing(`Unbekannter Befehl 'imgea'. Meinten Sie 'image'?`);
+        assert.that((process.exit as unknown as SinonStub).calledWith(1)).is.true();
+      });
+
       suite('docker.image command', (): void => {
         test('runs the second level image command and passes top level options.', async (): Promise<void> => {
           const command: string[] = [ '-D', 'image' ];
@@ -155,6 +176,27 @@ suite('Cli', (): void => {
 
             assert.that(stdout).is.equalTo('');
             assert.that(stderr).is.containing(`Unknown option '--foo'.`);
+            assert.that((process.exit as unknown as SinonStub).calledWith(1)).is.true();
+          });
+
+          test('runs a custom error handler if an option is not recognized.', async (): Promise<void> => {
+            const command: string[] = [ 'image', 'ls', 'image-name', '--foo' ];
+
+            await runCli({
+              rootCommand: docker,
+              argv: command,
+              handlers: {
+                optionUnknown ({ optionName }): void {
+                  // eslint-disable-next-line no-console
+                  console.error(`Unbekannte Option '${optionName}'.`);
+                }
+              }
+            });
+
+            const { stderr, stdout } = stop();
+
+            assert.that(stdout).is.equalTo('');
+            assert.that(stderr).is.containing(`Unbekannte Option '--foo'.`);
             assert.that((process.exit as unknown as SinonStub).calledWith(1)).is.true();
           });
         });
@@ -240,11 +282,32 @@ suite('Cli', (): void => {
             assert.that(stderr).is.containing(`Unknown option '--foo'.`);
             assert.that((process.exit as unknown as SinonStub).calledWith(1)).is.true();
           });
+
+          test('runs a custom error handler if an option is not recognized.', async (): Promise<void> => {
+            const command: string[] = [ 'volume', 'ls', '--foo' ];
+
+            await runCli({
+              rootCommand: docker,
+              argv: command,
+              handlers: {
+                optionUnknown ({ optionName }): void {
+                  // eslint-disable-next-line no-console
+                  console.error(`Unbekannte Option '${optionName}'.`);
+                }
+              }
+            });
+
+            const { stderr, stdout } = stop();
+
+            assert.that(stdout).is.equalTo('');
+            assert.that(stderr).is.containing(`Unbekannte Option '--foo'.`);
+            assert.that((process.exit as unknown as SinonStub).calledWith(1)).is.true();
+          });
         });
       });
 
       suite('docker.fail command', (): void => {
-        test('the error thrown in the handler is printed to stderr and the process exists with status code 1.', async (): Promise<void> => {
+        test('prints the error thrown in the handler to stderr and exits the process with status code 1.', async (): Promise<void> => {
           const command: string[] = [ 'fail' ];
 
           await runCli({ rootCommand: docker, argv: command });
@@ -252,6 +315,27 @@ suite('Cli', (): void => {
           const { stderr, stdout } = stop();
 
           assert.that(stderr).is.containing('This command fails intentionally.');
+          assert.that(stdout).is.equalTo('');
+          assert.that((process.exit as unknown as SinonStub).calledWith(1)).is.true();
+        });
+
+        test('runs a custom error with the error thrown in the handler.', async (): Promise<void> => {
+          const command: string[] = [ 'fail' ];
+
+          await runCli({
+            rootCommand: docker,
+            argv: command,
+            handlers: {
+              commandFailed ({ ex }): void {
+                // eslint-disable-next-line no-console
+                console.error(ex.message.toUpperCase());
+              }
+            }
+          });
+
+          const { stderr, stdout } = stop();
+
+          assert.that(stderr).is.containing('THIS COMMAND FAILS INTENTIONALLY.');
           assert.that(stdout).is.equalTo('');
           assert.that((process.exit as unknown as SinonStub).calledWith(1)).is.true();
         });
@@ -321,6 +405,27 @@ suite('Cli', (): void => {
           assert.that(stderr).is.containing(`Option 'number' must be a number.`);
           assert.that((process.exit as unknown as SinonStub).calledWith(1)).is.true();
         });
+
+        test('runs a custom error handler if the number option is not a number.', async (): Promise<void> => {
+          const command: string[] = [ 'number', '--number', 'foo' ];
+
+          await runCli({
+            rootCommand: extendedVariousCli,
+            argv: command,
+            handlers: {
+              optionInvalid ({ optionDefinition }): void {
+                // eslint-disable-next-line no-console
+                console.error(`Die Option '${optionDefinition.name}' muss eine Zahl sein.`);
+              }
+            }
+          });
+
+          const { stderr, stdout } = stop();
+
+          assert.that(stdout).is.equalTo('');
+          assert.that(stderr).is.containing(`Die Option 'number' muss eine Zahl sein.`);
+          assert.that((process.exit as unknown as SinonStub).calledWith(1)).is.true();
+        });
       });
 
       suite('various.required command', (): void => {
@@ -333,6 +438,27 @@ suite('Cli', (): void => {
 
           assert.that(stdout).is.equalTo('');
           assert.that(stderr).is.containing(`Option 'required' is missing.`);
+          assert.that((process.exit as unknown as SinonStub).calledWith(1)).is.true();
+        });
+
+        test('runs a custom error handler if a required option is missing.', async (): Promise<void> => {
+          const command: string[] = [ 'required' ];
+
+          await runCli({
+            rootCommand: extendedVariousCli,
+            argv: command,
+            handlers: {
+              optionMissing ({ optionDefinition }): void {
+                // eslint-disable-next-line no-console
+                console.error(`Die Option '${optionDefinition.name}' fehlt.`);
+              }
+            }
+          });
+
+          const { stderr, stdout } = stop();
+
+          assert.that(stdout).is.equalTo('');
+          assert.that(stderr).is.containing(`Die Option 'required' fehlt.`);
           assert.that((process.exit as unknown as SinonStub).calledWith(1)).is.true();
         });
       });
