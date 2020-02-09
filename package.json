@@ -18,6 +18,7 @@
     "command-line-args": "5.1.1",
     "command-line-commands": "3.0.1",
     "command-line-usage": "6.1.0",
+    "common-tags": "1.8.0",
     "defekt": "5.0.1",
     "string-similarity": "4.0.1"
   },
@@ -25,6 +26,7 @@
     "@types/command-line-args": "5.0.0",
     "@types/command-line-commands": "2.0.1",
     "@types/command-line-usage": "5.0.1",
+    "@types/common-tags": "1.8.0",
     "@types/sinon": "7.5.1",
     "@types/string-similarity": "3.0.0",
     "assertthat": "5.1.0",

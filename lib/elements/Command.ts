@@ -6,6 +6,8 @@ export interface Command<TOptions extends {}> {
 
   description: string;
 
+  remarks?: string;
+
   optionDefinitions: OptionDefinition[];
 
   // This MUST be false for every command that has subcommands. Otherwise the

@@ -32,12 +32,15 @@ If you use TypeScript, use the following code instead:
 import { runCli, Command } from 'command-line-interface';
 ```
 
-Before being able to run a CLI, you must create a command. A command represents a piece of logic callable from the command line. In that sense, a command has a `name`, a `description`, a list of `optionDefinitions`, and a `handle` function:
+Before being able to run a CLI, you must create a command. A command represents a piece of logic callable from the command line. In that sense, a command has a `name`, a `description`, a list of `optionDefinitions`, and a `handle` function. Optionally, you may also specify `remarks` to show in the command's help:
 
 ```javascript
 const hello = {
   name: 'hello',
   description: 'Say hello on the command line.',
+  remarks: `
+    If you don't specify a name, 'Jane' will be used as default.
+  `,
 
   optionDefinitions: [
     {
