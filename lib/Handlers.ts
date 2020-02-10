@@ -11,8 +11,9 @@ export interface Handlers {
     ancestors: string[];
   }) => void;
 
-  optionInvalid: ({ optionDefinition }: {
+  optionInvalid: ({ optionDefinition, reason }: {
     optionDefinition: OptionDefinition;
+    reason: string;
   }) => void;
 
   optionMissing: ({ optionDefinition }: {

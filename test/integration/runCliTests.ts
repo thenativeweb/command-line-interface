@@ -426,6 +426,18 @@ suite('Cli', (): void => {
           assert.that(stderr).is.containing(`Die Option 'number' muss eine Zahl sein.`);
           assert.that((process.exit as unknown as SinonStub).calledWith(1)).is.true();
         });
+
+        test('displays validator exception message.', async (): Promise<void> => {
+          const command: string[] = [ 'number', '--number', '601' ];
+
+          await runCli({ rootCommand: extendedVariousCli, argv: command });
+
+          const { stderr, stdout } = stop();
+
+          assert.that(stdout).is.equalTo('');
+          assert.that(stderr).is.containing(`Number must not be bigger than 500.`);
+          assert.that((process.exit as unknown as SinonStub).calledWith(1)).is.true();
+        });
       });
 
       suite('various.required command', (): void => {

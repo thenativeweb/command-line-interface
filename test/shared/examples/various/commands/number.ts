@@ -9,7 +9,13 @@ const number: Command<NumberOptions> = {
       name: 'number',
       type: 'number',
       alias: 'n',
-      isRequired: true
+      description: 'Must not be bigger than 500.',
+      isRequired: true,
+      validate (value): void {
+        if (value > 500) {
+          throw new Error('Number must not be bigger than 500.');
+        }
+      }
     }
   ],
   handle ({ options }): void {

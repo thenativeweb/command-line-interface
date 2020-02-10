@@ -19,9 +19,9 @@ const runCli = async function ({ rootCommand, argv, handlers = {}}: {
       // eslint-disable-next-line no-console
       console.error(`Unknown command '${unknownCommandName}'. Did you mean '${recommendedCommandName}'?`);
     },
-    optionInvalid ({ optionDefinition }): void {
+    optionInvalid ({ reason }): void {
       // eslint-disable-next-line no-console
-      console.error(`Option '${optionDefinition.name}' must be a ${optionDefinition.type}.`);
+      console.error(reason);
     },
     optionMissing ({ optionDefinition }): void {
       // eslint-disable-next-line no-console
