@@ -7,6 +7,9 @@ import { volume } from './volume';
 const docker: Command<DockerOptions> = {
   name: 'docker',
   description: 'A self-sufficient runtime for containers.',
+  remarks: `
+    This is not the original Docker command or a replacement for it.
+  `,
   optionDefinitions: [
     {
       name: 'config',

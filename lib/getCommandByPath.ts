@@ -12,11 +12,11 @@ const getCommandByPath = function ({ rootCommand, commandPath }: {
     throw new errors.InvalidOperation(`Can't find root command '${commandPath[0]}', root is actually named '${rootCommand.name}'.`);
   }
 
-  for (const pathElem of commandPath.slice(1)) {
+  for (const pathElement of commandPath.slice(1)) {
     if (command.subcommands === undefined) {
       throw new errors.CommandNotFound();
     }
-    command = command.subcommands[pathElem];
+    command = command.subcommands[pathElement];
     if (command === undefined) {
       throw new errors.CommandNotFound();
     }

@@ -7,6 +7,7 @@ const addHelpCommandToCli = function <TOptions extends {}> ({ rootCommand }: {
   return {
     name: rootCommand.name,
     description: rootCommand.description,
+    remarks: rootCommand.remarks,
     optionDefinitions: [
       ...rootCommand.optionDefinitions
     ],

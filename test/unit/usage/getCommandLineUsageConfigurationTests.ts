@@ -31,6 +31,11 @@ suite('getCommandLineUsageConfiguration', (): void => {
     const command: Command<any> = {
       name: 'test',
       description: 'Test description.',
+      remarks: `
+        This is a remark.
+
+        It spans multiple lines.
+      `,
       optionDefinitions: [
         {
           name: 'test',
@@ -69,6 +74,10 @@ suite('getCommandLineUsageConfiguration', (): void => {
             typeLabel: `{underline param}`
           }
         ]
+      },
+      {
+        header: 'Remarks',
+        content: [ 'This is a remark.\n\nIt spans multiple lines.' ]
       }
     ]);
   });
