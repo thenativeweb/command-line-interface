@@ -3,7 +3,7 @@ import { CommandPath } from '../elements/CommandPath';
 import { convertOptionDefinition } from '../convertOptionDefinition';
 import { getCommandsByPath } from '../getCommandsByPath';
 import { getCommandSynopsis } from './getCommandSynopsis';
-import { stripIndent } from 'common-tags';
+import stripIndent from 'strip-indent';
 import commandLineUsage, { Section } from 'command-line-usage';
 
 const getCommandLineUsageConfiguration = function ({ rootCommand, commandPath }: {
@@ -53,7 +53,7 @@ const getCommandLineUsageConfiguration = function ({ rootCommand, commandPath }:
   if (command.remarks) {
     usage.push({
       header: 'Remarks',
-      content: [ stripIndent(command.remarks) ]
+      content: [ stripIndent(command.remarks).trim() ]
     });
   }
 
