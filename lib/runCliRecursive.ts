@@ -125,7 +125,8 @@ const runCliRecursive = async function ({
 
     handlers.commandUnknown({
       unknownCommandName: unknownCommand,
-      recommendedCommandName: recommendedCommand
+      recommendedCommandName: recommendedCommand,
+      ancestors: ancestorNames
     });
 
     // eslint-disable-next-line unicorn/no-process-exit

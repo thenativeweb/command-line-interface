@@ -203,7 +203,7 @@ await runCli({
       // ...
     },
 
-    commandUnknown ({ unknownCommandName, recommendedCommandName }) {
+    commandUnknown ({ unknownCommandName, recommendedCommandName, ancestors }) {
       // ...
     },
 

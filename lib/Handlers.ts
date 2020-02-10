@@ -8,6 +8,7 @@ export interface Handlers {
   commandUnknown: ({ unknownCommandName, recommendedCommandName }: {
     unknownCommandName: string;
     recommendedCommandName: string;
+    ancestors: string[];
   }) => void;
 
   optionInvalid: ({ optionDefinition }: {
