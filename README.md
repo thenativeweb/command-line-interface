@@ -134,7 +134,35 @@ If an option is mandatory, set the `isRequired` property to `true`. For optional
 
 If you want to give a dedicated name to the value, you can set it using the `parameterName` property. This sometimes makes sense, to e.g. show off that a parameter is not just a `string`, but a `url` or another domain-specific concept.
 
-Last but not least, you can define whether an option is the default option of a command by setting the `defaultOption` property to `true`. In this case you can skip the option's flag, and just provide its value.
+You can also define whether an option is the default option of a command by setting the `defaultOption` property to `true`. In this case you can skip the option's flag, and just provide its value.
+
+Last but not least, you may specify a `validate` function for an option definition. Inside this function you are free to do whatever you need to do to ensure that the option's given value is valid. However, if you throw an exception from within this function, command-line-interface aborts the command's execution, and shows an error message:
+
+```javascript
+const hello = {
+  name: 'hello',
+  description: 'Say hello on the command line.',
+
+  optionDefinitions: [
+    {
+      name: 'name',
+      description: 'The name to use.',
+      type: 'string',
+      alias: 'n',
+      defaultValue: 'Jane',
+      validate (value) {
+        if (value.length > 20) {
+          throw new Error('The name must be less than 20 characters.');
+        }
+      }
+    }
+  ],
+
+  handle ({ options }) {
+    console.log(`Hello ${options.name}!`);
+  }
+};
+```
 
 ### Implementing sub-commands
 
@@ -210,7 +238,7 @@ await runCli({
       // ...
     },
 
-    optionInvalid ({ optionDefinition }) {
+    optionInvalid ({ optionDefinition, reason }) {
       // ...
     },
 
