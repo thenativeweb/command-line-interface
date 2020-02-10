@@ -3,6 +3,7 @@ import commandLineCommands from 'command-line-commands';
 import { CommandPath } from './elements/CommandPath';
 import { convertOptionDefinition } from './convertOptionDefinition';
 import { GetUsageFn } from './elements/GetUsageFn';
+import { Handlers } from './Handlers';
 import { helpOption } from './commands/helpOption';
 import { RecommendCommandFn } from './elements/RecommendCommandFn';
 import { validateOptions } from './validateOptions';
@@ -11,6 +12,7 @@ import commandLineArgs, { OptionDefinition as CLAOptionDefinition } from 'comman
 const runCliRecursive = async function ({
   command,
   argv,
+  handlers,
   getUsage,
   recommendCommand,
   level,
@@ -19,6 +21,7 @@ const runCliRecursive = async function ({
 }: {
   command: Command<any>;
   argv: string[];
+  handlers: Handlers;
   getUsage: GetUsageFn;
   recommendCommand: RecommendCommandFn;
   level: number;
@@ -37,9 +40,8 @@ const runCliRecursive = async function ({
   const { _unknown, ...options } = commandLineArgs(optionDefinitionsWithHelp, { argv, stopAtFirstUnknown: true });
 
   if (options.help) {
-    /* eslint-disable no-console */
+    // eslint-disable-next-line no-console
     console.log(getUsage({ commandPath }));
-    /* eslint-enable no-console */
 
     return;
   }
@@ -49,14 +51,15 @@ const runCliRecursive = async function ({
   } catch (ex) {
     switch (ex.code) {
       case 'EOPTIONMISSING':
-      case 'EOPTIONINVALID': {
-        /* eslint-disable no-console */
-        console.error(ex.message);
-        /* eslint-enable no-console */
+        handlers.optionMissing({ optionDefinition: ex.data.optionDefinition });
 
-        /* eslint-disable unicorn/no-process-exit */
+        // eslint-disable-next-line unicorn/no-process-exit
         return process.exit(1);
-        /* eslint-enable unicorn/no-process-exit */
+      case 'EOPTIONINVALID': {
+        handlers.optionInvalid({ optionDefinition: ex.data.optionDefinition });
+
+        // eslint-disable-next-line unicorn/no-process-exit
+        return process.exit(1);
       }
       default: {
         throw ex;
@@ -78,26 +81,20 @@ const runCliRecursive = async function ({
         ancestors: ancestorNames
       });
     } catch (ex) {
-      /* eslint-disable no-console */
-      console.error(ex);
-      /* eslint-enable no-console */
+      handlers.commandFailed({ ex });
 
-      /* eslint-disable unicorn/no-process-exit */
+      // eslint-disable-next-line unicorn/no-process-exit
       return process.exit(1);
-      /* eslint-enable unicorn/no-process-exit */
     }
   }
 
   if (command.subcommands === undefined || Object.keys(command.subcommands).length === 0) {
     const unknowOption = _unknown[0];
 
-    /* eslint-disable no-console */
-    console.error(`Unknown option '${unknowOption}'.`);
-    /* eslint-enable no-console */
+    handlers.optionUnknown({ optionName: unknowOption });
 
-    /* eslint-disable unicorn/no-process-exit */
+    // eslint-disable-next-line unicorn/no-process-exit
     return process.exit(1);
-    /* eslint-enable unicorn/no-process-exit */
   }
 
   try {
@@ -115,6 +112,7 @@ const runCliRecursive = async function ({
     return await runCliRecursive({
       command: subCommand,
       argv: subArgv,
+      handlers,
       getUsage,
       recommendCommand,
       level: level + 1,
@@ -125,13 +123,14 @@ const runCliRecursive = async function ({
     const unknownCommand = _unknown[0];
     const recommendedCommand = recommendCommand({ commandPath: [ ...commandPath, unknownCommand ]});
 
-    /* eslint-disable no-console */
-    console.error(`Unknown command '${unknownCommand}'. Did you mean '${recommendedCommand}'?`);
-    /* eslint-enable no-console */
+    handlers.commandUnknown({
+      unknownCommandName: unknownCommand,
+      recommendedCommandName: recommendedCommand,
+      ancestors: ancestorNames
+    });
 
-    /* eslint-disable unicorn/no-process-exit */
+    // eslint-disable-next-line unicorn/no-process-exit
     process.exit(1);
-    /* eslint-enable unicorn/no-process-exit */
   }
 };
 

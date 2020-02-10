@@ -193,6 +193,40 @@ const hello = {
 };
 ```
 
+### Customizing handling errors
+
+By default, command-line-interface takes care of handling any errors that occur. However, sometimes you may want to customize handling errors, e.g. to format them before displaying them. For that, hand over the optional `handlers` parameter to the `runCli` function, and provide functions for the error types you want to customize:
+
+```javascript
+await runCli({
+  rootCommand: hello,
+  argv: process.argv,
+  handlers: {
+    commandFailed ({ ex }) {
+      // ...
+    },
+
+    commandUnknown ({ unknownCommandName, recommendedCommandName, ancestors }) {
+      // ...
+    },
+
+    optionInvalid ({ optionDefinition }) {
+      // ...
+    },
+
+    optionMissing ({ optionDefinition }) {
+      // ...
+    },
+
+    optionUnknown ({ optionName }) {
+      // ...
+    }
+  }
+});
+```
+
+*Please note that if you do not provide all handlers, the remaining ones stick to the default behavior.*
+
 ## Running the build
 
 To build this module use [roboter](https://www.npmjs.com/package/roboter).

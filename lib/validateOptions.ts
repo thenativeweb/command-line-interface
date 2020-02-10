@@ -13,7 +13,9 @@ const validateOptions = function ({ options, optionDefinitions }: {
     const optionRequired = optionDefinition.isRequired ?? false;
 
     if (optionRequired && value === undefined) {
-      throw new errors.OptionMissing(`Option '${optionDefinition.name}' is missing.`);
+      throw new errors.OptionMissing(`Option '${optionDefinition.name}' is missing.`, {
+        data: { optionDefinition }
+      });
     }
 
     switch (optionDefinition.type) {
@@ -25,7 +27,9 @@ const validateOptions = function ({ options, optionDefinitions }: {
       }
       case 'number': {
         if (typeof value !== 'number' || Number.isNaN(value)) {
-          throw new errors.OptionInvalid(`Option '${optionDefinition.name}' must be a number.`);
+          throw new errors.OptionInvalid(`Option '${optionDefinition.name}' must be a number.`, {
+            data: { optionDefinition }
+          });
         }
         break;
       }
