@@ -1,3 +1,10 @@
+# [3.4.0](https://github.com/thenativeweb/command-line-interface/compare/3.3.0...3.4.0) (2020-02-10)
+
+
+### Features
+
+* Support remarks on commands. ([#31](https://github.com/thenativeweb/command-line-interface/issues/31)) ([a0074ae](https://github.com/thenativeweb/command-line-interface/commit/a0074aee4368f23d74df14f21361b3efcf1a9e04))
+
 # [3.3.0](https://github.com/thenativeweb/command-line-interface/compare/3.2.2...3.3.0) (2020-02-10)
 
 
