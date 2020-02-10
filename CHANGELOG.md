@@ -1,3 +1,10 @@
+# [3.3.0](https://github.com/thenativeweb/command-line-interface/compare/3.2.2...3.3.0) (2020-02-10)
+
+
+### Features
+
+* Add custom error handlers. ([#30](https://github.com/thenativeweb/command-line-interface/issues/30)) ([1b3e5e7](https://github.com/thenativeweb/command-line-interface/commit/1b3e5e7bf26134643c7a94b1bf9cc33a1fc2d4e4))
+
 ## [3.2.2](https://github.com/thenativeweb/command-line-interface/compare/3.2.1...3.2.2) (2020-02-07)
 
 
