@@ -37,6 +37,16 @@ const validateOptions = function ({ options, optionDefinitions }: {
         throw new errors.InvalidOperation();
       }
     }
+
+    if (optionDefinition.validate) {
+      try {
+        optionDefinition.validate(value);
+      } catch (ex) {
+        throw new errors.OptionInvalid(ex.message, {
+          data: { optionDefinition }
+        });
+      }
+    }
   }
 };
 

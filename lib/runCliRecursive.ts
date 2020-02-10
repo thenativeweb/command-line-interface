@@ -56,7 +56,7 @@ const runCliRecursive = async function ({
         // eslint-disable-next-line unicorn/no-process-exit
         return process.exit(1);
       case 'EOPTIONINVALID': {
-        handlers.optionInvalid({ optionDefinition: ex.data.optionDefinition });
+        handlers.optionInvalid({ optionDefinition: ex.data.optionDefinition, reason: ex.message });
 
         // eslint-disable-next-line unicorn/no-process-exit
         return process.exit(1);

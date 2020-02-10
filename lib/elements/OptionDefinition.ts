@@ -8,4 +8,5 @@ export interface OptionDefinition {
   defaultValue?: any;
   parameterName?: string;
   isRequired?: boolean;
+  validate?: (value: any) => void;
 }
