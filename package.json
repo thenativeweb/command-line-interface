@@ -32,7 +32,7 @@
     "assertthat": "5.1.0",
     "record-stdstreams": "3.0.0",
     "roboter": "11.0.20",
-    "semantic-release-configuration": "1.0.16",
+    "semantic-release-configuration": "1.0.17",
     "sinon": "8.1.1"
   },
   "repository": {
