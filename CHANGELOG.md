@@ -1,3 +1,10 @@
+## [3.5.1](https://github.com/thenativeweb/command-line-interface/compare/3.5.0...3.5.1) (2020-02-14)
+
+
+### Bug Fixes
+
+* Only validate optional options if a value is given. ([#39](https://github.com/thenativeweb/command-line-interface/issues/39)) ([3dfe62e](https://github.com/thenativeweb/command-line-interface/commit/3dfe62e2fa1292e9bb32ad3d5877c708aac02bbf))
+
 # [3.5.0](https://github.com/thenativeweb/command-line-interface/compare/3.4.0...3.5.0) (2020-02-10)
 
 
