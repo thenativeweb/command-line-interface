@@ -38,7 +38,7 @@ const validateOptions = function ({ options, optionDefinitions }: {
       }
     }
 
-    if (optionDefinition.validate) {
+    if (value !== undefined && optionDefinition.validate) {
       try {
         optionDefinition.validate(value);
       } catch (ex) {
