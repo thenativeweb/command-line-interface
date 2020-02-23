@@ -1,3 +1,10 @@
+# [3.6.0](https://github.com/thenativeweb/command-line-interface/compare/3.5.1...3.6.0) (2020-02-23)
+
+
+### Features
+
+* Export Handlers interface. ([7158fca](https://github.com/thenativeweb/command-line-interface/commit/7158fcacff0a840904f76fe0bd8093580571a62e))
+
 ## [3.5.1](https://github.com/thenativeweb/command-line-interface/compare/3.5.0...3.5.1) (2020-02-14)
 
 
