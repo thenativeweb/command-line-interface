@@ -29,7 +29,7 @@
     "@types/common-tags": "1.8.0",
     "@types/sinon": "7.5.2",
     "@types/string-similarity": "3.0.0",
-    "assertthat": "5.1.0",
+    "assertthat": "5.1.1",
     "record-stdstreams": "3.0.0",
     "roboter": "11.1.14",
     "semantic-release-configuration": "1.0.18",
