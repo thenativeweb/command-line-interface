@@ -1,3 +1,10 @@
+## [3.6.2](https://github.com/thenativeweb/command-line-interface/compare/3.6.1...3.6.2) (2020-08-04)
+
+
+### Bug Fixes
+
+* bump string-similarity from 4.0.1 to 4.0.2 ([#108](https://github.com/thenativeweb/command-line-interface/issues/108)) ([3939d42](https://github.com/thenativeweb/command-line-interface/commit/3939d42d804a1f82eaff16ba057febd97007ee98))
+
 ## [3.6.1](https://github.com/thenativeweb/command-line-interface/compare/3.6.0...3.6.1) (2020-07-13)
 
 
