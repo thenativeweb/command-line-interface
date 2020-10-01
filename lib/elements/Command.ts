@@ -1,7 +1,8 @@
 import { CommandHandle } from './CommandHandle';
 import { OptionDefinition } from './OptionDefinition';
 
-export interface Command<TOptions extends {}> {
+// eslint-disable-next-line @typescript-eslint/ban-types
+export interface Command<TOptions extends object> {
   name: string;
 
   description: string;

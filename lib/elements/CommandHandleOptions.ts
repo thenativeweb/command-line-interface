@@ -1,7 +1,8 @@
 import { CommandPath } from './CommandPath';
 import { GetUsageFn } from './GetUsageFn';
 
-export interface CommandHandleOptions<TOptions extends {}> {
+// eslint-disable-next-line @typescript-eslint/ban-types
+export interface CommandHandleOptions<TOptions extends object> {
   options: TOptions;
   getUsage: GetUsageFn;
   level: number;

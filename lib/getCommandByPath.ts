@@ -17,6 +17,7 @@ const getCommandByPath = function ({ rootCommand, commandPath }: {
       throw new errors.CommandNotFound();
     }
     command = command.subcommands[pathElement];
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (command === undefined) {
       throw new errors.CommandNotFound();
     }
