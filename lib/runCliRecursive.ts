@@ -2,6 +2,7 @@ import { Command } from './elements/Command';
 import commandLineCommands from 'command-line-commands';
 import { CommandPath } from './elements/CommandPath';
 import { convertOptionDefinition } from './convertOptionDefinition';
+import { CustomError } from 'defekt';
 import { GetUsageFn } from './elements/GetUsageFn';
 import { Handlers } from './Handlers';
 import { helpOption } from './commands/helpOption';
@@ -37,6 +38,7 @@ const runCliRecursive = async function ({
     helpOption
   ];
 
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   const { _unknown, ...options } = commandLineArgs(optionDefinitionsWithHelp, { argv, stopAtFirstUnknown: true });
 
   if (options.help) {
@@ -48,15 +50,15 @@ const runCliRecursive = async function ({
 
   try {
     validateOptions({ options, optionDefinitions: command.optionDefinitions });
-  } catch (ex) {
-    switch (ex.code) {
+  } catch (ex: unknown) {
+    switch ((ex as CustomError).code) {
       case 'EOPTIONMISSING':
-        handlers.optionMissing({ optionDefinition: ex.data.optionDefinition });
+        handlers.optionMissing({ optionDefinition: (ex as CustomError).data.optionDefinition });
 
         // eslint-disable-next-line unicorn/no-process-exit
         return process.exit(1);
       case 'EOPTIONINVALID': {
-        handlers.optionInvalid({ optionDefinition: ex.data.optionDefinition, reason: ex.message });
+        handlers.optionInvalid({ optionDefinition: (ex as CustomError).data.optionDefinition, reason: (ex as CustomError).message });
 
         // eslint-disable-next-line unicorn/no-process-exit
         return process.exit(1);
@@ -80,7 +82,7 @@ const runCliRecursive = async function ({
         level,
         ancestors: ancestorNames
       });
-    } catch (ex) {
+    } catch (ex: unknown) {
       handlers.commandFailed({ ex });
 
       // eslint-disable-next-line unicorn/no-process-exit

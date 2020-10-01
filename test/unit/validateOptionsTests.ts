@@ -80,7 +80,7 @@ suite('validateOptions', (): void => {
 
     test('throws an exception if a number option is NaN.', async (): Promise<void> => {
       const options = {
-        option: NaN
+        option: Number.NaN
       };
       const optionDefinitions: OptionDefinition[] = [
         {

@@ -1,3 +1,4 @@
+import { CustomError } from 'defekt';
 import { errors } from './errors';
 import { OptionDefinition } from './elements/OptionDefinition';
 
@@ -41,8 +42,8 @@ const validateOptions = function ({ options, optionDefinitions }: {
     if (value !== undefined && optionDefinition.validate) {
       try {
         optionDefinition.validate(value);
-      } catch (ex) {
-        throw new errors.OptionInvalid(ex.message, {
+      } catch (ex: unknown) {
+        throw new errors.OptionInvalid((ex as CustomError).message, {
           data: { optionDefinition }
         });
       }

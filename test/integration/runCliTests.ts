@@ -328,7 +328,7 @@ suite('Cli', (): void => {
             handlers: {
               commandFailed ({ ex }): void {
                 // eslint-disable-next-line no-console
-                console.error(ex.message.toUpperCase());
+                console.error((ex as Error).message.toUpperCase());
               }
             }
           });

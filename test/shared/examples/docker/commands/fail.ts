@@ -1,6 +1,6 @@
 import { Command } from '../../../../../lib';
 
-const fail: Command<{}> = {
+const fail: Command<Record<string, unknown>> = {
   name: 'fail',
   description: 'Fails.',
   optionDefinitions: [],
