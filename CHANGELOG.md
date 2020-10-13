@@ -1,3 +1,10 @@
+## [3.6.3](https://github.com/thenativeweb/command-line-interface/compare/3.6.2...3.6.3) (2020-10-13)
+
+
+### Bug Fixes
+
+* Accept missing, non-required number options. ([#157](https://github.com/thenativeweb/command-line-interface/issues/157)) ([3ca7e5a](https://github.com/thenativeweb/command-line-interface/commit/3ca7e5a690744ee6f1099f3ec0552ce74374fdf8))
+
 ## [3.6.2](https://github.com/thenativeweb/command-line-interface/compare/3.6.1...3.6.2) (2020-08-04)
 
 

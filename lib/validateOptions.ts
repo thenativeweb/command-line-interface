@@ -27,6 +27,10 @@ const validateOptions = function ({ options, optionDefinitions }: {
         break;
       }
       case 'number': {
+        if (!optionRequired && value === undefined) {
+          break;
+        }
+
         if (typeof value !== 'number' || Number.isNaN(value)) {
           throw new errors.OptionInvalid(`Option '${optionDefinition.name}' must be a number.`, {
             data: { optionDefinition }
