@@ -1,6 +1,6 @@
 import { assert } from 'assertthat';
 import { CustomError } from 'defekt';
-import { OptionDefinition } from '../../lib/elements/OptionDefinition';
+import { OptionDefinition } from '../../lib';
 import { validateOptions } from 'lib/validateOptions';
 
 suite('validateOptions', (): void => {
@@ -70,6 +70,23 @@ suite('validateOptions', (): void => {
         {
           name: 'option',
           type: 'number'
+        }
+      ];
+
+      assert.that((): void => {
+        validateOptions({ options, optionDefinitions });
+      }).is.not.throwing();
+    });
+
+    test('accepts a missing, non-required number.', async (): Promise<void> => {
+      const options = {
+        option: undefined
+      };
+      const optionDefinitions: OptionDefinition[] = [
+        {
+          name: 'option',
+          type: 'number',
+          isRequired: false
         }
       ];
 
