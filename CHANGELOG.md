@@ -1,3 +1,10 @@
+## [3.6.4](https://github.com/thenativeweb/command-line-interface/compare/3.6.3...3.6.4) (2020-10-14)
+
+
+### Bug Fixes
+
+* bump defekt from 5.1.0 to 5.2.0 ([#159](https://github.com/thenativeweb/command-line-interface/issues/159)) ([67cd9e0](https://github.com/thenativeweb/command-line-interface/commit/67cd9e0caa8786bbe2d3eb6a1f00ee040ae9bc19))
+
 ## [3.6.3](https://github.com/thenativeweb/command-line-interface/compare/3.6.2...3.6.3) (2020-10-13)
 
 
