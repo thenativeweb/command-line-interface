@@ -20,7 +20,7 @@
     "@types/command-line-usage": "5.0.1",
     "@types/string-similarity": "3.0.0",
     "command-line-args": "5.1.1",
-    "command-line-commands": "3.0.1",
+    "command-line-commands": "3.0.2",
     "command-line-usage": "6.1.0",
     "defekt": "5.2.1",
     "string-similarity": "4.0.2",
