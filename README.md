@@ -255,7 +255,7 @@ await runCli({
 
 *Please note that if you do not provide all handlers, the remaining ones stick to the default behavior.*
 
-## Running the quality assurance
+## Running quality assurance
 
 To build this module use [roboter](https://www.npmjs.com/package/roboter).
 
