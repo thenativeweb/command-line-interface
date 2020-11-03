@@ -1,3 +1,10 @@
+## [3.6.7](https://github.com/thenativeweb/command-line-interface/compare/3.6.6...3.6.7) (2020-11-03)
+
+
+### Bug Fixes
+
+* Fix headline for robot section in readme. ([#173](https://github.com/thenativeweb/command-line-interface/issues/173)) ([957a8a2](https://github.com/thenativeweb/command-line-interface/commit/957a8a2bc919f10ff83b487f91e75c0ced21c64c))
+
 ## [3.6.6](https://github.com/thenativeweb/command-line-interface/compare/3.6.5...3.6.6) (2020-11-02)
 
 
