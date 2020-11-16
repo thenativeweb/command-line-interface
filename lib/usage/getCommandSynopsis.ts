@@ -34,11 +34,9 @@ const getCommandSynopsis = function ({ command }: {
   }
 
   if (defaultOption) {
-    if (defaultOption.isRequired) {
-      synopsis += ` ${optionToString({ option: defaultOption })}`;
-    } else {
-      synopsis += ` [${optionToString({ option: defaultOption })}]`;
-    }
+    synopsis += defaultOption.isRequired ?
+      ` ${optionToString({ option: defaultOption })}` :
+      ` [${optionToString({ option: defaultOption })}]`;
   }
 
   return synopsis;
