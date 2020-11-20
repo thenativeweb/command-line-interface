@@ -1,3 +1,10 @@
+## [3.6.12](https://github.com/thenativeweb/command-line-interface/compare/3.6.11...3.6.12) (2020-11-20)
+
+
+### Bug Fixes
+
+* Update README.md with working multiple:on parameter example. ([#200](https://github.com/thenativeweb/command-line-interface/issues/200)) ([cfa255f](https://github.com/thenativeweb/command-line-interface/commit/cfa255f2be4a572739f345f69ef3839c610efc02))
+
 ## [3.6.11](https://github.com/thenativeweb/command-line-interface/compare/3.6.10...3.6.11) (2020-11-09)
 
 
