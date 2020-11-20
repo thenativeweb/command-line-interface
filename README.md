@@ -121,7 +121,7 @@ Additionally, you may provide a `description` and an `alias`. While the former i
 Sometimes it make sense to allow providing an option more than once. For that, add the `multiple` option to the option definitions, and set it to `on`. This lets you provide the appropriate option value multiple times on the command line:
 
 ```shell
-$ node.js app.js --name Jane,Jenny
+$ node.js app.js --name Jane Jenny
 ```
 
 If instead you want to provide multiple values, but with an individual flag each, set it to `lazy`:
