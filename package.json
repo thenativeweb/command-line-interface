@@ -27,7 +27,7 @@
     "strip-indent": "3.0.0"
   },
   "devDependencies": {
-    "@types/sinon": "9.0.8",
+    "@types/sinon": "9.0.9",
     "assertthat": "5.2.1",
     "record-stdstreams": "3.0.29",
     "roboter": "11.5.11",
