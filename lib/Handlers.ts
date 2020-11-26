@@ -2,7 +2,7 @@ import { OptionDefinition } from './elements/OptionDefinition';
 
 export interface Handlers {
   commandFailed: ({ ex }: {
-    ex: unknown;
+    ex: Error;
   }) => void;
 
   commandUnknown: ({ unknownCommandName, recommendedCommandName }: {

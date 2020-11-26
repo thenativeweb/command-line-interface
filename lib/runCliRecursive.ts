@@ -2,10 +2,10 @@ import { Command } from './elements/Command';
 import commandLineCommands from 'command-line-commands';
 import { CommandPath } from './elements/CommandPath';
 import { convertOptionDefinition } from './convertOptionDefinition';
-import { CustomError } from 'defekt';
 import { GetUsageFn } from './elements/GetUsageFn';
 import { Handlers } from './Handlers';
 import { helpOption } from './commands/helpOption';
+import { isCustomError } from 'defekt';
 import { RecommendCommandFn } from './elements/RecommendCommandFn';
 import { validateOptions } from './validateOptions';
 import commandLineArgs, { OptionDefinition as CLAOptionDefinition } from 'command-line-args';
@@ -51,14 +51,18 @@ const runCliRecursive = async function ({
   try {
     validateOptions({ options, optionDefinitions: command.optionDefinitions });
   } catch (ex: unknown) {
-    switch ((ex as CustomError).code) {
+    if (!isCustomError(ex)) {
+      throw ex;
+    }
+
+    switch (ex.code) {
       case 'EOPTIONMISSING':
-        handlers.optionMissing({ optionDefinition: (ex as CustomError).data.optionDefinition });
+        handlers.optionMissing({ optionDefinition: ex.data.optionDefinition });
 
         // eslint-disable-next-line unicorn/no-process-exit
         return process.exit(1);
       case 'EOPTIONINVALID': {
-        handlers.optionInvalid({ optionDefinition: (ex as CustomError).data.optionDefinition, reason: (ex as CustomError).message });
+        handlers.optionInvalid({ optionDefinition: ex.data.optionDefinition, reason: ex.message });
 
         // eslint-disable-next-line unicorn/no-process-exit
         return process.exit(1);
@@ -83,7 +87,7 @@ const runCliRecursive = async function ({
         ancestors: ancestorNames
       });
     } catch (ex: unknown) {
-      handlers.commandFailed({ ex });
+      handlers.commandFailed({ ex: ex as Error });
 
       // eslint-disable-next-line unicorn/no-process-exit
       return process.exit(1);
