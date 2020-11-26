@@ -22,7 +22,7 @@
     "command-line-args": "5.1.1",
     "command-line-commands": "3.0.2",
     "command-line-usage": "6.1.1",
-    "defekt": "6.0.0",
+    "defekt": "6.0.1",
     "string-similarity": "4.0.3",
     "strip-indent": "3.0.0"
   },
