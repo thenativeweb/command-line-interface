@@ -204,7 +204,7 @@ All the flags that are given on the command line to the parent command are hande
 
 By default, all commands automatically come with a `--help` flag. Additionally, every application automatically gets a dedicated `help` command that you can use to show help for each command.
 
-Sometimes you may want to show the usage manually from within a command. For that, add the parameters `getUsage` and `ancestors` to your `handle` function, run the `getUsage` function and hand over an array containing the path to the name of the current command. You may use the `ancestors` array to get the list of names of the parent commands:
+Sometimes you may want to show the usage manually from within a command. For that, add the parameters `getUsage` and `ancestors` to your `handle` function, run the `getUsage` function and hand over an object with the property `commandPath` containing an array with the path to the name of the current command. You may use the `ancestors` array to get the list of names of the parent commands:
 
 ```javascript
 const hello = {
@@ -216,7 +216,9 @@ const hello = {
   ],
 
   handle ({ options, getUsage, ancestors }) {
-    console.log(getUsage([ ...ancestors, 'hello' ]));
+    console.log(getUsage(
+      { commandPath: [ ...ancestors, 'hello' ] }
+    ));
   }
 };
 ```
