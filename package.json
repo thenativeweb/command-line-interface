@@ -10,6 +10,10 @@
     {
       "name": "Hannes Leutloff",
       "email": "hannes.leutloff@thenativeweb.io"
+    },
+    {
+      "name": "David Losert",
+      "email": "david@david-losert.com"
     }
   ],
   "main": "build/lib/index.js",
