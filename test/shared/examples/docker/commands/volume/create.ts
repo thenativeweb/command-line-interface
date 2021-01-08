@@ -22,7 +22,7 @@ const create: Command<CreateOptions> = {
       description: 'Set driver specific options.',
       type: 'string',
       alias: 'o',
-      multiple: 'on',
+      multiple: true,
       defaultValue: []
     },
     {

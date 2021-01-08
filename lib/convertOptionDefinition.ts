@@ -30,8 +30,7 @@ const convertOptionDefinition = function ({ optionDefinition }: {
     alias: optionDefinition.alias,
     defaultOption: optionDefinition.defaultOption,
     defaultValue: optionDefinition.defaultValue,
-    multiple: optionDefinition.multiple === 'on',
-    lazyMultiple: optionDefinition.multiple === 'lazy',
+    lazyMultiple: optionDefinition.multiple === true,
     type
   };
 };

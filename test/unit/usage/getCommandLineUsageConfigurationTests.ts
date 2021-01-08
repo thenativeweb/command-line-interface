@@ -41,7 +41,7 @@ suite('getCommandLineUsageConfiguration', (): void => {
           name: 'test',
           defaultOption: true,
           parameterName: 'param',
-          multiple: 'on',
+          multiple: true,
           type: 'string'
         }
       ],
@@ -69,8 +69,7 @@ suite('getCommandLineUsageConfiguration', (): void => {
             alias: undefined,
             defaultOption: true,
             defaultValue: undefined,
-            multiple: true,
-            lazyMultiple: false,
+            lazyMultiple: true,
             typeLabel: `{underline param}`
           }
         ]
@@ -91,7 +90,7 @@ suite('getCommandLineUsageConfiguration', (): void => {
           name: 'test',
           defaultOption: true,
           parameterName: 'param',
-          multiple: 'on',
+          multiple: true,
           type: 'string'
         }
       ],
@@ -129,8 +128,7 @@ suite('getCommandLineUsageConfiguration', (): void => {
             alias: undefined,
             defaultOption: true,
             defaultValue: undefined,
-            multiple: true,
-            lazyMultiple: false,
+            lazyMultiple: true,
             typeLabel: `{underline param}`
           }
         ]

@@ -22,7 +22,7 @@ const rm: Command<RmOptions> = {
       name: 'image',
       description: '',
       type: 'string',
-      multiple: 'on',
+      multiple: true,
       defaultOption: true
     }
   ],

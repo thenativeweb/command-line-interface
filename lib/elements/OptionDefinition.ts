@@ -3,7 +3,7 @@ export interface OptionDefinition {
   type: 'boolean' | 'number' | 'string';
   description?: string;
   alias?: string;
-  multiple?: 'off' | 'on' | 'lazy';
+  multiple?: boolean;
   defaultOption?: boolean;
   defaultValue?: any;
   parameterName?: string;

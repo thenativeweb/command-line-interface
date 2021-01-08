@@ -111,7 +111,7 @@ suite('getCommandSynopsis', (): void => {
           {
             name: 'format',
             type: 'string',
-            multiple: 'on',
+            multiple: true,
             isRequired: true
           }
         ],
@@ -122,7 +122,7 @@ suite('getCommandSynopsis', (): void => {
 
       const synopsis = getCommandSynopsis({ command });
 
-      assert.that(synopsis).is.equalTo('test --format {underline string[]}');
+      assert.that(synopsis).is.equalTo('test --format {underline string} [--format ...]');
     });
 
     test('a required string parameter with parameter name.', async (): Promise<void> => {
@@ -198,7 +198,7 @@ suite('getCommandSynopsis', (): void => {
           {
             name: 'format',
             type: 'number',
-            multiple: 'on',
+            multiple: true,
             isRequired: true
           }
         ],
@@ -209,7 +209,7 @@ suite('getCommandSynopsis', (): void => {
 
       const synopsis = getCommandSynopsis({ command });
 
-      assert.that(synopsis).is.equalTo('test --format {underline number[]}');
+      assert.that(synopsis).is.equalTo('test --format {underline number} [--format ...]');
     });
 
     test('a required number parameter with parameter name.', async (): Promise<void> => {
