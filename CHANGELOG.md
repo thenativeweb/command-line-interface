@@ -1,3 +1,18 @@
+# [4.0.0](https://github.com/thenativeweb/command-line-interface/compare/3.6.16...4.0.0) (2021-01-08)
+
+
+### Bug Fixes
+
+* Remove ambiguity of multiple-options by not using "greedy" options. ([#247](https://github.com/thenativeweb/command-line-interface/issues/247)) ([66b8221](https://github.com/thenativeweb/command-line-interface/commit/66b8221618c6220be7b0f11d265719d58cff76f0))
+
+
+### BREAKING CHANGES
+
+* This changes the type of the `multiple` field in the type
+`OptionDefinition`. It also changes its behavior. "multiple-options" new
+have to be preceded by their option name each time they are given (unless they are
+default options).
+
 ## [3.6.16](https://github.com/thenativeweb/command-line-interface/compare/3.6.15...3.6.16) (2021-01-06)
 
 
