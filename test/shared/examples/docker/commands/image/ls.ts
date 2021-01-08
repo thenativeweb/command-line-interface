@@ -46,7 +46,7 @@ const ls: Command<LsOptions> = {
       name: 'image',
       description: '',
       type: 'string',
-      multiple: 'on',
+      multiple: true,
       defaultOption: true,
       isRequired: true,
       parameterName: 'IMAGE'

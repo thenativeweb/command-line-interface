@@ -118,13 +118,7 @@ As you have already seen, you can define options for commands. An option needs t
 
 Additionally, you may provide a `description` and an `alias`. While the former is used when printing the usage, the latter is used to give a single-character alias for an otherwise lengthy option. You have seen this with the alias `n` for the option `name` in the examples above.
 
-Sometimes it make sense to allow providing an option more than once. For that, add the `multiple` option to the option definitions, and set it to `on`. This lets you provide the appropriate option value multiple times on the command line:
-
-```shell
-$ node.js app.js --name Jane Jenny
-```
-
-If instead you want to provide multiple values, but with an individual flag each, set it to `lazy`:
+Sometimes it make sense to allow providing an option more than once. For that, add the `multiple` option to the option definitions, and set it to `true`. This lets you provide the appropriate option value multiple times on the command line:
 
 ```shell
 $ node.js app.js --name Jane --name Jenny

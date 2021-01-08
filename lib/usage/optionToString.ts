@@ -1,17 +1,16 @@
-import { OptionDefinition } from '../elements/OptionDefinition';
+import { OptionDefinition } from '..';
 
 const optionToString = ({ option }: {
   option: OptionDefinition;
 }): string => {
+  const optionSegment = option.defaultOption ? `[--${option.name}]` : `--${option.name}`;
+
   const parameterName = option.parameterName ?? option.type;
-  const multiplier = option.multiple === undefined || option.multiple === 'off' ? '' : '[]';
-  const parameterDescription = option.type === 'boolean' ? '' : `{underline ${parameterName}${multiplier}}`;
+  const parameterDescriptionSegment = option.type === 'boolean' ? '' : `{underline ${parameterName}}`;
 
-  if (option.defaultOption) {
-    return `[--${option.name}] ${parameterDescription}`;
-  }
+  const multiplierSegment = !option.multiple ? '' : `[${optionSegment} ...]`;
 
-  return `--${option.name}${parameterDescription ? ' ' : ''}${parameterDescription}`;
+  return `${optionSegment} ${parameterDescriptionSegment} ${multiplierSegment}`.replace(/ +/gu, ' ').trim();
 };
 
 export { optionToString };
