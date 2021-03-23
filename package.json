@@ -36,7 +36,7 @@
     "record-stdstreams": "3.0.46",
     "roboter": "11.6.25",
     "semantic-release-configuration": "1.0.36",
-    "sinon": "9.2.4"
+    "sinon": "10.0.0"
   },
   "repository": {
     "type": "git",
