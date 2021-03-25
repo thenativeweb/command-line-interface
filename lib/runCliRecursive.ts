@@ -9,6 +9,7 @@ import { helpOption } from './commands/helpOption';
 import { RecommendCommandFn } from './elements/RecommendCommandFn';
 import { validateOptions } from './validateOptions';
 import commandLineArgs, { OptionDefinition as CLAOptionDefinition } from 'command-line-args';
+import * as errors from './errors';
 
 const runCliRecursive = async function ({
   command,
@@ -52,12 +53,12 @@ const runCliRecursive = async function ({
     validateOptions({ options, optionDefinitions: command.optionDefinitions });
   } catch (ex: unknown) {
     switch ((ex as CustomError).code) {
-      case 'EOPTIONMISSING':
+      case errors.OptionMissing.code:
         handlers.optionMissing({ optionDefinition: (ex as CustomError).data.optionDefinition });
 
         // eslint-disable-next-line unicorn/no-process-exit
         return process.exit(1);
-      case 'EOPTIONINVALID': {
+      case errors.OptionInvalid.code: {
         handlers.optionInvalid({ optionDefinition: (ex as CustomError).data.optionDefinition, reason: (ex as CustomError).message });
 
         // eslint-disable-next-line unicorn/no-process-exit

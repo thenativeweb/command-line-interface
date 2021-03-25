@@ -1,6 +1,6 @@
 import { OptionDefinition as CLAOptionDefinition } from 'command-line-args';
-import { errors } from './errors';
 import { OptionDefinition } from './elements/OptionDefinition';
+import * as errors from './errors';
 
 const convertOptionDefinition = function ({ optionDefinition }: {
   optionDefinition: OptionDefinition;

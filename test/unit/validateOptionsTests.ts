@@ -2,6 +2,7 @@ import { assert } from 'assertthat';
 import { CustomError } from 'defekt';
 import { OptionDefinition } from '../../lib';
 import { validateOptions } from 'lib/validateOptions';
+import * as errors from '../../lib/errors';
 
 suite('validateOptions', (): void => {
   suite('required', (): void => {
@@ -21,7 +22,7 @@ suite('validateOptions', (): void => {
         validateOptions({ options, optionDefinitions });
       }).is.throwing((ex): boolean =>
         ex.message === `Option 'option' is missing.` &&
-        (ex as CustomError).code === 'EOPTIONMISSING');
+        (ex as CustomError).code === errors.OptionMissing.code);
     });
   });
 
@@ -110,7 +111,7 @@ suite('validateOptions', (): void => {
         validateOptions({ options, optionDefinitions });
       }).is.throwing((ex): boolean =>
         ex.message === `Option 'option' must be a number.` &&
-        (ex as CustomError).code === 'EOPTIONINVALID');
+        (ex as CustomError).code === errors.OptionInvalid.code);
     });
   });
 
@@ -134,7 +135,7 @@ suite('validateOptions', (): void => {
         validateOptions({ options, optionDefinitions });
       }).is.throwing((ex): boolean =>
         ex.message === `Invalid value.` &&
-        (ex as CustomError).code === 'EOPTIONINVALID');
+        (ex as CustomError).code === errors.OptionInvalid.code);
     });
 
     test('does not throw an exception for required options if validate succeeds.', async (): Promise<void> => {
@@ -176,7 +177,7 @@ suite('validateOptions', (): void => {
         validateOptions({ options, optionDefinitions });
       }).is.throwing((ex): boolean =>
         ex.message === `Invalid value.` &&
-        (ex as CustomError).code === 'EOPTIONINVALID');
+        (ex as CustomError).code === errors.OptionInvalid.code);
     });
 
     test('does not throw an exception for optional options if the value is missing.', async (): Promise<void> => {

@@ -2,6 +2,7 @@ import { assert } from 'assertthat';
 import { Command } from '../../lib/elements/Command';
 import { CustomError } from 'defekt';
 import { getCommandByPath } from '../../lib/getCommandByPath';
+import * as errors from '../../lib/errors';
 
 suite('getCommandByPath', (): void => {
   const rootCommand: Command<any> = {
@@ -94,7 +95,7 @@ suite('getCommandByPath', (): void => {
 
     assert.that((): any => getCommandByPath({ rootCommand, commandPath })).
       is.throwing(
-        (ex): boolean => (ex as CustomError).code === 'EINVALIDOPERATION'
+        (ex): boolean => (ex as CustomError).code === errors.InvalidOperation.code
       );
   });
 
@@ -103,7 +104,7 @@ suite('getCommandByPath', (): void => {
 
     assert.that((): any => getCommandByPath({ rootCommand, commandPath })).
       is.throwing(
-        (ex): boolean => (ex as CustomError).code === 'ECOMMANDNOTFOUND'
+        (ex): boolean => (ex as CustomError).code === errors.CommandNotFound.code
       );
   });
 
@@ -112,7 +113,7 @@ suite('getCommandByPath', (): void => {
 
     assert.that((): any => getCommandByPath({ rootCommand, commandPath })).
       is.throwing(
-        (ex): boolean => (ex as CustomError).code === 'ECOMMANDNOTFOUND'
+        (ex): boolean => (ex as CustomError).code === errors.CommandNotFound.code
       );
   });
 });

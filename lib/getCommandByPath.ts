@@ -1,6 +1,6 @@
 import { Command } from './elements/Command';
 import { CommandPath } from './elements/CommandPath';
-import { errors } from './errors';
+import * as errors from './errors';
 
 const getCommandByPath = function ({ rootCommand, commandPath }: {
   rootCommand: Command<any>;
