@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@types/sinon": "9.0.11",
-    "assertthat": "5.2.1",
+    "assertthat": "5.2.6",
     "record-stdstreams": "3.0.46",
     "roboter": "11.6.30",
     "semantic-release-configuration": "1.0.36",
