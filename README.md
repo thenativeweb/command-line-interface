@@ -9,7 +9,7 @@ command-line-interface is a foundation for CLI applications.
 | Version          | [![npm](https://img.shields.io/npm/v/command-line-interface)](https://www.npmjs.com/package/command-line-interface) |
 | Dependencies     | ![David](https://img.shields.io/david/thenativeweb/command-line-interface)                                          |
 | Dev dependencies | ![David](https://img.shields.io/david/dev/thenativeweb/command-line-interface)                                      |
-| Build            | ![GitHub Actions](https://github.com/thenativeweb/command-line-interface/workflows/Release/badge.svg?branch=master) |
+| Build            | ![GitHub Actions](https://github.com/thenativeweb/command-line-interface/workflows/Release/badge.svg?branch=main) |
 | License          | ![GitHub](https://img.shields.io/github/license/thenativeweb/command-line-interface)                                |
 
 ## Installation
