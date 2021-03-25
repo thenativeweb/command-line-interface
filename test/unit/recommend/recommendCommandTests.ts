@@ -2,6 +2,7 @@ import { assert } from 'assertthat';
 import { Command } from '../../../lib/elements/Command';
 import { CustomError } from 'defekt';
 import { recommendCommand } from '../../../lib/recommend/recommendCommand';
+import * as errors from '../../../lib/errors';
 
 suite('recommendCommand', (): void => {
   const rootCommand: Command<any> = {
@@ -44,7 +45,7 @@ suite('recommendCommand', (): void => {
 
     assert.that((): any => recommendCommand({ rootCommand, commandPath })).
       is.throwing(
-        (ex): boolean => (ex as CustomError).code === 'ENOSUGGESTIONAVAILABLE'
+        (ex): boolean => (ex as CustomError).code === errors.NoSuggestionAvailable.code
       );
   });
 });

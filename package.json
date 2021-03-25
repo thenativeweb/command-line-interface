@@ -14,6 +14,10 @@
     {
       "name": "David Losert",
       "email": "david@david-losert.com"
+    },
+    {
+      "name": "Noah Hummel",
+      "email": "noah.hummel@thenativeweb.io"
     }
   ],
   "main": "build/lib/index.js",
@@ -26,7 +30,7 @@
     "command-line-args": "5.1.1",
     "command-line-commands": "3.0.2",
     "command-line-usage": "6.1.1",
-    "defekt": "6.0.2",
+    "defekt": "7.0.4",
     "string-similarity": "4.0.4",
     "strip-indent": "3.0.0"
   },

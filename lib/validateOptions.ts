@@ -1,6 +1,6 @@
 import { CustomError } from 'defekt';
-import { errors } from './errors';
 import { OptionDefinition } from './elements/OptionDefinition';
+import * as errors from './errors';
 
 // Throws an error if any option does not match its defined type or is undefined.
 // Since command-line-args handles default values, a check for undefined-ness here
@@ -14,7 +14,8 @@ const validateOptions = function ({ options, optionDefinitions }: {
     const optionRequired = optionDefinition.isRequired ?? false;
 
     if (optionRequired && value === undefined) {
-      throw new errors.OptionMissing(`Option '${optionDefinition.name}' is missing.`, {
+      throw new errors.OptionMissing({
+        message: `Option '${optionDefinition.name}' is missing.`,
         data: { optionDefinition }
       });
     }
@@ -32,7 +33,8 @@ const validateOptions = function ({ options, optionDefinitions }: {
         }
 
         if (typeof value !== 'number' || Number.isNaN(value)) {
-          throw new errors.OptionInvalid(`Option '${optionDefinition.name}' must be a number.`, {
+          throw new errors.OptionInvalid({
+            message: `Option '${optionDefinition.name}' must be a number.`,
             data: { optionDefinition }
           });
         }
@@ -47,7 +49,8 @@ const validateOptions = function ({ options, optionDefinitions }: {
       try {
         optionDefinition.validate(value);
       } catch (ex: unknown) {
-        throw new errors.OptionInvalid((ex as CustomError).message, {
+        throw new errors.OptionInvalid({
+          message: (ex as CustomError).message,
           data: { optionDefinition }
         });
       }

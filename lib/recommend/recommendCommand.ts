@@ -1,8 +1,8 @@
 import { Command } from '../elements/Command';
 import { CommandPath } from '../elements/CommandPath';
-import { errors } from '../errors';
 import { getCommandByPath } from '../getCommandByPath';
 import stringSimilarity from 'string-similarity';
+import * as errors from '../errors';
 
 const recommendCommand = function ({ rootCommand, commandPath }: {
   rootCommand: Command<any>;

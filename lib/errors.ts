@@ -1,11 +1,15 @@
 import { defekt } from 'defekt';
 
-const errors = defekt({
-  CommandNotFound: {},
-  InvalidOperation: {},
-  NoSuggestionAvailable: {},
-  OptionInvalid: {},
-  OptionMissing: {}
-});
+class CommandNotFound extends defekt({ code: 'CommandNotFound' }) {}
+class InvalidOperation extends defekt({ code: 'InvalidOperation' }) {}
+class NoSuggestionAvailable extends defekt({ code: 'NoSuggestionAvailable' }) {}
+class OptionInvalid extends defekt({ code: 'OptionInvalid' }) {}
+class OptionMissing extends defekt({ code: 'OptionMissing' }) {}
 
-export { errors };
+export {
+  CommandNotFound,
+  InvalidOperation,
+  NoSuggestionAvailable,
+  OptionInvalid,
+  OptionMissing
+};
