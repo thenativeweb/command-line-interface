@@ -6,6 +6,7 @@ import { GetUsageFn } from './elements/GetUsageFn';
 import { Handlers } from './Handlers';
 import { OptionDefinition } from './elements/OptionDefinition';
 import { runCli } from './runCli';
+import * as errors from './errors';
 
 export {
   runCli,
@@ -13,6 +14,7 @@ export {
   CommandHandle,
   CommandHandleOptions,
   CommandPath,
+  errors,
   GetUsageFn,
   Handlers,
   OptionDefinition
