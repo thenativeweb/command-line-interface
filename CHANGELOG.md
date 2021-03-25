@@ -1,3 +1,10 @@
+## [4.0.3](https://github.com/thenativeweb/command-line-interface/compare/4.0.2...4.0.3) (2021-03-25)
+
+
+### Bug Fixes
+
+* Migrate from master to main. ([#307](https://github.com/thenativeweb/command-line-interface/issues/307)) ([1d17364](https://github.com/thenativeweb/command-line-interface/commit/1d1736465f7568d4ea8456d4a09800904db57e60))
+
 ## [4.0.2](https://github.com/thenativeweb/command-line-interface/compare/4.0.1...4.0.2) (2021-03-25)
 
 
