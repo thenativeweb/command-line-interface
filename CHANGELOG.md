@@ -1,3 +1,10 @@
+## [4.0.4](https://github.com/thenativeweb/command-line-interface/compare/4.0.3...4.0.4) (2021-03-29)
+
+
+### Bug Fixes
+
+* bump defekt from 7.0.4 to 7.1.0 ([#317](https://github.com/thenativeweb/command-line-interface/issues/317)) ([34b491d](https://github.com/thenativeweb/command-line-interface/commit/34b491dd842b178ffd2a50218b760c8bce434185))
+
 ## [4.0.3](https://github.com/thenativeweb/command-line-interface/compare/4.0.2...4.0.3) (2021-03-25)
 
 
