@@ -52,33 +52,32 @@ suite('getCommandLineUsageConfiguration', (): void => {
 
     const configuration = getCommandLineUsageConfiguration({ rootCommand: command, commandPath: [ 'test' ]});
 
-    assert.that(configuration).is.atLeast([
-      {
-        header: 'test',
-        content: [ 'Test description.' ]
-      },
-      {
-        header: 'Synopsis',
-        content: [ getCommandSynopsis({ command }) ]
-      },
-      {
-        header: 'Options',
-        optionList: [
-          {
-            name: 'test',
-            alias: undefined,
-            defaultOption: true,
-            defaultValue: undefined,
-            lazyMultiple: true,
-            typeLabel: `{underline param}`
-          }
-        ]
-      },
-      {
-        header: 'Remarks',
-        content: [ 'This is a remark.\n\nIt spans multiple lines.' ]
-      }
-    ]);
+    assert.that(configuration.length).is.equalTo(4);
+    assert.that(configuration[0]).is.equalTo({
+      header: 'test',
+      content: [ 'Test description.' ]
+    });
+    assert.that(configuration[1]).is.equalTo({
+      header: 'Synopsis',
+      content: [ getCommandSynopsis({ command }) ]
+    });
+    assert.that(configuration[2]).is.atLeast({
+      header: 'Options',
+      optionList: [
+        {
+          name: 'test',
+          alias: undefined,
+          defaultOption: true,
+          defaultValue: undefined,
+          lazyMultiple: true,
+          typeLabel: `{underline param}`
+        }
+      ]
+    });
+    assert.that(configuration[3]).is.equalTo({
+      header: 'Remarks',
+      content: [ 'This is a remark.\n\nIt spans multiple lines.' ]
+    });
   });
 
   test('top level command with some options and some sub-commands.', async (): Promise<void> => {
@@ -111,35 +110,34 @@ suite('getCommandLineUsageConfiguration', (): void => {
 
     const configuration = getCommandLineUsageConfiguration({ rootCommand: command, commandPath: [ 'test' ]});
 
-    assert.that(configuration).is.atLeast([
-      {
-        header: 'test',
-        content: [ 'Test description.' ]
-      },
-      {
-        header: 'Synopsis',
-        content: [ getCommandSynopsis({ command }) ]
-      },
-      {
-        header: 'Options',
-        optionList: [
-          {
-            name: 'test',
-            alias: undefined,
-            defaultOption: true,
-            defaultValue: undefined,
-            lazyMultiple: true,
-            typeLabel: `{underline param}`
-          }
-        ]
-      },
-      {
-        header: 'Commands',
-        content: [
-          { name: 'sub1', description: 'description of sub1' },
-          { name: 'sub2', description: 'description of sub2' }
-        ]
-      }
-    ]);
+    assert.that(configuration.length).is.equalTo(4);
+    assert.that(configuration[0]).is.equalTo({
+      header: 'test',
+      content: [ 'Test description.' ]
+    });
+    assert.that(configuration[1]).is.equalTo({
+      header: 'Synopsis',
+      content: [ getCommandSynopsis({ command }) ]
+    });
+    assert.that(configuration[2]).is.atLeast({
+      header: 'Options',
+      optionList: [
+        {
+          name: 'test',
+          alias: undefined,
+          defaultOption: true,
+          defaultValue: undefined,
+          lazyMultiple: true,
+          typeLabel: `{underline param}`
+        }
+      ]
+    });
+    assert.that(configuration[3]).is.equalTo({
+      header: 'Commands',
+      content: [
+        { name: 'sub1', description: 'description of sub1' },
+        { name: 'sub2', description: 'description of sub2' }
+      ]
+    });
   });
 });
