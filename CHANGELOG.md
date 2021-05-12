@@ -1,3 +1,10 @@
+## [4.0.5](https://github.com/thenativeweb/command-line-interface/compare/4.0.4...4.0.5) (2021-05-12)
+
+
+### Bug Fixes
+
+* bump hosted-git-info from 2.8.8 to 2.8.9 ([#334](https://github.com/thenativeweb/command-line-interface/issues/334)) ([b6c269f](https://github.com/thenativeweb/command-line-interface/commit/b6c269f435779c66412f6fad9e424a480c00050d))
+
 ## [4.0.4](https://github.com/thenativeweb/command-line-interface/compare/4.0.3...4.0.4) (2021-03-29)
 
 
