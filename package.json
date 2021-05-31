@@ -1,6 +1,6 @@
 {
   "name": "command-line-interface",
-  "version": "4.0.7",
+  "version": "4.0.8",
   "description": "command-line-interface is a foundation for CLI applications.",
   "contributors": [
     {
@@ -30,7 +30,7 @@
     "command-line-args": "5.1.1",
     "command-line-commands": "3.0.2",
     "command-line-usage": "6.1.1",
-    "defekt": "7.1.2",
+    "defekt": "7.2.0",
     "string-similarity": "4.0.4",
     "strip-indent": "3.0.0"
   },
