@@ -38,7 +38,7 @@
     "@types/sinon": "10.0.1",
     "assertthat": "6.3.0",
     "record-stdstreams": "3.0.56",
-    "roboter": "11.6.48",
+    "roboter": "11.7.1",
     "semantic-release-configuration": "2.0.1",
     "sinon": "11.1.1"
   },
