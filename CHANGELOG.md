@@ -1,3 +1,10 @@
+## [4.0.9](https://github.com/thenativeweb/command-line-interface/compare/4.0.8...4.0.9) (2021-06-10)
+
+
+### Bug Fixes
+
+* bump trim-newlines from 3.0.0 to 3.0.1 ([#358](https://github.com/thenativeweb/command-line-interface/issues/358)) ([992ee4b](https://github.com/thenativeweb/command-line-interface/commit/992ee4bcbc0de4612378b9f1524f7ded0b557d01))
+
 ## [4.0.8](https://github.com/thenativeweb/command-line-interface/compare/4.0.7...4.0.8) (2021-05-31)
 
 
