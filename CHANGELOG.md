@@ -1,3 +1,10 @@
+## [4.0.10](https://github.com/thenativeweb/command-line-interface/compare/4.0.9...4.0.10) (2021-06-10)
+
+
+### Bug Fixes
+
+* bump glob-parent from 5.1.1 to 5.1.2 ([#359](https://github.com/thenativeweb/command-line-interface/issues/359)) ([9ce29a8](https://github.com/thenativeweb/command-line-interface/commit/9ce29a8d971e56e566d3460c41e34ba2ac59e2f1))
+
 ## [4.0.9](https://github.com/thenativeweb/command-line-interface/compare/4.0.8...4.0.9) (2021-06-10)
 
 
