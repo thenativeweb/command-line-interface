@@ -1,3 +1,10 @@
+## [4.0.11](https://github.com/thenativeweb/command-line-interface/compare/4.0.10...4.0.11) (2021-06-10)
+
+
+### Bug Fixes
+
+* bump normalize-url from 6.0.0 to 6.0.1 ([#357](https://github.com/thenativeweb/command-line-interface/issues/357)) ([133fe33](https://github.com/thenativeweb/command-line-interface/commit/133fe33c605e2f6a9f464828dccf39feb8167d44))
+
 ## [4.0.10](https://github.com/thenativeweb/command-line-interface/compare/4.0.9...4.0.10) (2021-06-10)
 
 
