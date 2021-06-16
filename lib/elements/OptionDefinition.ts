@@ -1,6 +1,6 @@
 export interface OptionDefinition {
   name: string;
-  type: 'boolean' | 'number' | 'string';
+  type: 'boolean' | 'number' | 'string' | 'object';
   description?: string;
   alias?: string;
   multiple?: boolean;
