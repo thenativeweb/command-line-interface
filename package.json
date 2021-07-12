@@ -1,6 +1,6 @@
 {
   "name": "command-line-interface",
-  "version": "4.0.14",
+  "version": "4.0.15",
   "description": "command-line-interface is a foundation for CLI applications.",
   "contributors": [
     {
@@ -25,7 +25,7 @@
   "dependencies": {
     "@types/command-line-args": "5.0.1",
     "@types/command-line-commands": "2.0.1",
-    "@types/command-line-usage": "5.0.1",
+    "@types/command-line-usage": "5.0.2",
     "@types/string-similarity": "4.0.0",
     "command-line-args": "5.1.1",
     "command-line-commands": "3.0.2",
@@ -36,8 +36,8 @@
   },
   "devDependencies": {
     "@types/sinon": "10.0.2",
-    "assertthat": "6.3.5",
-    "record-stdstreams": "3.0.63",
+    "assertthat": "6.3.6",
+    "record-stdstreams": "3.0.64",
     "roboter": "11.7.7",
     "semantic-release-configuration": "2.0.5",
     "sinon": "11.1.1"
