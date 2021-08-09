@@ -1,3 +1,10 @@
+## [4.0.20](https://github.com/thenativeweb/command-line-interface/compare/4.0.19...4.0.20) (2021-08-09)
+
+
+### Bug Fixes
+
+* bump @types/command-line-args from 5.0.1 to 5.2.0 ([#389](https://github.com/thenativeweb/command-line-interface/issues/389)) ([d9f67fd](https://github.com/thenativeweb/command-line-interface/commit/d9f67fd554624c55c359f7963c66050c38a4f686))
+
 ## [4.0.19](https://github.com/thenativeweb/command-line-interface/compare/4.0.18...4.0.19) (2021-08-02)
 
 
