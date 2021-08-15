@@ -1,3 +1,10 @@
+## [4.0.21](https://github.com/thenativeweb/command-line-interface/compare/4.0.20...4.0.21) (2021-08-15)
+
+
+### Bug Fixes
+
+* bump path-parse from 1.0.6 to 1.0.7 ([#391](https://github.com/thenativeweb/command-line-interface/issues/391)) ([7e4afe4](https://github.com/thenativeweb/command-line-interface/commit/7e4afe4f78029f13d94e1ea270017605beb4047b))
+
 ## [4.0.20](https://github.com/thenativeweb/command-line-interface/compare/4.0.19...4.0.20) (2021-08-09)
 
 
