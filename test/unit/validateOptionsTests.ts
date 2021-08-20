@@ -1,7 +1,7 @@
 import { assert } from 'assertthat';
 import { CustomError } from 'defekt';
 import { OptionDefinition } from '../../lib';
-import { validateOptions } from 'lib/validateOptions';
+import { validateOptions } from '../../lib/validateOptions';
 import * as errors from '../../lib/errors';
 
 suite('validateOptions', (): void => {

@@ -11,7 +11,7 @@ const getCommandLineUsageConfiguration = function ({ rootCommand, commandPath }:
   commandPath: CommandPath;
 }): Section[] {
   const commandsInPath = getCommandsByPath({ rootCommand, commandPath });
-  const command = commandsInPath[commandsInPath.length - 1];
+  const command = commandsInPath.at(-1)!;
 
   const synopsis = commandsInPath.map((currentCommand): string => getCommandSynopsis({ command: currentCommand })).join(' ');
 

@@ -20,6 +20,7 @@
       "email": "noah.hummel@thenativeweb.io"
     }
   ],
+  "private": false,
   "main": "build/lib/index.js",
   "types": "build/lib/index.d.ts",
   "dependencies": {
@@ -38,10 +39,11 @@
     "@types/sinon": "10.0.2",
     "assertthat": "6.3.12",
     "record-stdstreams": "3.0.69",
-    "roboter": "12.1.0",
+    "roboter": "12.1.2",
     "semantic-release-configuration": "2.0.5",
     "sinon": "11.1.2"
   },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git://github.com/thenativeweb/command-line-interface.git"

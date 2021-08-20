@@ -1,7 +1,6 @@
 import { Command } from './elements/Command';
 import { helpCommand } from './commands/help';
 
-// eslint-disable-next-line @typescript-eslint/ban-types
 const addHelpCommandToCli = function <TOptions extends object> ({ rootCommand }: {
   rootCommand: Command<TOptions>;
 }): Command<TOptions> {
