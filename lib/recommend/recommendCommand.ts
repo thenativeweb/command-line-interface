@@ -9,7 +9,7 @@ const recommendCommand = function ({ rootCommand, commandPath }: {
   commandPath: CommandPath;
 }): string {
   const goodPath = commandPath.slice(0, -1);
-  const unrecognizedCommand = commandPath[commandPath.length - 1];
+  const unrecognizedCommand = commandPath.at(-1)!;
 
   const goodCommand = getCommandByPath({ rootCommand, commandPath: goodPath });
 
