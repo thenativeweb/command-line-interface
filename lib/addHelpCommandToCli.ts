@@ -13,7 +13,7 @@ const addHelpCommandToCli = function <TOptions extends object> ({ rootCommand }:
     ],
     ignoreUnknownOptions: rootCommand.ignoreUnknownOptions,
     subcommands: {
-      ...rootCommand.subcommands ?? {},
+      ...rootCommand.subcommands,
       help: helpCommand
     },
     handle: rootCommand.handle
