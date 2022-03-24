@@ -1,3 +1,10 @@
+## [4.0.22](https://github.com/thenativeweb/command-line-interface/compare/4.0.21...4.0.22) (2022-03-24)
+
+
+### Bug Fixes
+
+* Update dependencies. ([#431](https://github.com/thenativeweb/command-line-interface/issues/431)) ([e148ba1](https://github.com/thenativeweb/command-line-interface/commit/e148ba1414b3946066dfd2fe1244a8ea7f8f8c0f))
+
 ## [4.0.21](https://github.com/thenativeweb/command-line-interface/compare/4.0.20...4.0.21) (2021-08-15)
 
 
