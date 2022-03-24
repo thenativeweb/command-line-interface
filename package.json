@@ -31,15 +31,15 @@
     "command-line-args": "5.2.1",
     "command-line-commands": "3.0.2",
     "command-line-usage": "6.1.1",
-    "defekt": "8.2.0",
+    "defekt": "9.1.0",
     "string-similarity": "4.0.4",
     "strip-indent": "3.0.0"
   },
   "devDependencies": {
     "@types/sinon": "10.0.11",
-    "assertthat": "6.4.0",
+    "assertthat": "6.5.1",
     "record-stdstreams": "3.0.73",
-    "roboter": "12.7.1",
+    "roboter": "13.0.0",
     "semantic-release-configuration": "2.0.7",
     "sinon": "13.0.1"
   },
