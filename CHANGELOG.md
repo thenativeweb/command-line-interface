@@ -1,3 +1,10 @@
+## [4.0.23](https://github.com/thenativeweb/command-line-interface/compare/4.0.22...4.0.23) (2022-03-25)
+
+
+### Bug Fixes
+
+* bump minimist from 1.2.5 to 1.2.6 ([#432](https://github.com/thenativeweb/command-line-interface/issues/432)) ([f151516](https://github.com/thenativeweb/command-line-interface/commit/f15151669059f6aad192df03d6a847b6c37d93b8))
+
 ## [4.0.22](https://github.com/thenativeweb/command-line-interface/compare/4.0.21...4.0.22) (2022-03-24)
 
 
