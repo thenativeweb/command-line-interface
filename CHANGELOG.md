@@ -1,3 +1,10 @@
+## [4.0.24](https://github.com/thenativeweb/command-line-interface/compare/4.0.23...4.0.24) (2022-08-24)
+
+
+### Bug Fixes
+
+* Standardize usage of terms in documentation. ([#448](https://github.com/thenativeweb/command-line-interface/issues/448)) ([6e33276](https://github.com/thenativeweb/command-line-interface/commit/6e33276a8e2fe1b66207bdb035867e88cdc2a6f2))
+
 ## [4.0.23](https://github.com/thenativeweb/command-line-interface/compare/4.0.22...4.0.23) (2022-03-25)
 
 
