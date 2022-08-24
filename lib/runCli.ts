@@ -4,6 +4,7 @@ import { getGetUsage } from './usage/getGetUsage';
 import { getRecommendCommand } from './recommend/getRecommendCommand';
 import { Handlers } from './Handlers';
 import { runCliRecursive } from './runCliRecursive';
+import { validateOnlyLeafCommandsHaveDefaultOptions } from './validateOnlyLeafCommandsHaveDefaultOptions';
 
 const runCli = async function ({ rootCommand, argv, handlers = {}}: {
   rootCommand: Command<any>;
@@ -33,6 +34,10 @@ const runCli = async function ({ rootCommand, argv, handlers = {}}: {
     },
     ...handlers
   };
+
+  validateOnlyLeafCommandsHaveDefaultOptions({
+    command: rootCommand
+  });
 
   const extendedRootCommand = addHelpCommandToCli({ rootCommand });
 
