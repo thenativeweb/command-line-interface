@@ -1,6 +1,6 @@
 {
   "name": "command-line-interface",
-  "version": "4.0.24",
+  "version": "5.0.0",
   "description": "command-line-interface is a foundation for CLI applications.",
   "contributors": [
     {

@@ -1,3 +1,17 @@
+# [5.0.0](https://github.com/thenativeweb/command-line-interface/compare/4.0.24...5.0.0) (2022-09-08)
+
+
+### Bug Fixes
+
+* Only allow default options in leaf commands. ([#449](https://github.com/thenativeweb/command-line-interface/issues/449)) ([06c2c43](https://github.com/thenativeweb/command-line-interface/commit/06c2c437c7b7a4b02392baad0c67a9fad1e6c86f))
+
+
+### BREAKING CHANGES
+
+* Commands with sub-commands can not define default options anymore.
+
+* chore: Mention the new limitation in the readme.
+
 ## [4.0.24](https://github.com/thenativeweb/command-line-interface/compare/4.0.23...4.0.24) (2022-08-24)
 
 
