@@ -137,6 +137,8 @@ If you want to give a dedicated name to an option's parameter, you can set it us
 
 You can also define whether an option is the default option of a command by setting the `defaultOption` property to `true`. In this case you can skip the option's name, and just provide its value.
 
+*Note that only commands that don't have sub-commands can have a `defaultOption`. This limitation exists, because default options might otherwise conflict with sub-commands.*
+
 Last but not least, you may specify a `validate` function for an option definition. Inside this function you are free to do whatever you need to do to ensure that the option's given value is valid. However, if you throw an exception from within this function, command-line-interface aborts the command's execution, and shows an error message:
 
 ```javascript
